@@ -50,19 +50,7 @@ peer.on('connection', (conn) => {
 peer.on('call', (call) => {
   logMessage('Connecting');
   navigator.mediaDevices.getUserMedia({
-      video: {
-          width: {
-              min: 1280,
-              ideal: 1920,
-              max: 2560,
-          },
-          height: {
-              min: 720,
-              ideal: 1080,
-              max: 1440,
-          },
-          /*facingMode: "environment"*/
-      },
+      video: {facingMode: "environment"},
       audio: true
   }).then((stream) => {
     call.answer(stream); // Answer the call with an A/V stream.
@@ -88,19 +76,7 @@ if (peerId) {
   });
 
   navigator.mediaDevices.getUserMedia({
-      video: {
-          width: {
-              min: 1280,
-              ideal: 1920,
-              max: 2560,
-          },
-          height: {
-              min: 720,
-              ideal: 1080,
-              max: 1440,
-          },
-          /*facingMode: "environment"*/
-      },
+      video: {facingMode: "environment"},
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
