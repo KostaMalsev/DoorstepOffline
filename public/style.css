@@ -12,9 +12,21 @@ body {
   z-index: -1000;
   left: 0;
   top: 0;
-  background: white;
+  background: black;
   height: 100vh;
   object-fit: cover;
+}
+
+.my-video {
+  position: fixed;
+  z-index: -999;
+  background: black;
+  object-fit: cover;
+  height: 100px;
+  width: 80px;
+  border-radius: 20px;
+  right: 10px;
+  bottom: 10px;
 }
 
 .messages {
