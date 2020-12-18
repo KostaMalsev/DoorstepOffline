@@ -1,142 +1,70 @@
-// Generate random room name if needed
-if (!location.hash) {
-  location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
-const roomHash = location.hash.substring(1);
-
-// TODO: Replace with your own channel ID
-const drone = new ScaleDrone('rMhydvahzScdOhJR');
-// Room name needs to be prefixed with 'observable-'
-const roomName = 'observable-' + roomHash;
-const configuration = {
-  iceServers: [{
-    urls: 'stun:stun.l.google.com:19302'
-  }]
+//Create an account on Firebase, and use the credentials they give you in place of the following
+/*
+var config = {
+  apiKey: "AIzaSyBajPcoloVgJTcE44NhPLvVsqnWG9RSBEE",
+  authDomain: "simple-webrtc-video-chat.firebaseapp.com",
+  databaseURL: "https://simple-webrtc-video-chat.firebaseio.com",
+  projectId: "simple-webrtc-video-chat",
+  storageBucket: "simple-webrtc-video-chat.appspot.com",
+  messagingSenderId: "748074977719"
 };
-let room;
-let pc;
+*/
 
-
-function onSuccess() {
-  console.log("Done it! created a chanell")
-};
-function onError(error) {
-  console.error(error);
-};
-
-drone.on('open', error => {
-  if (error) {
-    console.log("Failed to open drone")
-    return console.error(error);
-  }
-  room = drone.subscribe(roomName);
-  room.on('open', error => {
-    if (error) {
-      console.log("failed to load room")
-      onError(error);
-    }
-  });
-  // We're connected to the room and received an array of 'members'
-  // connected to the room (including us). Signaling server is ready.
-  room.on('members', members => {
-    console.log('MEMBERS', members);
-    // If we are the second user to connect to the room we will be creating the offer
-    const isOfferer = members.length === 2;
-    startWebRTC(isOfferer);
-  });
-});
-
-// Send signaling data via Scaledrone
-function sendMessage(message) {
-  drone.publish({
-    room: roomName,
-    message
-  });
-}
-
-function startWebRTC(isOfferer) {
-  pc = new RTCPeerConnection(configuration);
-
-  // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
-  // message to the other peer through the signaling server
-  pc.onicecandidate = event => {
-    if (event.candidate) {
-      sendMessage({'candidate': event.candidate});
-    }
+var firebaseConfig = {
+    apiKey: "AIzaSyCawke9Tab4VhNhmSx1ReE4NmZCy_4yQQs",
+    authDomain: "sketchit-48aa6.firebaseapp.com",
+    databaseURL: "https://sketchit-48aa6-default-rtdb.firebaseio.com",
+    projectId: "sketchit-48aa6",
+    storageBucket: "sketchit-48aa6.appspot.com",
+    messagingSenderId: "628734220032",
+    appId: "1:628734220032:web:6e402a543235de80d905e5",
+    measurementId: "G-GTQT6MG4JF"
   };
 
-  // If user is offerer let the 'negotiationneeded' event create the offer
-  if (isOfferer) {
-    pc.onnegotiationneeded = () => {
-      pc.createOffer().then(localDescCreated).catch(onError);
-    }
-  }
 
-  // When a remote stream arrives display it in the #remoteVideo element
-  pc.ontrack = event => {
-    const stream = event.streams[0];
-    if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-      remoteVideo.srcObject = stream;
-    }
-  };
+firebase.initializeApp(config);
 
-  navigator.mediaDevices.getUserMedia({
-    audio: true,
-    video: true,
-  }).then(stream => {
-    // Display your local video in #localVideo element
-    localVideo.srcObject = stream;
-    // Add your stream to be sent to the conneting peer
-    stream.getTracks().forEach(track => pc.addTrack(track, stream));
-  }, onError);
+var database = firebase.database().ref();
+var yourVideo = document.getElementById("yourVideo");
+var friendsVideo = document.getElementById("friendsVideo");
+var yourId = Math.floor(Math.random()*1000000000);
+//Create an account on Viagenie (http://numb.viagenie.ca/), and replace {'urls': 'turn:numb.viagenie.ca','credential': 'websitebeaver','username': 'websitebeaver@email.com'} with the information from your account
+var servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}, {'urls': 'turn:numb.viagenie.ca','credential': 'beaver','username': 'webrtc.websitebeaver@gmail.com'}]};
+var pc = new RTCPeerConnection(servers);
+pc.onicecandidate = (event => event.candidate?sendMessage(yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
+pc.onaddstream = (event => friendsVideo.srcObject = event.stream);
 
-
-
-let rem_candidate_arr=[];
-
-  // Listen to signaling data from Scaledrone
-  room.on('data', (message, client) => {
-    // Message was sent by us
-    if (client.id === drone.clientId) {
-      return;
-    }
-
-    if (message.sdp) {
-      // This is called after receiving an offer or answer from another peer
-      pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
-        //If there is remote description received, create a new remote candidate
-        if(rem_candidate_arr.length>0){
-          rem_candidate_arr.forEach((item, i) => {
-            pc.addIceCandidate(
-              new RTCIceCandidate(item), onSuccess, onError
-            );
-            rem_candidate_arr.pop();
-          });
-        }
-        // When receiving an offer lets answer it
-        if (pc.remoteDescription.type === 'offer') {
-          pc.createAnswer().then(localDescCreated).catch(onError);
-        }
-      }, onError);
-    } else if (message.candidate) {
-      rem_candidate_arr.push(message.candidate);//Store the candidate
-      console.log(message);
-      console.log(pc);
-      console.log(client);
-      // Add the new ICE candidate to our connections remote description
-      /*
-      pc.addIceCandidate(
-        new RTCIceCandidate(message.candidate), onSuccess, onError
-      );
-      */
-    }
-  });
+function sendMessage(senderId, data) {
+    var msg = database.push({ sender: senderId, message: data });
+    msg.remove();
 }
 
-function localDescCreated(desc) {
-  pc.setLocalDescription(
-    desc,
-    () => sendMessage({'sdp': pc.localDescription}),
-    onError
-  );
+function readMessage(data) {
+    var msg = JSON.parse(data.val().message);
+    var sender = data.val().sender;
+    if (sender != yourId) {
+        if (msg.ice != undefined)
+            pc.addIceCandidate(new RTCIceCandidate(msg.ice));
+        else if (msg.sdp.type == "offer")
+            pc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
+              .then(() => pc.createAnswer())
+              .then(answer => pc.setLocalDescription(answer))
+              .then(() => sendMessage(yourId, JSON.stringify({'sdp': pc.localDescription})));
+        else if (msg.sdp.type == "answer")
+            pc.setRemoteDescription(new RTCSessionDescription(msg.sdp));
+    }
+};
+
+database.on('child_added', readMessage);
+
+function showMyFace() {
+  navigator.mediaDevices.getUserMedia({audio:true, video:true})
+    .then(stream => yourVideo.srcObject = stream)
+    .then(stream => pc.addStream(stream));
+}
+
+function showFriendsFace() {
+  pc.createOffer()
+    .then(offer => pc.setLocalDescription(offer) )
+    .then(() => sendMessage(yourId, JSON.stringify({'sdp': pc.localDescription})) );
 }

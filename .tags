@@ -120,7 +120,6 @@ changeArrow	.\GenericFuncs.js	/^function changeArrow(dir) {$/;"	f
 connect	.\DeviceOrientationController.js	/^    this.connect = function () {$/;"	c
 const.clientId	.\VrEnvironment.js	/^        clientId: 'A3YUBJ0DWI2P34DXA5SKS4XZ24OYJIRJXRH3BR4SF32CDG3G',$/;"	p
 const.clientSecret	.\VrEnvironment.js	/^        clientSecret: 'BRJVCYRK1B3C2DZWXHANFRU1D0Z5L1E20MJDWNIK0MVAFPP3&v=20180323',$/;"	p
-const.iceServers	.\VideoChatHelper.js	/^  iceServers: [{$/;"	p
 const.radius	.\VrEnvironment.js	/^        radius: 100,    \/\/3000 search places not farther than this value (in meters)$/;"	p
 const.version	.\VrEnvironment.js	/^        version: '20180323',\/\/'20300101',$/;"	p
 constrainObjectFOV	.\DeviceOrientationController.js	/^    this.constrainObjectFOV = function () {$/;"	c
@@ -136,6 +135,7 @@ d_err	.\MotionHelper.js	/^var d_err = 0;$/;"	v
 data.crd_accuracy	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
 data.crd_lat	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
 data.crd_lon	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
+database	.\VideoChatHelper.js	/^var database = firebase.database().ref();$/;"	v
 db	.\FirebaseHelper.js	/^var db = null;$/;"	v
 dbg.Pos	.\MotionHelper.js	/^var dbg = {Pos: null, STATS: null, camera_wrapper: null};\/\/dbg ptrs$/;"	p
 dbg.STATS	.\MotionHelper.js	/^var dbg = {Pos: null, STATS: null, camera_wrapper: null};\/\/dbg ptrs$/;"	p
@@ -152,12 +152,21 @@ error	.\GenericFuncs.js	/^function error(message, source) {$/;"	f
 filterAndFlatten	.\CSS2DRenderer.js	/^    var filterAndFlatten = function ( scene ) {$/;"	f
 filterAndFlatten	.\CSS3DRenderer.js	/^    function filterAndFlatten( scene ) {$/;"	f
 firebaseConfig.apiKey	.\FirebaseHelper.js	/^    apiKey: "AIzaSyAFIvRJ3bxemB9AjqOvyuoLo8s4CsSWDB8",$/;"	p
+firebaseConfig.apiKey	.\VideoChatHelper.js	/^    apiKey: "AIzaSyCawke9Tab4VhNhmSx1ReE4NmZCy_4yQQs",$/;"	p
 firebaseConfig.appId	.\FirebaseHelper.js	/^    appId: "1:249703990981:web:90216c63c3293b47d412ac"$/;"	p
+firebaseConfig.appId	.\VideoChatHelper.js	/^    appId: "1:628734220032:web:6e402a543235de80d905e5",$/;"	p
 firebaseConfig.authDomain	.\FirebaseHelper.js	/^    authDomain: "varweb-52b08.firebaseapp.com",$/;"	p
+firebaseConfig.authDomain	.\VideoChatHelper.js	/^    authDomain: "sketchit-48aa6.firebaseapp.com",$/;"	p
 firebaseConfig.databaseURL	.\FirebaseHelper.js	/^    databaseURL: "https:\/\/varweb-52b08.firebaseio.com",$/;"	p
+firebaseConfig.databaseURL	.\VideoChatHelper.js	/^    databaseURL: "https:\/\/sketchit-48aa6-default-rtdb.firebaseio.com",$/;"	p
+firebaseConfig.measurementId	.\VideoChatHelper.js	/^    measurementId: "G-GTQT6MG4JF"$/;"	p
 firebaseConfig.messagingSenderId	.\FirebaseHelper.js	/^    messagingSenderId: "249703990981",$/;"	p
+firebaseConfig.messagingSenderId	.\VideoChatHelper.js	/^    messagingSenderId: "628734220032",$/;"	p
 firebaseConfig.projectId	.\FirebaseHelper.js	/^    projectId: "varweb-52b08",$/;"	p
+firebaseConfig.projectId	.\VideoChatHelper.js	/^    projectId: "sketchit-48aa6",$/;"	p
 firebaseConfig.storageBucket	.\FirebaseHelper.js	/^    storageBucket: "varweb-52b08.appspot.com",$/;"	p
+firebaseConfig.storageBucket	.\VideoChatHelper.js	/^    storageBucket: "sketchit-48aa6.appspot.com",$/;"	p
+friendsVideo	.\VideoChatHelper.js	/^var friendsVideo = document.getElementById("friendsVideo");$/;"	v
 getCameraCSSMatrix	.\CSS3DRenderer.js	/^    function getCameraCSSMatrix( matrix ) {$/;"	f
 getDistanceToSquared	.\CSS2DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f
 getDistanceToSquared	.\CSS3DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f
@@ -201,7 +210,6 @@ let.maximumAge	.\DeviceOrientationController.js	/^    maximumAge: 0$/;"	p
 let.timeout	.\DeviceOrientationController.js	/^    timeout: 10000,$/;"	p
 let.x	.\GenericFuncs.js	/^        x: x_,$/;"	p
 let.y	.\GenericFuncs.js	/^        y: y_,$/;"	p
-localDescCreated	.\VideoChatHelper.js	/^function localDescCreated(desc) {$/;"	f
 map	.\mapboxHelper.js	/^var map = null;$/;"	v
 mouseDragged	.\hit_test.html	/^function mouseDragged() {$/;"	f
 mousePressed	.\hit_test.html	/^function mousePressed() {$/;"	f
@@ -219,9 +227,7 @@ onDocumentMouseUp	.\DeviceOrientationController.js	/^    this.onDocumentMouseUp 
 onDocumentTouchEnd	.\DeviceOrientationController.js	/^    this.onDocumentTouchEnd = function ( event ) {$/;"	c
 onDocumentTouchMove	.\DeviceOrientationController.js	/^    this.onDocumentTouchMove = function ( event ) {$/;"	f
 onDocumentTouchStart	.\DeviceOrientationController.js	/^    this.onDocumentTouchStart = function ( event ) {$/;"	f
-onError	.\VideoChatHelper.js	/^function onError(error) {$/;"	f
 onScreenOrientationChange	.\DeviceOrientationController.js	/^    this.onScreenOrientationChange = function () {$/;"	c
-onSuccess	.\VideoChatHelper.js	/^function onSuccess() {$/;"	f
 pos.lat	.\mapboxHelper.js	/^    lat: Location_target.lat,$/;"	p
 position.x	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
 position.y	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
@@ -230,6 +236,7 @@ positionGPS.last_lat	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last
 positionGPS.last_lon	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
 positionGPS.lat	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
 positionGPS.lon	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
+readMessage	.\VideoChatHelper.js	/^function readMessage(data) {$/;"	f
 relativeBearing	.\GenericFuncs.js	/^function relativeBearing(b1Rad, b2Rad)$/;"	f
 renameMarker	.\mapboxHelper.js	/^function renameMarker() {$/;"	f
 render	.\CSS2DRenderer.js	/^    this.render = function ( scene, camera ) {$/;"	f
@@ -240,13 +247,15 @@ renderObject	.\CSS3DRenderer.js	/^    function renderObject( object, scene, came
 resize	.\hit_test.html	/^function resize() {$/;"	f
 scene_time	.\MotionHelper.js	/^var scene_time = 0;\/\/in seconds since start of scene$/;"	v
 search	.\mapboxHelper.js	/^var search = document.querySelector('.search');$/;"	v
-sendMessage	.\VideoChatHelper.js	/^function sendMessage(message) {$/;"	f
+sendMessage	.\VideoChatHelper.js	/^function sendMessage(senderId, data) {$/;"	f
+servers.iceServers	.\VideoChatHelper.js	/^var servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}, {'urls': 'turn:numb.viagenie.ca','credential': 'beaver','username': 'webrtc.websitebeaver@gmail.com'}]};$/;"	p
 setSize	.\CSS2DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
 setSize	.\CSS3DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
 setup	.\hit_test.html	/^function setup () {$/;"	f
+showFriendsFace	.\VideoChatHelper.js	/^function showFriendsFace() {$/;"	f
 showLogin	.\AuthHelper.js	/^function showLogin() {$/;"	f
+showMyFace	.\VideoChatHelper.js	/^function showMyFace() {$/;"	f
 showPosition	.\GenericFuncs.js	/^function showPosition(position)$/;"	f
-startWebRTC	.\VideoChatHelper.js	/^function startWebRTC(isOfferer) {$/;"	f
 time_since_last_update	.\MotionHelper.js	/^var time_since_last_update = 0;$/;"	v
 toggleAlert	.\MotionHelper.js	/^function toggleAlert(boolean) {$/;"	f
 update	.\DeviceOrientationController.js	/^    this.update = function () {$/;"	c
@@ -263,5 +272,7 @@ velocity.prev_prev	.\MotionHelper.js	/^var velocity = {curr: 0, prev: 0, prev_pr
 w_width	.\GenericFuncs.js	/^var w_width = window.innerWidth - arrowTop.clientWidth - 10;$/;"	v
 window.onerror	.\GenericFuncs.js	/^window.onerror = function(message, source) {$/;"	f
 xmlhttp.onreadystatechange	.\VrEnvironment.js	/^    xmlhttp.onreadystatechange = function () {$/;"	f
+yourId	.\VideoChatHelper.js	/^var yourId = Math.floor(Math.random()*1000000000);$/;"	v
+yourVideo	.\VideoChatHelper.js	/^var yourVideo = document.getElementById("yourVideo");$/;"	v
 zOrder	.\CSS2DRenderer.js	/^    var zOrder = function ( scene ) {$/;"	f
 zOrder	.\CSS3DRenderer.js	/^    function zOrder( scene ) {$/;"	f

@@ -1,44 +1,15 @@
-<!DOCTYPE html>
+
+
 <html>
-<head>
-  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
-
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <style>
-    body {
-      display: flex;
-      height: 100vh;
-      margin: 0;
-      align-items: center;
-      justify-content: center;
-      padding: 0 50px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    video {
-      max-width: calc(50% - 100px);
-      margin: 0 50px;
-      box-sizing: border-box;
-      border-radius: 2px;
-      padding: 0;
-      box-shadow: rgba(156, 172, 172, 0.2) 0px 2px 2px, rgba(156, 172, 172, 0.2) 0px 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
-    }
-    .copy {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 16px;
-      color: rgba(0, 0, 0, 0.5);
-    }
-  </style>
-</head>
-<body>
-  <div class="copy">Send your URL to a friend to start a video call</div>
-  <video id="localVideo" autoplay muted></video>
-  <video id="remoteVideo" autoplay></video>
-  <script src='VideoChatHelper.js'></script>
-  <!--<script src="script.js"></script> -->
-</body>
+  <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style_video.css">
+  </head>
+  <body onload="showMyFace()">
+    <video id="yourVideo" autoplay muted playsinline></video>
+    <video id="friendsVideo" autoplay playsinline></video>
+    <br />
+    <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call</button>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  </body>
 </html>
