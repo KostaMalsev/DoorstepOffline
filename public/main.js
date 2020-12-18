@@ -116,7 +116,7 @@ navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
    renderVideo(stream);
 })
 
-function copy(text) {
+let copy = (text) => {
   var textArea = document.createElement("textarea");
   textArea.value = text;
   document.body.appendChild(textArea);
@@ -125,3 +125,5 @@ function copy(text) {
   document.execCommand('copy');
   document.body.removeChild(textArea);
 }
+
+window.copy = copy;
