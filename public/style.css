@@ -47,9 +47,8 @@ body {
   background: #ffffff2b;
   border-radius: 8px;
   cursor: pointer;
-  opacity: .8;
   border: 2px solid white;
   color: white;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
