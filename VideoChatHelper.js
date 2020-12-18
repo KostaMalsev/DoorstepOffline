@@ -17,18 +17,22 @@ let room;
 let pc;
 
 
-function onSuccess() {};
+function onSuccess() {
+  console.log("Done it! created a chanell")
+};
 function onError(error) {
   console.error(error);
 };
 
 drone.on('open', error => {
   if (error) {
+    console.log("Failed to open drone")
     return console.error(error);
   }
   room = drone.subscribe(roomName);
   room.on('open', error => {
     if (error) {
+      console.log("failed to load room")
       onError(error);
     }
   });
@@ -86,6 +90,10 @@ function startWebRTC(isOfferer) {
     stream.getTracks().forEach(track => pc.addTrack(track, stream));
   }, onError);
 
+
+
+let rem_candidate_arr=[];
+
   // Listen to signaling data from Scaledrone
   room.on('data', (message, client) => {
     // Message was sent by us
@@ -96,16 +104,26 @@ function startWebRTC(isOfferer) {
     if (message.sdp) {
       // This is called after receiving an offer or answer from another peer
       pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
+        //If there is remote description received, create a new remote candidate
+        if(rem_candidate_arr.length>0){
+          pc.addIceCandidate(
+            new RTCIceCandidate(rem_candidate_arr[0]), onSuccess, onError
+          );
+          rem_candidate_arr.pop();
+        }
         // When receiving an offer lets answer it
         if (pc.remoteDescription.type === 'offer') {
           pc.createAnswer().then(localDescCreated).catch(onError);
         }
       }, onError);
     } else if (message.candidate) {
+      rem_candidate_arr.push(message.candidate);//Store the candidate
       // Add the new ICE candidate to our connections remote description
+      /*
       pc.addIceCandidate(
         new RTCIceCandidate(message.candidate), onSuccess, onError
       );
+      */
     }
   });
 }

@@ -221,7 +221,7 @@ onDocumentTouchMove	.\DeviceOrientationController.js	/^    this.onDocumentTouchM
 onDocumentTouchStart	.\DeviceOrientationController.js	/^    this.onDocumentTouchStart = function ( event ) {$/;"	f
 onError	.\VideoChatHelper.js	/^function onError(error) {$/;"	f
 onScreenOrientationChange	.\DeviceOrientationController.js	/^    this.onScreenOrientationChange = function () {$/;"	c
-onSuccess	.\VideoChatHelper.js	/^function onSuccess() {};$/;"	f
+onSuccess	.\VideoChatHelper.js	/^function onSuccess() {$/;"	f
 pos.lat	.\mapboxHelper.js	/^    lat: Location_target.lat,$/;"	p
 position.x	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
 position.y	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
