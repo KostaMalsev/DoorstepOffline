@@ -58,9 +58,14 @@ peer.on('connection', (conn) => {
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
   logMessage('Connecting');
+  
+  let conn = peer.connect(peerId);
+  conn.on('data', (data) => {
+    logMessage(`received: ${data}`);
+  });
+  
   navigator.mediaDevices.getUserMedia({
-      video: {facingMode: "environment"},
-      audio: true
+      video: {facingMode: "environment"}
   }).then((stream) => {
     call.answer(stream); // Answer the call with an A/V stream.
     call.on('stream', (s) => { renderVideo(s); renderMyVideo(stream) });
@@ -81,7 +86,7 @@ if (peerId) {
     logMessage(`received: ${data}`);
   });
   conn.on('open', () => {
-    conn.send('hi!');
+    conn.send(button.id + ' joined.');
   });
 
   navigator.mediaDevices.getUserMedia({
@@ -89,7 +94,7 @@ if (peerId) {
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
-     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream); conn.send(button.id + ' joined.') });
+     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream) });
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
