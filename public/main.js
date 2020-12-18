@@ -4,16 +4,17 @@ let messagesEl = document.querySelector('.messages');
 let videoEl = document.querySelector('.remote-video');
 let myVideoEl = document.querySelector('.my-video');
 let button = document.querySelector('.button');
+let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 100"><rect fill="white" height="6" opacity="0" rx="3" ry="3" transform="rotate(-90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.08333333333333333" rx="3" ry="3" transform="rotate(-60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.16666666666666666" rx="3" ry="3" transform="rotate(-30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.25" rx="3" ry="3" transform="rotate(0 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.3333333333333333" rx="3" ry="3" transform="rotate(30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.4166666666666667" rx="3" ry="3" transform="rotate(60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5" rx="3" ry="3" transform="rotate(90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5833333333333334" rx="3" ry="3" transform="rotate(120 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.6666666666666666" rx="3" ry="3" transform="rotate(150 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.75" rx="3" ry="3" transform="rotate(180 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.8333333333333334" rx="3" ry="3" transform="rotate(210 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.9166666666666666" rx="3" ry="3" transform="rotate(240 50 50)" width="25" x="72" y="47"></rect></svg>';
 
 let logMessage = (message) => {
   let newMessage = document.createElement('div');
-  newMessage.innerText = message;
+  newMessage.innerHTML = message;
   messagesEl.appendChild(newMessage);
 };
 
 let removeConnectionMessage = () => {
   messagesEl.querySelectorAll('div').forEach(div => {
-    if (div.innerHTML == 'Connecting') { div.remove() };
+    if (div.innerHTML == (loaderSVG + ' Connecting')) { div.remove() };
   })
 };
 
@@ -53,7 +54,7 @@ peer.on('error', (error) => {
 
 // Handle incoming data connection
 peer.on('connection', (conn) => {
-  logMessage('incoming peer connection!');
+  logMessage('Incoming peer connection!');
   conn.on('data', (data) => {
     logMessage(`received: ${data}`);
   });
@@ -64,7 +65,7 @@ peer.on('connection', (conn) => {
 
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
-  logMessage('Connecting');
+  logMessage(loaderSVG + ' Connecting');
   myVideoEl.classList.remove('big');
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
@@ -79,7 +80,7 @@ var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
-  logMessage('Connecting');
+  logMessage(loaderSVG + ' Connecting');
 
   let conn = peer.connect(peerId);
   conn.on('data', (data) => {
@@ -107,7 +108,7 @@ if (peerId) {
 }
 else {
   // Show "Connecting" message
-  logMessage('Connecting');
+  logMessage(loaderSVG + ' Connecting');
   
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
