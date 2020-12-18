@@ -60,7 +60,6 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
   call.on('stream', (s) => {
     renderVideo(s);
-    renderMyVideo(myVideoStream);
   });
 });
 
@@ -102,6 +101,7 @@ else {
       audio: true
   }).then((stream) => {
     myVideoStream = stream;
+    renderMyVideo(myVideoStream);
   })
   .catch((err) => {
     logMessage('Allow camera acess for video chat');
