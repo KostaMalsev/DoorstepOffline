@@ -1,0 +1,267 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddToStorage	.\StorageHelper.js	/^function AddToStorage(details)$/;"	f
+CSS2DObject	.\CSS2DRenderer.js	/^var CSS2DObject = function ( element ) {$/;"	c
+CSS2DRenderer	.\CSS2DRenderer.js	/^var CSS2DRenderer = function () {$/;"	c
+CSS2DRenderer.cache.objects	.\CSS2DRenderer.js	/^        objects: new WeakMap()$/;"	p
+CSS2DRenderer.getSize	.\CSS2DRenderer.js	/^    this.getSize = function () {$/;"	m
+CSS3DObject	.\CSS3DRenderer.js	/^var CSS3DObject = function ( element ) {$/;"	c
+CSS3DRenderer	.\CSS3DRenderer.js	/^var CSS3DRenderer = function () {$/;"	f
+CSS3DRenderer.cache.camera	.\CSS3DRenderer.js	/^        camera: { fov: 0, style: '' },$/;"	p
+CSS3DSprite	.\CSS3DRenderer.js	/^CSS3DSprite.prototype = Object.create( CSS3DObject.prototype );$/;"	c
+CSS3DSprite	.\CSS3DRenderer.js	/^var CSS3DSprite = function ( element ) {$/;"	f
+CSS3DSprite.constructor	.\CSS3DRenderer.js	/^CSS3DSprite.prototype.constructor = CSS3DSprite;$/;"	m
+CenterPos.lat	.\MotionHelper.js	/^      CenterPos = {lat: crd_.latitude, lon: crd_.longitude};$/;"	p
+CenterPos.lat	.\MotionHelper.js	/^var CenterPos = {lat: 0, lon: 0}; \/\/new Location(31.3365254f, 34.8968868f)$/;"	p
+CenterPos.lon	.\MotionHelper.js	/^var CenterPos = {lat: 0, lon: 0}; \/\/new Location(31.3365254f, 34.8968868f)$/;"	p
+CheckForJerkMovement	.\MotionHelper.js	/^function CheckForJerkMovement(bearing) {$/;"	f
+CheckInFOV	.\GenericFuncs.js	/^function CheckInFOV(camera,object,el) {$/;"	f
+CheckInitLocation	.\MotionHelper.js	/^function CheckInitLocation(pos) \/\/Not used$/;"	f
+ClearAllMapMarkers	.\mapboxHelper.js	/^function ClearAllMapMarkers()$/;"	f
+ClearAllMarkers	.\GenericFuncs.js	/^function ClearAllMarkers()$/;"	f
+ClearAllMarkersVr	.\VrEnvironment.js	/^function ClearAllMarkersVr()$/;"	f
+CmpssEventCounter	.\RotationHelper.js	/^var CmpssEventCounter=0;$/;"	v
+CompassHeading	.\RotationHelper.js	/^var CompassHeading=0;$/;"	v
+Convert180to360	.\GenericFuncs.js	/^function Convert180to360(deg)$/;"	f
+Convert360to180	.\GenericFuncs.js	/^function Convert360to180(deg)$/;"	f
+CreateMarker	.\mapboxHelper.js	/^function CreateMarker(pos, desc_) {$/;"	f
+CreateMarkerFromGoogleMaps	.\mapboxHelper.js	/^function CreateMarkerFromGoogleMaps(deeplink)$/;"	f
+CreateMarkerFromWhatsApp	.\mapboxHelper.js	/^function CreateMarkerFromWhatsApp(link_)$/;"	f
+CustomMarkerLoaded	.\VrEnvironment.js	/^var CustomMarkerLoaded = false;$/;"	v
+CustomMarkersArray	.\VrEnvironment.js	/^var CustomMarkersArray = null;$/;"	v
+DeleteMarkersInStorage	.\StorageHelper.js	/^function DeleteMarkersInStorage()$/;"	f
+DeviceOrientationController	.\DeviceOrientationController.js	/^var DeviceOrientationController = function ( object, domElement ) {$/;"	c
+DeviceOrientationController.CONTROLLER_EVENT.CALIBRATE_COMPASS	.\DeviceOrientationController.js	/^        CALIBRATE_COMPASS:  'compassneedscalibration',$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.MANUAL_CONTROL	.\DeviceOrientationController.js	/^        MANUAL_CONTROL:     'userinteraction', \/\/ userinteractionstart, userinteractionend$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.ROTATE_CONTROL	.\DeviceOrientationController.js	/^        ROTATE_CONTROL:     'rotate',          \/\/ rotatestart, rotateend$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.SCREEN_ORIENTATION	.\DeviceOrientationController.js	/^        SCREEN_ORIENTATION: 'orientationchange',$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.ZOOM_CONTROL	.\DeviceOrientationController.js	/^        ZOOM_CONTROL:       'zoom',            \/\/ zoomstart, zoomend$/;"	p
+DeviceOrientationController.CONTROLLER_STATE.AUTO	.\DeviceOrientationController.js	/^        AUTO: 0,$/;"	p
+DeviceOrientationController.CONTROLLER_STATE.MANUAL_ROTATE	.\DeviceOrientationController.js	/^        MANUAL_ROTATE: 1,$/;"	p
+DeviceOrientationController.CONTROLLER_STATE.MANUAL_ZOOM	.\DeviceOrientationController.js	/^        MANUAL_ZOOM: 2$/;"	p
+DeviceOrientationController.fireEvent	.\DeviceOrientationController.js	/^    var fireEvent = function () {$/;"	m
+FinishedLoading	.\VrEnvironment.js	/^var FinishedLoading  = false;$/;"	v
+GPS_sim.sign_x	.\MotionHelper.js	/^  sign_x: [0, -1, 0, 1],$/;"	p
+GetAcceleration	.\MotionHelper.js	/^function GetAcceleration(prev_vel, next_vel, delta_time) {$/;"	f
+GetCompassHeading	.\GenericFuncs.js	/^function GetCompassHeading(alpha, beta, gamma) {$/;"	f
+GetDirection	.\GenericFuncs.js	/^function GetDirection(Location_source, Location_target) {$/;"	f
+GetDistanceToObject	.\VrEnvironment.js	/^function GetDistanceToObject(el)$/;"	f
+GetGPSLoc	.\MotionHelper.js	/^function GetGPSLoc() {$/;"	f
+GetInvocationMethod	.\GenericFuncs.js	/^function GetInvocationMethod()$/;"	f
+GetPlacesFromFourSquares	.\VrEnvironment.js	/^function GetPlacesFromFourSquares(player_pos)$/;"	f
+Glast_id	.\FirebaseHelper.js	/^var Glast_id = null;$/;"	v
+GlobCenter.lat	.\GenericFuncs.js	/^var GlobCenter = {lat:0,lon:0};$/;"	p
+GlobCenter.lon	.\GenericFuncs.js	/^var GlobCenter = {lat:0,lon:0};$/;"	p
+GlobDebugFlag	.\GenericFuncs.js	/^var GlobDebugFlag=false;$/;"	v
+GlobMarkers	.\GenericFuncs.js	/^var GlobMarkers=[];$/;"	v
+GlobMarkersList	.\VrEnvironment.js	/^var GlobMarkersList=[];$/;"	v
+Gmarkers	.\mapboxHelper.js	/^var Gmarkers = [];$/;"	v
+HandleHookFromFirebase	.\FirebaseHelper.js	/^function HandleHookFromFirebase(post) {$/;"	f
+HandleSearchRequest	.\mapboxHelper.js	/^function HandleSearchRequest(str)$/;"	f
+HandleURLParams	.\GenericFuncs.js	/^function HandleURLParams(url)$/;"	f
+InitFirebase	.\FirebaseHelper.js	/^function InitFirebase() {$/;"	f
+InitListeners	.\FirebaseHelper.js	/^function InitListeners()$/;"	f
+InitMovement	.\MotionHelper.js	/^function InitMovement() {$/;"	f
+InitRot	.\RotationHelper.js	/^function InitRot()$/;"	f
+InitStorage	.\StorageHelper.js	/^function InitStorage() {$/;"	f
+InitVR	.\VrEnvironment.js	/^function InitVR()$/;"	f
+InvokeAppOrigin	.\GenericFuncs.js	/^var InvokeAppOrigin = "none";\/\/define app invocation method$/;"	v
+IsEnglish	.\GenericFuncs.js	/^function IsEnglish(name) {$/;"	f
+IsWaze	.\mapboxHelper.js	/^function IsWaze(query)$/;"	f
+LastDeviceGPS.accuracy	.\MotionHelper.js	/^var LastDeviceGPS = {lat: 0, lon: 0, accuracy: 0};$/;"	p
+LastDeviceGPS.lat	.\MotionHelper.js	/^var LastDeviceGPS = {lat: 0, lon: 0, accuracy: 0};$/;"	p
+LastDeviceGPS.lon	.\MotionHelper.js	/^var LastDeviceGPS = {lat: 0, lon: 0, accuracy: 0};$/;"	p
+LinearWalk	.\MotionHelper.js	/^function LinearWalk(scene_time, curr_pos) {$/;"	f
+LoadFromStorage	.\StorageHelper.js	/^function LoadFromStorage()$/;"	f
+Location_source	.\mapboxHelper.js	/^var Location_source = null;$/;"	v
+Location_source.lat	.\mapboxHelper.js	/^    Location_source = {lat: 0, lon: 0};$/;"	p
+Location_source.lon	.\mapboxHelper.js	/^    Location_source = {lat: 0, lon: 0};$/;"	p
+MapboxInit	.\mapboxHelper.js	/^function MapboxInit() {$/;"	f
+MoveSelfMarker	.\mapboxHelper.js	/^function MoveSelfMarker(pos) {$/;"	f
+OKTA_SETTINGS.baseUrl	.\AuthHelper.js	/^  baseUrl: "https:\/\/dev-8907427.okta.com",$/;"	p
+OKTA_SETTINGS.clientId	.\AuthHelper.js	/^  clientId: "0oa2q8oudI1exP61h5d6",$/;"	p
+OKTA_SETTINGS.issuer	.\AuthHelper.js	/^  issuer: "https:\/\/dev-8907427.okta.com\/oauth2\/default"$/;"	p
+OrientationGrantedFlag	.\DeviceOrientationController.js	/^var OrientationGrantedFlag=false;$/;"	v
+PlaceInVR	.\VrEnvironment.js	/^function PlaceInVR (PosCoord, WorldCenterPos, name) {$/;"	f
+PlaceObjectOnMap	.\VrEnvironment.js	/^function PlaceObjectOnMap(pos,name) {$/;"	f
+PlaceSign	.\VrEnvironment.js	/^function PlaceSign (delta_lat, delta_lng, PlrLoc, Name) {$/;"	f
+ReverseSentence	.\GenericFuncs.js	/^function ReverseSentence(sentence)$/;"	f
+ReverseString	.\GenericFuncs.js	/^function ReverseString(str)$/;"	f
+RotTransform	.\RotationHelper.js	/^function RotTransform(cmpss)$/;"	f
+SelfPOsMarker	.\mapboxHelper.js	/^var SelfPOsMarker = null;$/;"	v
+SetInitPosPlayer	.\MotionHelper.js	/^function SetInitPosPlayer(PosCoord, WorldCenterPos) {$/;"	f
+SetInitRotation	.\RotationHelper.js	/^function SetInitRotation(e)$/;"	f
+SetUpListeners	.\mapboxHelper.js	/^function SetUpListeners() {$/;"	f
+SmoothMotion	.\MotionHelper.js	/^function SmoothMotion(va,vb,num_steps) {$/;"	f
+State	.\MotionHelper.js	/^var State = -1;$/;"	v
+StorageMarkers	.\StorageHelper.js	/^var StorageMarkers=[];$/;"	v
+UpdateCameraPos	.\MotionHelper.js	/^function UpdateCameraPos(newPos)$/;"	f
+UpdateLabelOnMarker	.\VrEnvironment.js	/^function UpdateLabelOnMarker()$/;"	f
+UpdateMarkerName	.\FirebaseHelper.js	/^function UpdateMarkerName(marker_name, new_name)$/;"	f
+UpdatePos	.\MotionHelper.js	/^function UpdatePos() {$/;"	f
+UpdateVel	.\MotionHelper.js	/^function UpdateVel() {$/;"	c
+WorldCenter.lat	.\VrEnvironment.js	/^var WorldCenter = {lat: 0, lon: 0};$/;"	p
+WorldCenter.lon	.\VrEnvironment.js	/^var WorldCenter = {lat: 0, lon: 0};$/;"	p
+acceleration	.\MotionHelper.js	/^var acceleration = 0;$/;"	v
+activateLocation	.\DeviceOrientationController.js	/^function activateLocation()$/;"	f
+addMarkerSelf	.\mapboxHelper.js	/^function addMarkerSelf(pos)$/;"	f
+addPlane	.\loocatindex.html	/^    function addPlane() {$/;"	f
+arrow	.\GenericFuncs.js	/^var arrow = document.querySelector('.arrow-wrapper');$/;"	v
+arrowTop	.\GenericFuncs.js	/^var arrowTop = document.querySelector('.arrow.top');$/;"	v
+bearing.curr	.\MotionHelper.js	/^var bearing = {curr: 0, prev: 0};$/;"	p
+bearing.prev	.\MotionHelper.js	/^var bearing = {curr: 0, prev: 0};$/;"	p
+calcVel	.\MotionHelper.js	/^function calcVel(delta_distance, timeDelta) {$/;"	f
+cameraElement	.\CSS3DRenderer.js	/^    var cameraElement = document.createElement( 'div' );$/;"	v
+changeArrow	.\GenericFuncs.js	/^function changeArrow(dir) {$/;"	f
+connect	.\DeviceOrientationController.js	/^    this.connect = function () {$/;"	c
+const.clientId	.\VrEnvironment.js	/^        clientId: 'A3YUBJ0DWI2P34DXA5SKS4XZ24OYJIRJXRH3BR4SF32CDG3G',$/;"	p
+const.clientSecret	.\VrEnvironment.js	/^        clientSecret: 'BRJVCYRK1B3C2DZWXHANFRU1D0Z5L1E20MJDWNIK0MVAFPP3&v=20180323',$/;"	p
+const.iceServers	.\VideoChatHelper.js	/^  iceServers: [{$/;"	p
+const.radius	.\VrEnvironment.js	/^        radius: 100,    \/\/3000 search places not farther than this value (in meters)$/;"	p
+const.version	.\VrEnvironment.js	/^        version: '20180323',\/\/'20300101',$/;"	p
+constrainObjectFOV	.\DeviceOrientationController.js	/^    this.constrainObjectFOV = function () {$/;"	c
+coordSetListener	.\VrEnvironment.js	/^function coordSetListener (e) {$/;"	f
+copy	.\GenericFuncs.js	/^function copy(text) {$/;"	f
+crd.accuracy	.\MotionHelper.js	/^var crd = {latitude: 0, longitude: 0, accuracy: 0};\/\/return from callback$/;"	p
+crd.latitude	.\MotionHelper.js	/^var crd = {latitude: 0, longitude: 0, accuracy: 0};\/\/return from callback$/;"	p
+crd.longitude	.\MotionHelper.js	/^var crd = {latitude: 0, longitude: 0, accuracy: 0};\/\/return from callback$/;"	p
+createQuaternion	.\DeviceOrientationController.js	/^    var createQuaternion = function () {$/;"	f
+createRotationMatrix	.\DeviceOrientationController.js	/^    var createRotationMatrix = function () {$/;"	f
+curr_step	.\MotionHelper.js	/^var curr_step = 0; \/\/is midposition between to points$/;"	v
+d_err	.\MotionHelper.js	/^var d_err = 0;$/;"	v
+data.crd_accuracy	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
+data.crd_lat	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
+data.crd_lon	.\MotionHelper.js	/^var data = {crd_lat: 0, crd_lon: 0, crd_accuracy: 0}; \/\/TBD refactoring$/;"	p
+db	.\FirebaseHelper.js	/^var db = null;$/;"	v
+dbg.Pos	.\MotionHelper.js	/^var dbg = {Pos: null, STATS: null, camera_wrapper: null};\/\/dbg ptrs$/;"	p
+dbg.STATS	.\MotionHelper.js	/^var dbg = {Pos: null, STATS: null, camera_wrapper: null};\/\/dbg ptrs$/;"	p
+dbg.camera_wrapper	.\MotionHelper.js	/^var dbg = {Pos: null, STATS: null, camera_wrapper: null};\/\/dbg ptrs$/;"	p
+dbg_delta_time_frame	.\MotionHelper.js	/^var dbg_delta_time_frame = 0;$/;"	v
+delta_angle	.\GenericFuncs.js	/^function delta_angle(angle1,angle2)$/;"	f
+delta_dist	.\MotionHelper.js	/^var delta_dist = 0;$/;"	v
+disconnect	.\DeviceOrientationController.js	/^    this.disconnect = function () {$/;"	c
+domElement	.\CSS3DRenderer.js	/^    var domElement = document.createElement( 'div' );$/;"	v
+element1	.\VrEnvironment.js	/^    var element1 = document.createElement( 'div' );$/;"	v
+epsilon	.\CSS3DRenderer.js	/^    function epsilon( value ) {$/;"	f
+error	.\DeviceOrientationController.js	/^function error(message, source) {$/;"	f
+error	.\GenericFuncs.js	/^function error(message, source) {$/;"	f
+filterAndFlatten	.\CSS2DRenderer.js	/^    var filterAndFlatten = function ( scene ) {$/;"	f
+filterAndFlatten	.\CSS3DRenderer.js	/^    function filterAndFlatten( scene ) {$/;"	f
+firebaseConfig.apiKey	.\FirebaseHelper.js	/^    apiKey: "AIzaSyAFIvRJ3bxemB9AjqOvyuoLo8s4CsSWDB8",$/;"	p
+firebaseConfig.appId	.\FirebaseHelper.js	/^    appId: "1:249703990981:web:90216c63c3293b47d412ac"$/;"	p
+firebaseConfig.authDomain	.\FirebaseHelper.js	/^    authDomain: "varweb-52b08.firebaseapp.com",$/;"	p
+firebaseConfig.databaseURL	.\FirebaseHelper.js	/^    databaseURL: "https:\/\/varweb-52b08.firebaseio.com",$/;"	p
+firebaseConfig.messagingSenderId	.\FirebaseHelper.js	/^    messagingSenderId: "249703990981",$/;"	p
+firebaseConfig.projectId	.\FirebaseHelper.js	/^    projectId: "varweb-52b08",$/;"	p
+firebaseConfig.storageBucket	.\FirebaseHelper.js	/^    storageBucket: "varweb-52b08.appspot.com",$/;"	p
+getCameraCSSMatrix	.\CSS3DRenderer.js	/^    function getCameraCSSMatrix( matrix ) {$/;"	f
+getDistanceToSquared	.\CSS2DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f
+getDistanceToSquared	.\CSS3DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f
+getObjectCSSMatrix	.\CSS3DRenderer.js	/^    function getObjectCSSMatrix( matrix, cameraCSSMatrix ) {$/;"	f
+getSize	.\CSS3DRenderer.js	/^    this.getSize = function () {$/;"	f
+gmap	.\mapboxHelper.js	/^var gmap = null;$/;"	v
+handleLogin	.\AuthHelper.js	/^function handleLogin() {$/;"	f
+hasQueryString	.\AuthHelper.js	/^function hasQueryString() {$/;"	f
+hashCode	.\mapboxHelper.js	/^function hashCode(s) {$/;"	f
+httpRequest	.\VrEnvironment.js	/^function httpRequest(type, url, callback) {$/;"	f
+id_watch	.\MotionHelper.js	/^var id_watch = null;$/;"	v
+init	.\hit_test.html	/^function init() {$/;"	f
+init_bearing	.\MotionHelper.js	/^var init_bearing = null; \/\/array used for initial gps test$/;"	v
+init_iteration	.\MotionHelper.js	/^var init_iteration = 0;\/\/number of iterations for init location$/;"	v
+init_time_interval	.\MotionHelper.js	/^var init_time_interval = 0; \/\/time in seconds between gps location signals$/;"	v
+init_vel	.\MotionHelper.js	/^var init_vel = null;\/\/array used for initial gps test$/;"	v
+invalid_motion_type_time	.\MotionHelper.js	/^var invalid_motion_type_time = 0;$/;"	v
+isIE	.\CSS3DRenderer.js	/^    var isIE = \/Trident\/i.test( navigator.userAgent );$/;"	v
+last_mid_pos	.\MotionHelper.js	/^var last_mid_pos = null;$/;"	v
+last_plr_pos	.\VrEnvironment.js	/^var last_plr_pos = null;\/\/last$/;"	v
+last_time	.\MotionHelper.js	/^var last_time = 0; \/\/last time in [seconds] from 1970$/;"	v
+last_vb	.\MotionHelper.js	/^var last_vb = null;$/;"	v
+let.Centerloc	.\StorageHelper.js	/^    Centerloc: {$/;"	p
+let.bearing_	.\GenericFuncs.js	/^        bearing_: bearing,$/;"	p
+let.distance_	.\GenericFuncs.js	/^        distance_: distance,$/;"	p
+let.enableHighAccuracy	.\DeviceOrientationController.js	/^    enableHighAccuracy: true,$/;"	p
+let.lat	.\FirebaseHelper.js	/^        lat: parseFloat(post.Centerloc.lat),$/;"	p
+let.lat	.\MotionHelper.js	/^      let GPS_pos = {lat: crd_.latitude, lon: crd_.longitude, last_lat: 0, last_lon: 0};$/;"	p
+let.lat	.\VrEnvironment.js	/^        lat: parseFloat(pos.lat),$/;"	p
+let.lat	.\VrEnvironment.js	/^    let pnl_loc = {lat: 0, lon: 0};$/;"	p
+let.lat	.\mapboxHelper.js	/^    lat: details.lat,$/;"	p
+let.lat	.\mapboxHelper.js	/^  let Location_target = {lat: data.crd_lat, lon: data.crd_lon};$/;"	p
+let.lat	.\mapboxHelper.js	/^  let details = {lat: ePos.lngLat.lat, lon: ePos.lngLat.lng, desc_,$/;"	p
+let.lat	.\mapboxHelper.js	/^  let details = {lat: pos.lat, lon: pos.lon, desc_,$/;"	p
+let.lat	.\mapboxHelper.js	/^  let pos = {lat: ePos.lngLat.lat, lon: ePos.lngLat.lng};$/;"	p
+let.lat	.\mapboxHelper.js	/^  let pos = {lat: latlon[0], lon:latlon[1]};$/;"	p
+let.lat_	.\MotionHelper.js	/^  let res = {lat_: lat, lon_: lon};$/;"	p
+let.lon	.\VrEnvironment.js	/^    let pnl_loc = {lat: 0, lon: 0};$/;"	p
+let.lon_	.\MotionHelper.js	/^  let res = {lat_: lat, lon_: lon};$/;"	p
+let.maximumAge	.\DeviceOrientationController.js	/^    maximumAge: 0$/;"	p
+let.timeout	.\DeviceOrientationController.js	/^    timeout: 10000,$/;"	p
+let.x	.\GenericFuncs.js	/^        x: x_,$/;"	p
+let.y	.\GenericFuncs.js	/^        y: y_,$/;"	p
+localDescCreated	.\VideoChatHelper.js	/^function localDescCreated(desc) {$/;"	f
+map	.\mapboxHelper.js	/^var map = null;$/;"	v
+mouseDragged	.\hit_test.html	/^function mouseDragged() {$/;"	f
+mousePressed	.\hit_test.html	/^function mousePressed() {$/;"	f
+mouseReleased	.\hit_test.html	/^function mouseReleased() {$/;"	f
+msgRef	.\FirebaseHelper.js	/^var msgRef = null;$/;"	v
+nav_geo_error	.\MotionHelper.js	/^function nav_geo_error(err) {$/;"	f
+nav_geo_success	.\MotionHelper.js	/^function nav_geo_success(pos) {$/;"	f
+next_pos	.\MotionHelper.js	/^var next_pos=null;\/\/ist Vector3 represents next position we got from gps in [km*Scale] metrics$/;"	v
+onClick	.\DeviceOrientationController.js	/^function onClick() {$/;"	f
+onCompassNeedsCalibration	.\DeviceOrientationController.js	/^    this.onCompassNeedsCalibration = function ( event ) {$/;"	f
+onDeviceOrientationChange	.\DeviceOrientationController.js	/^    this.onDeviceOrientationChange = function ( event ) {$/;"	c
+onDocumentMouseDown	.\DeviceOrientationController.js	/^    this.onDocumentMouseDown = function ( event ) {$/;"	c
+onDocumentMouseMove	.\DeviceOrientationController.js	/^    this.onDocumentMouseMove = function ( event ) {$/;"	f
+onDocumentMouseUp	.\DeviceOrientationController.js	/^    this.onDocumentMouseUp = function ( event ) {$/;"	c
+onDocumentTouchEnd	.\DeviceOrientationController.js	/^    this.onDocumentTouchEnd = function ( event ) {$/;"	c
+onDocumentTouchMove	.\DeviceOrientationController.js	/^    this.onDocumentTouchMove = function ( event ) {$/;"	f
+onDocumentTouchStart	.\DeviceOrientationController.js	/^    this.onDocumentTouchStart = function ( event ) {$/;"	f
+onError	.\VideoChatHelper.js	/^function onError(error) {$/;"	f
+onScreenOrientationChange	.\DeviceOrientationController.js	/^    this.onScreenOrientationChange = function () {$/;"	c
+onSuccess	.\VideoChatHelper.js	/^function onSuccess() {};$/;"	f
+pos.lat	.\mapboxHelper.js	/^    lat: Location_target.lat,$/;"	p
+position.x	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
+position.y	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
+position.z	.\MotionHelper.js	/^var position = {x: 0, y: 0, z: 0};$/;"	p
+positionGPS.last_lat	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
+positionGPS.last_lon	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
+positionGPS.lat	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
+positionGPS.lon	.\MotionHelper.js	/^var positionGPS = {lat: 0, lon: 0, last_lat: 0, last_lon: 0};$/;"	p
+relativeBearing	.\GenericFuncs.js	/^function relativeBearing(b1Rad, b2Rad)$/;"	f
+renameMarker	.\mapboxHelper.js	/^function renameMarker() {$/;"	f
+render	.\CSS2DRenderer.js	/^    this.render = function ( scene, camera ) {$/;"	f
+render	.\CSS3DRenderer.js	/^    this.render = function ( scene, camera ) {$/;"	f
+render	.\hit_test.html	/^function render () {$/;"	f
+renderObject	.\CSS2DRenderer.js	/^    var renderObject = function ( object, scene, camera ) {$/;"	f
+renderObject	.\CSS3DRenderer.js	/^    function renderObject( object, scene, camera, cameraCSSMatrix ) {$/;"	f
+resize	.\hit_test.html	/^function resize() {$/;"	f
+scene_time	.\MotionHelper.js	/^var scene_time = 0;\/\/in seconds since start of scene$/;"	v
+search	.\mapboxHelper.js	/^var search = document.querySelector('.search');$/;"	v
+sendMessage	.\VideoChatHelper.js	/^function sendMessage(message) {$/;"	f
+setSize	.\CSS2DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
+setSize	.\CSS3DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
+setup	.\hit_test.html	/^function setup () {$/;"	f
+showLogin	.\AuthHelper.js	/^function showLogin() {$/;"	f
+showPosition	.\GenericFuncs.js	/^function showPosition(position)$/;"	f
+startWebRTC	.\VideoChatHelper.js	/^function startWebRTC(isOfferer) {$/;"	f
+time_since_last_update	.\MotionHelper.js	/^var time_since_last_update = 0;$/;"	v
+toggleAlert	.\MotionHelper.js	/^function toggleAlert(boolean) {$/;"	f
+update	.\DeviceOrientationController.js	/^    this.update = function () {$/;"	c
+updateDeviceMove	.\DeviceOrientationController.js	/^    this.updateDeviceMove = function () {$/;"	f
+updateManualMove	.\DeviceOrientationController.js	/^    this.updateManualMove = function () {$/;"	f
+var.objectData.distanceToCameraSquared	.\CSS2DRenderer.js	/^                distanceToCameraSquared: getDistanceToSquared( camera, object )$/;"	p
+var.objectData.style	.\CSS3DRenderer.js	/^                var objectData = { style: style };$/;"	p
+var.pos.lat	.\mapboxHelper.js	/^    var pos = {lat: data_[0].lat, lon: data_[0].lon};$/;"	p
+var.pos.lat	.\mapboxHelper.js	/^    var pos = {lat: parseFloat(data_[0]), lon: parseFloat(data_[1])};$/;"	p
+varFacebookLoaded	.\VrEnvironment.js	/^var varFacebookLoaded = false;$/;"	v
+velocity.curr	.\MotionHelper.js	/^var velocity = {curr: 0, prev: 0, prev_prev: 0};$/;"	p
+velocity.prev	.\MotionHelper.js	/^var velocity = {curr: 0, prev: 0, prev_prev: 0};$/;"	p
+velocity.prev_prev	.\MotionHelper.js	/^var velocity = {curr: 0, prev: 0, prev_prev: 0};$/;"	p
+w_width	.\GenericFuncs.js	/^var w_width = window.innerWidth - arrowTop.clientWidth - 10;$/;"	v
+window.onerror	.\GenericFuncs.js	/^window.onerror = function(message, source) {$/;"	f
+xmlhttp.onreadystatechange	.\VrEnvironment.js	/^    xmlhttp.onreadystatechange = function () {$/;"	f
+zOrder	.\CSS2DRenderer.js	/^    var zOrder = function ( scene ) {$/;"	f
+zOrder	.\CSS3DRenderer.js	/^    function zOrder( scene ) {$/;"	f
