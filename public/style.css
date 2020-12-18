@@ -1,13 +1,9 @@
-/* this file is loaded by index.html and styles the page */
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: sans-serif;
   line-height: 1.5em;
   margin: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .remote-video {
@@ -55,4 +51,5 @@ body {
   border: 2px solid white;
   color: white;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
