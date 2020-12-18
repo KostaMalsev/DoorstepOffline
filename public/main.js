@@ -61,7 +61,7 @@ peer.on('call', (call) => {
               ideal: 1080,
               max: 1440,
           },
-          facingMode: "environment"
+          /*facingMode: "environment"*/
       },
       audio: true
   }).then((stream) => {
@@ -99,7 +99,7 @@ if (peerId) {
               ideal: 1080,
               max: 1440,
           },
-          facingMode: "environment"
+          /*facingMode: "environment"*/
       },
       audio: true
   }).then(stream => {
