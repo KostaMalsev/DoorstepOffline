@@ -15,6 +15,9 @@ let logMessage = (message) => {
 
 let renderVideo = (stream) => {
   videoEl.srcObject = stream;
+  videoEl.onloadedmetadata = () => {
+      videoEl.play();
+  }
 };
 
 // Register with the peer server
@@ -88,14 +91,25 @@ if (peerId) {
     conn.send('hi!');
   });
 
-  navigator.mediaDevices.getUserMedia({video: true, audio: true})
-    .then((stream) => {
-      let call = peer.call(peerId, stream);
+  navigator.mediaDevices.getUserMedia({
+      video: {
+          width: {
+              min: 1280,
+              ideal: 1920,
+              max: 2560,
+          },
+          height: {
+              min: 720,
+              ideal: 1080,
+              max: 1440,
+          },
+          facingMode: "environment"
+      },
+      audio: true
+  }).then(stream => {
+     let call = peer.call(peerId, stream);
       call.on('stream', renderVideo);
-    })
-    .catch((err) => {
-      logMessage('Failed to get local stream', err);
-    });
+  });
 }
 
 window.connectToPeer = connectToPeer;
