@@ -26,6 +26,7 @@ let peer = new Peer({
   host: '/',
   path: '/peerjs/myapp'
 });
+// Show "Copy link" button and insert peer ID
 peer.on('open', (id) => {
   button.style.display = 'block';
   button.id = id;
@@ -76,7 +77,7 @@ peer.on('call', (call) => {
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
-  logMessage(`Connecting to ${peerId}...`);
+  logMessage('Connecting');
 
   let conn = peer.connect(peerId);
   conn.on('data', (data) => {
