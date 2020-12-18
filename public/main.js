@@ -89,7 +89,7 @@ if (peerId) {
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
-     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream) });
+     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream); conn.send(button.id + ' joined.') });
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
