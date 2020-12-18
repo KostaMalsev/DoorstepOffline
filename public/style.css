@@ -27,6 +27,16 @@ body {
   border-radius: 20px;
   right: 10px;
   bottom: 10px;
+  transition: .5s cubic-bezier(0.1, 0.82, 0.25, 1);
+}
+
+.my-video.big {
+  width: 100vw;
+  height: 100vh;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+  transition: none;
 }
 
 .messages {
