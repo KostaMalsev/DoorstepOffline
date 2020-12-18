@@ -52,7 +52,13 @@ body {
   opacity: .8;
 }
 
+.messages div {
+  display: grid;
+}
+
 .loader2 {
+  margin: auto;
+  margin-bottom: 10px;
   animation: spin12 1s steps(12) infinite reverse;
 }
 
