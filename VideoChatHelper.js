@@ -106,10 +106,12 @@ let rem_candidate_arr=[];
       pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
         //If there is remote description received, create a new remote candidate
         if(rem_candidate_arr.length>0){
-          pc.addIceCandidate(
-            new RTCIceCandidate(rem_candidate_arr[0]), onSuccess, onError
-          );
-          rem_candidate_arr.pop();
+          rem_candidate_arr.forEach((item, i) => {
+            pc.addIceCandidate(
+              new RTCIceCandidate(item), onSuccess, onError
+            );
+            rem_candidate_arr.pop();
+          });
         }
         // When receiving an offer lets answer it
         if (pc.remoteDescription.type === 'offer') {
