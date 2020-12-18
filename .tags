@@ -117,6 +117,14 @@ bearing.prev	.\MotionHelper.js	/^var bearing = {curr: 0, prev: 0};$/;"	p
 calcVel	.\MotionHelper.js	/^function calcVel(delta_distance, timeDelta) {$/;"	f
 cameraElement	.\CSS3DRenderer.js	/^    var cameraElement = document.createElement( 'div' );$/;"	v
 changeArrow	.\GenericFuncs.js	/^function changeArrow(dir) {$/;"	f
+config.apiKey	.\VideoChatHelper.js	/^    apiKey: "AIzaSyCawke9Tab4VhNhmSx1ReE4NmZCy_4yQQs",$/;"	p
+config.appId	.\VideoChatHelper.js	/^    appId: "1:628734220032:web:6e402a543235de80d905e5",$/;"	p
+config.authDomain	.\VideoChatHelper.js	/^    authDomain: "sketchit-48aa6.firebaseapp.com",$/;"	p
+config.databaseURL	.\VideoChatHelper.js	/^    databaseURL: "https:\/\/sketchit-48aa6-default-rtdb.firebaseio.com",$/;"	p
+config.measurementId	.\VideoChatHelper.js	/^    measurementId: "G-GTQT6MG4JF"$/;"	p
+config.messagingSenderId	.\VideoChatHelper.js	/^    messagingSenderId: "628734220032",$/;"	p
+config.projectId	.\VideoChatHelper.js	/^    projectId: "sketchit-48aa6",$/;"	p
+config.storageBucket	.\VideoChatHelper.js	/^    storageBucket: "sketchit-48aa6.appspot.com",$/;"	p
 connect	.\DeviceOrientationController.js	/^    this.connect = function () {$/;"	c
 const.clientId	.\VrEnvironment.js	/^        clientId: 'A3YUBJ0DWI2P34DXA5SKS4XZ24OYJIRJXRH3BR4SF32CDG3G',$/;"	p
 const.clientSecret	.\VrEnvironment.js	/^        clientSecret: 'BRJVCYRK1B3C2DZWXHANFRU1D0Z5L1E20MJDWNIK0MVAFPP3&v=20180323',$/;"	p
@@ -152,20 +160,12 @@ error	.\GenericFuncs.js	/^function error(message, source) {$/;"	f
 filterAndFlatten	.\CSS2DRenderer.js	/^    var filterAndFlatten = function ( scene ) {$/;"	f
 filterAndFlatten	.\CSS3DRenderer.js	/^    function filterAndFlatten( scene ) {$/;"	f
 firebaseConfig.apiKey	.\FirebaseHelper.js	/^    apiKey: "AIzaSyAFIvRJ3bxemB9AjqOvyuoLo8s4CsSWDB8",$/;"	p
-firebaseConfig.apiKey	.\VideoChatHelper.js	/^    apiKey: "AIzaSyCawke9Tab4VhNhmSx1ReE4NmZCy_4yQQs",$/;"	p
 firebaseConfig.appId	.\FirebaseHelper.js	/^    appId: "1:249703990981:web:90216c63c3293b47d412ac"$/;"	p
-firebaseConfig.appId	.\VideoChatHelper.js	/^    appId: "1:628734220032:web:6e402a543235de80d905e5",$/;"	p
 firebaseConfig.authDomain	.\FirebaseHelper.js	/^    authDomain: "varweb-52b08.firebaseapp.com",$/;"	p
-firebaseConfig.authDomain	.\VideoChatHelper.js	/^    authDomain: "sketchit-48aa6.firebaseapp.com",$/;"	p
 firebaseConfig.databaseURL	.\FirebaseHelper.js	/^    databaseURL: "https:\/\/varweb-52b08.firebaseio.com",$/;"	p
-firebaseConfig.databaseURL	.\VideoChatHelper.js	/^    databaseURL: "https:\/\/sketchit-48aa6-default-rtdb.firebaseio.com",$/;"	p
-firebaseConfig.measurementId	.\VideoChatHelper.js	/^    measurementId: "G-GTQT6MG4JF"$/;"	p
 firebaseConfig.messagingSenderId	.\FirebaseHelper.js	/^    messagingSenderId: "249703990981",$/;"	p
-firebaseConfig.messagingSenderId	.\VideoChatHelper.js	/^    messagingSenderId: "628734220032",$/;"	p
 firebaseConfig.projectId	.\FirebaseHelper.js	/^    projectId: "varweb-52b08",$/;"	p
-firebaseConfig.projectId	.\VideoChatHelper.js	/^    projectId: "sketchit-48aa6",$/;"	p
 firebaseConfig.storageBucket	.\FirebaseHelper.js	/^    storageBucket: "varweb-52b08.appspot.com",$/;"	p
-firebaseConfig.storageBucket	.\VideoChatHelper.js	/^    storageBucket: "sketchit-48aa6.appspot.com",$/;"	p
 friendsVideo	.\VideoChatHelper.js	/^var friendsVideo = document.getElementById("friendsVideo");$/;"	v
 getCameraCSSMatrix	.\CSS3DRenderer.js	/^    function getCameraCSSMatrix( matrix ) {$/;"	f
 getDistanceToSquared	.\CSS2DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f

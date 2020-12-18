@@ -10,7 +10,7 @@ var config = {
 };
 */
 
-var firebaseConfig = {
+var config = {
     apiKey: "AIzaSyCawke9Tab4VhNhmSx1ReE4NmZCy_4yQQs",
     authDomain: "sketchit-48aa6.firebaseapp.com",
     databaseURL: "https://sketchit-48aa6-default-rtdb.firebaseio.com",
