@@ -22,6 +22,7 @@ let renderVideo = (stream) => {
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
     videoEl.play();
+    removeConnectionMessage();
   }
 };
 
@@ -71,7 +72,6 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
   call.on('stream', (s) => {
     renderVideo(s);
-    removeConnectionMessage();
   });
 });
 
@@ -99,7 +99,6 @@ if (peerId) {
        renderMyVideo(s);
        renderVideo(stream);
        videoEl.muted = "muted";
-       removeConnectionMessage();
      });
   })
   .catch((err) => {
