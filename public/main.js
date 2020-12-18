@@ -4,8 +4,8 @@
 let Peer = window.Peer;
 
 let messagesEl = document.querySelector('.messages');
-let peerIdEl = document.querySelector('#connect-to-peer');
 let videoEl = document.querySelector('.remote-video');
+let button = document.querySelector('.button');
 
 let logMessage = (message) => {
   let newMessage = document.createElement('div');
@@ -16,7 +16,8 @@ let logMessage = (message) => {
 let renderVideo = (stream) => {
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
-      videoEl.play();
+    videoEl.play();
+    messagesEl.innerHTML = '';
   }
 };
 
@@ -26,7 +27,8 @@ let peer = new Peer({
   path: '/peerjs/myapp'
 });
 peer.on('open', (id) => {
-  logMessage('My peer ID is: ' + id);
+  button.style.display = 'block';
+  button.id = id;
 });
 peer.on('error', (error) => {
   console.error(error);
@@ -45,39 +47,32 @@ peer.on('connection', (conn) => {
 
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
-  navigator.mediaDevices.getUserMedia({video: true, audio: true})
-    .then((stream) => {
-      call.answer(stream); // Answer the call with an A/V stream.
-      call.on('stream', renderVideo);
-    })
-    .catch((err) => {
-      console.error('Failed to get local stream', err);
-    });
+  logMessage('Connecting');
+  navigator.mediaDevices.getUserMedia({
+      video: {
+          width: {
+              min: 1280,
+              ideal: 1920,
+              max: 2560,
+          },
+          height: {
+              min: 720,
+              ideal: 1080,
+              max: 1440,
+          },
+          facingMode: "environment"
+      },
+      audio: true
+  }).then((stream) => {
+    call.answer(stream); // Answer the call with an A/V stream.
+    call.on('stream', renderVideo);
+  })
+  .catch((err) => {
+    console.error('Failed to get local stream', err);
+  });
 });
 
 // Initiate outgoing connection
-let connectToPeer = () => {
-  let peerId = peerIdEl.value;
-  logMessage(`Connecting to ${peerId}...`);
-  
-  let conn = peer.connect(peerId);
-  conn.on('data', (data) => {
-    logMessage(`received: ${data}`);
-  });
-  conn.on('open', () => {
-    conn.send('hi!');
-  });
-  
-  navigator.mediaDevices.getUserMedia({video: true, audio: true})
-    .then((stream) => {
-      let call = peer.call(peerId, stream);
-      call.on('stream', renderVideo);
-    })
-    .catch((err) => {
-      logMessage('Failed to get local stream', err);
-    });
-};
-
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
@@ -109,7 +104,18 @@ if (peerId) {
   }).then(stream => {
      let call = peer.call(peerId, stream);
       call.on('stream', renderVideo);
+  })
+  .catch((err) => {
+    console.error('Failed to get local stream', err);
   });
 }
 
-window.connectToPeer = connectToPeer;
+function copy(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+}
