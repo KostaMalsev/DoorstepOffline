@@ -122,6 +122,7 @@ let rem_candidate_arr=[];
       rem_candidate_arr.push(message.candidate);//Store the candidate
       console.log(message);
       console.log(pc);
+      console.log(client);
       // Add the new ICE candidate to our connections remote description
       /*
       pc.addIceCandidate(
