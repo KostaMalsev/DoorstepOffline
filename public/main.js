@@ -21,7 +21,6 @@ let renderVideo = (stream) => {
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
     videoEl.play();
-    /*messagesEl.innerHTML = '';*/
   }
 };
 
@@ -38,10 +37,15 @@ let peer = new Peer({
   host: '/',
   path: '/peerjs/myapp'
 });
+
 // Show "Copy link" button and insert peer ID
 peer.on('open', (id) => {
-  button.style.display = 'block';
-  button.id = id;
+  // If creating meeting
+  if (!peerId) {
+    button.style.display = 'block';
+    button.id = id;
+    removeConnectionMessage();
+  }
 });
 peer.on('error', (error) => {
   console.error(error);
@@ -66,6 +70,7 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
   call.on('stream', (s) => {
     renderVideo(s);
+    removeConnectionMessage();
   });
 });
 
@@ -97,10 +102,13 @@ if (peerId) {
      });
   })
   .catch((err) => {
-    console.error('Failed to get local stream', err);
+    logMessage('Allow camera acess for video chat');
   });
 }
 else {
+  // Show "Connecting" message
+  logMessage('Connecting');
+  
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
   navigator.mediaDevices.getUserMedia({
@@ -109,7 +117,6 @@ else {
   }).then((stream) => {
     myVideoStream = stream;
     renderMyVideo(myVideoStream);
-    removeConnectionMessage();
   })
   .catch((err) => {
     logMessage('Allow camera acess for video chat');
