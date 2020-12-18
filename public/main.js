@@ -48,7 +48,7 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
-  console.error(error);
+  logMessage(error);
 });
 
 // Handle incoming data connection
