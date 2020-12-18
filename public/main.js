@@ -111,10 +111,10 @@ if (peerId) {
   });
 }
 
-// Get video and show it
+/*// Get video and show it
 navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
    renderVideo(stream);
-})
+})*/
 
 let copy = (text) => {
   var textArea = document.createElement("textarea");
