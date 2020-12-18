@@ -56,16 +56,11 @@ peer.on('connection', (conn) => {
 peer.on('call', (call) => {
   logMessage('Connecting');
   myVideoEl.classList.remove('big');
-  
-  navigator.mediaDevices.getUserMedia({
-      video: {facingMode: "environment"},
-      audio: true
-  }).then((stream) => {
-    call.answer(stream); // Answer the call with an A/V stream.
-    call.on('stream', (s) => { renderVideo(s); renderMyVideo(stream); myVideoEl.muted = "muted"; });
-  })
-  .catch((err) => {
-    console.error('Failed to get local stream', err);
+
+  call.answer(myVideoStream); // Answer the call with an A/V stream.
+  call.on('stream', (s) => {
+    renderVideo(s);
+    renderMyVideo(myVideoStream);
   });
 });
 
@@ -88,14 +83,29 @@ if (peerId) {
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
-     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream); videoEl.muted = "muted" });
+     call.on('stream', (s) => {
+       renderMyVideo(s);
+       renderVideo(stream);
+       videoEl.muted = "muted";
+     });
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
   });
 }
+var myVideoStream;
 else {
   myVideoEl.classList.add('big');
+  myVideoEl.muted = "muted";
+  navigator.mediaDevices.getUserMedia({
+      video: {facingMode: "environment"},
+      audio: true
+  }).then((stream) => {
+    myVideoStream = stream;
+  })
+  .catch((err) => {
+    logMessage('Allow camera acess for video chat');
+  });
 }
 
 let copy = (text) => {
