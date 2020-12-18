@@ -6,51 +6,53 @@
 
 body {
   font-family: sans-serif;
-  margin: 2em 1em;
   line-height: 1.5em;
+  margin: 0;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
+.remote-video {
+  width: 100vw;
+  position: fixed;
+  z-index: -1000;
+  left: 0;
+  top: 0;
+  background: white;
+  height: 100vh;
+  object-fit: cover;
 }
 
-form {
-  background-color: #eee;
-  display: grid;
-  grid-gap: 1em;
-  padding: 1em;
-  max-width: 40ch;
-}
-
-input {
-  border: 1px solid silver;
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 5px;
+.messages {
+  color: white;
   width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: .8;
 }
 
-form button {
-  background-color: #bbbbf2;
-  border: 2px solid currentColor;
-  border-radius: .25em;
+.button-wrapper {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  left: 0;
+  pointer-events: none;
+  display: grid;
+  place-content: center;
+  z-index: 2;
+}
+
+.button {
+  pointer-events: all;
+  padding: 8px 15px;
+  background: #ffffff2b;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: inherit;
-  line-height: 1.4em;
-  padding: 0.25em 1em;
-  max-width: 20ch;
-}
-
-form button:hover {
-  background-color: lavender;
-}
-
-footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid lightgrey;
+  opacity: .8;
+  border: 2px solid white;
+  color: white;
+  backdrop-filter: blur(20px);
 }
