@@ -52,6 +52,10 @@ body {
   opacity: .8;
 }
 
+.loader2 {
+  animation: spin12 1s steps(12) infinite reverse;
+}
+
 .button-wrapper {
   position: fixed;
   bottom: 10px;
@@ -73,4 +77,10 @@ body {
   color: white;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+@keyframes spin12 {
+  to {
+    transform: rotate(1turn);
+  }
 }
