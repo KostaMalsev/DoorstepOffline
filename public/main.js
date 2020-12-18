@@ -1,6 +1,3 @@
-// client-side js, loaded by index.html
-// run by the browser each time the page is loaded
-
 let Peer = window.Peer;
 
 let messagesEl = document.querySelector('.messages');
@@ -18,7 +15,7 @@ let renderVideo = (stream) => {
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
     videoEl.play();
-    messagesEl.innerHTML = '';
+    /*messagesEl.innerHTML = '';*/
   }
 };
 
