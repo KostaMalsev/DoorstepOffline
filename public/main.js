@@ -65,6 +65,7 @@ peer.on('call', (call) => {
 });
 
 // Initiate outgoing connection
+var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
@@ -93,7 +94,6 @@ if (peerId) {
     console.error('Failed to get local stream', err);
   });
 }
-var myVideoStream;
 else {
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
