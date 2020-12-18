@@ -75,4 +75,27 @@ let connectToPeer = () => {
     });
 };
 
+var url = new URL(window.location.href);
+var peerId = url.searchParams.get('room');
+if (peerId) {
+  logMessage(`Connecting to ${peerId}...`);
+
+  let conn = peer.connect(peerId);
+  conn.on('data', (data) => {
+    logMessage(`received: ${data}`);
+  });
+  conn.on('open', () => {
+    conn.send('hi!');
+  });
+
+  navigator.mediaDevices.getUserMedia({video: true, audio: true})
+    .then((stream) => {
+      let call = peer.call(peerId, stream);
+      call.on('stream', renderVideo);
+    })
+    .catch((err) => {
+      logMessage('Failed to get local stream', err);
+    });
+}
+
 window.connectToPeer = connectToPeer;
