@@ -55,6 +55,7 @@ peer.on('connection', (conn) => {
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
   logMessage('Connecting');
+  myVideoEl.classList.remove('big');
   
   navigator.mediaDevices.getUserMedia({
       video: {facingMode: "environment"},
@@ -92,6 +93,9 @@ if (peerId) {
   .catch((err) => {
     console.error('Failed to get local stream', err);
   });
+}
+else {
+  myVideoEl.classList.add('big');
 }
 
 let copy = (text) => {
