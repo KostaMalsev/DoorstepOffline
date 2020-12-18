@@ -89,7 +89,7 @@ if (peerId) {
 }
 
 // Get video and show it
-navigator.mediaDevices.getUserMedia({facingMode: "environment"}).then(stream => {
+navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}}).then(stream => {
     myVideoEl.srcObject = stream;
     myVideoEl.onloadedmetadata = () => {
       myVideoEl.play();
