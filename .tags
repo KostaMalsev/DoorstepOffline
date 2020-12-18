@@ -248,7 +248,7 @@ resize	.\hit_test.html	/^function resize() {$/;"	f
 scene_time	.\MotionHelper.js	/^var scene_time = 0;\/\/in seconds since start of scene$/;"	v
 search	.\mapboxHelper.js	/^var search = document.querySelector('.search');$/;"	v
 sendMessage	.\VideoChatHelper.js	/^function sendMessage(senderId, data) {$/;"	f
-servers.iceServers	.\VideoChatHelper.js	/^var servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'} \/*, {'urls': 'stun:stun.l.google.com:19302'}*\/, {'urls': 'numb.viagenie.ca','credential': 'limor100','username': 'kostya.malsev@gmail.com'}]};$/;"	p
+servers.iceServers	.\VideoChatHelper.js	/^var servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'} \/*, {'urls': 'stun:stun.l.google.com:19302'}*\/, {'urls': 'turn:numb.viagenie.ca','credential': 'limor100','username': 'kostya.malsev@gmail.com'}]};$/;"	p
 setSize	.\CSS2DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
 setSize	.\CSS3DRenderer.js	/^    this.setSize = function ( width, height ) {$/;"	f
 setup	.\hit_test.html	/^function setup () {$/;"	f
