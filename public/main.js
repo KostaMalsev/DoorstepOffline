@@ -11,6 +11,12 @@ let logMessage = (message) => {
   messagesEl.appendChild(newMessage);
 };
 
+let removeConnectionMessage = () => {
+  messagesEl.querySelectorAll('div').forEach(div => {
+    if (div.innerHTML == 'Connecting') { div.remove() };
+  })
+};
+
 let renderVideo = (stream) => {
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
@@ -87,6 +93,7 @@ if (peerId) {
        renderMyVideo(s);
        renderVideo(stream);
        videoEl.muted = "muted";
+       removeConnectionMessage();
      });
   })
   .catch((err) => {
@@ -102,6 +109,7 @@ else {
   }).then((stream) => {
     myVideoStream = stream;
     renderMyVideo(myVideoStream);
+    removeConnectionMessage();
   })
   .catch((err) => {
     logMessage('Allow camera acess for video chat');
