@@ -5,6 +5,7 @@ let Peer = window.Peer;
 
 let messagesEl = document.querySelector('.messages');
 let videoEl = document.querySelector('.remote-video');
+let myVideoEl = document.querySelector('.my-video');
 let button = document.querySelector('.button');
 
 let logMessage = (message) => {
@@ -53,7 +54,7 @@ peer.on('call', (call) => {
       video: {facingMode: "environment"},
       audio: true
   }).then((stream) => {
-    call.answer(stream); // Answer the call with an A/V stream.
+    call.answer(/*stream*/); // Answer the call with an A/V stream.
     call.on('stream', renderVideo);
   })
   .catch((err) => {
@@ -80,17 +81,20 @@ if (peerId) {
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
-      call.on('stream', renderVideo);
+     call.on('stream', renderVideo);
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
   });
 }
 
-/*// Get video and show it
-navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
-   renderVideo(stream);
-})*/
+// Get video and show it
+navigator.mediaDevices.getUserMedia({facingMode: "environment"}).then(stream => {
+    myVideoEl.srcObject = stream;
+    myVideoEl.onloadedmetadata = () => {
+      myVideoEl.play();
+    }
+})
 
 let copy = (text) => {
   var textArea = document.createElement("textarea");
