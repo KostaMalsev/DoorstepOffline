@@ -22,6 +22,14 @@ let renderVideo = (stream) => {
   }
 };
 
+// Get my video and show it
+let renderMyVideo = (stream) => {
+  myVideoEl.srcObject = stream;
+  myVideoEl.onloadedmetadata = () => {
+    myVideoEl.play();
+  }
+}
+
 // Register with the peer server
 let peer = new Peer({
   host: '/',
@@ -55,7 +63,7 @@ peer.on('call', (call) => {
       audio: true
   }).then((stream) => {
     call.answer(stream); // Answer the call with an A/V stream.
-    call.on('stream', renderVideo);
+    call.on('stream', (s) => { renderVideo(s); renderMyVideo(stream) });
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
@@ -81,20 +89,12 @@ if (peerId) {
       audio: true
   }).then(stream => {
      let call = peer.call(peerId, stream);
-     call.on('stream', (s) => { renderVideo(stream) });
+     call.on('stream', (s) => { renderMyVideo(s); renderVideo(stream) });
   })
   .catch((err) => {
     console.error('Failed to get local stream', err);
   });
 }
-/*
-// Get video and show it
-navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}}).then(stream => {
-    myVideoEl.srcObject = stream;
-    myVideoEl.onloadedmetadata = () => {
-      myVideoEl.play();
-    }
-})*/
 
 let copy = (text) => {
   var textArea = document.createElement("textarea");
