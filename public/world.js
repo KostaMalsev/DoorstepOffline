@@ -89,10 +89,10 @@ function clickedOnScreen(event) {
   console.log('clicked', intersects);
   
   // If we got intersection, make a marker on xyz point
-  /*if (intersects.length > 0) */
+  if (intersects.length > 0) 
     createPoint(intersects);
     sendMarker(intersects);
-  /*}*/
+  }
 }
 
 function createPoint(intersects) {  
