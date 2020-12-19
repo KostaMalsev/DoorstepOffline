@@ -408,7 +408,7 @@ var DeviceOrientationController = function ( object, domElement ) {
       this.deviceOrientation.gamma = e.detail.gamma;
       //Update rotation with new data:
       this.updateDeviceMove();
-    }();//.bind( this );
+    }.bind( this );
 
 
     this.updateDeviceMove = function () {
