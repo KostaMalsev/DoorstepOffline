@@ -7,7 +7,7 @@ document.body.appendChild(renderer.domElement);
 renderer.domElement.style.position = 'fixed';
 renderer.domElement.style.top = 0;
 renderer.domElement.style.left = 0;
-renderer.domElement.style.zIndex = '3';
+renderer.domElement.style.zIndex = 2;
 
 // Create CSS scene:
 const scene2 = new THREE.Scene();
@@ -19,7 +19,7 @@ cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
-cssRenderer.domElement.style.zIndex = '2';
+cssRenderer.domElement.style.zIndex = 3;
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
@@ -59,7 +59,7 @@ camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
-renderer.domElement.addEventListener('click', clickedOnScreen);
+cssRenderer.domElement.addEventListener('click', clickedOnScreen);
 
 // Set resize (reshape) callback
 window.addEventListener( 'resize', resize );
