@@ -43,14 +43,17 @@ window.addEventListener("deviceorientation", function (event) {
 
 // Android
 window.addEventListener("deviceorientationabsolute", function (event) {
-  orientationGranted = true;
+  var orientationExists = (event != null && event.alpha != null && event.beta != null && event.gamma != null);
+  if (orientationExists) {
+    orientationGranted = true;
 
-  // Recive orientation data
-  // alpha is rotation around z-axis, beta is front back motion, gamma is left to right
-  var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
-  
-  // Hook with main.js to pass gyro data to peer
-  sendGyroData(data);
+    // Recive orientation data
+    // alpha is rotation around z-axis, beta is front back motion, gamma is left to right
+    var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
+
+    // Hook with main.js to pass gyro data to peer
+    sendGyroData(data);
+  }
 });
 
 
