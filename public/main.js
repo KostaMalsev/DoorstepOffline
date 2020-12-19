@@ -51,7 +51,7 @@ peer.on('open', (id) => {
   else {
     let conn = peer.connect(peerId);
     conn.on('open', () => {
-      conn.send('Connected to: ' + peerId);
+      conn.send('Yahoo! '+id+' Connected.');
     });
   }
 });
@@ -62,9 +62,9 @@ peer.on('error', (error) => {
 
 // Handle incoming data connection
 peer.on('connection', (conn) => {
-  logMessage('Incoming peer connection!');
+  logMessage('Incoming peer connection!', conn);
   conn.on('data', (data) => {
-    logMessage(`received: ${data}`);
+    logMessage(data);
   });
   conn.on('open', () => {
     conn.send('hello!');
