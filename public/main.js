@@ -83,7 +83,7 @@ peer.on('connection', (conn) => {
   });
   conn.on('data', (data) => {
     //messagesEl.children[messagesEl.children.length - 1].remove();
-    logMessage(JSON.parse(data));
+    //logMessage(JSON.parse(data));
     rotateCamera(data);
   });
 });
@@ -153,6 +153,8 @@ let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
     // Rotate scene camera
+    messagesEl.innerHTML = JSON.parse(data);
+    
     rotateCamera(data);
     //logMessage(`alpha = ${data.alpha.toFixed(1)} beta=${data.beta.toFixed(1)`);
     // Send data
