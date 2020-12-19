@@ -152,13 +152,13 @@ else {
 let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
-    // Rotate scene camera
-    messagesEl.innerHTML = JSON.parse(data);
-    
+    // Rotate scene camera    
     rotateCamera(data);
     //logMessage(`alpha = ${data.alpha.toFixed(1)} beta=${data.beta.toFixed(1)`);
     // Send data
     peerConn.send(data);
+    
+    //messagesEl.innerHTML = JSON.parse(data);
   }
 }
 
