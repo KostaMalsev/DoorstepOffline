@@ -87,8 +87,9 @@ peer.on('connection', (conn) => {
     //logMessage(JSON.parse(data));
     //rotateCamera(data);
     //Rotate the camera based on orientation data:
+    console.log("Rotating Data in main")
     window.dispatchEvent(new CustomEvent('rotation-is-set',
-                    {detail: {alpha: data.alpha, beta:data.beta,gamma:data.gamma}}));
+                    {detail: {alpha: data.alpha, beta: data.beta, gamma: data.gamma}}));
   });
 });
 
