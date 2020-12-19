@@ -48,16 +48,17 @@ peer.on('open', (id) => {
     button.id = id;
     removeConnectionMessage();
   }
+  else {
+    let conn = peer.connect(peerId);
+    conn.on('open', () => {
+      conn.send('Connected to: ' + peerId);
+    });
+  }
 });
 peer.on('error', (error) => {
   removeConnectionMessage();
   logMessage(error);
 });
-
-peer.on('connect', (conn) => {
-  logMessage('Connected!');
-  //conn.send(button.id + ' joined.');
-})
 
 // Handle incoming data connection
 peer.on('connection', (conn) => {
@@ -90,14 +91,6 @@ var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
   logMessage(loaderSVG + 'Connecting');
-
-  let conn = peer.connect(peerId);
-  conn.on('data', (data) => {
-    logMessage(`received: ${data}`);
-  });
-  conn.on('open', () => {
-    conn.send(button.id + ' joined.');
-  });
 
   navigator.mediaDevices.getUserMedia({
       video: {facingMode: "environment"},
