@@ -58,7 +58,7 @@ peer.on('open', (id) => {
     });
     conn.on('data', (data) => {
       logMessage('Received marker '+data);
-      createPoint(data);
+      createPoint(data.split());
     });
   }
 });
@@ -68,10 +68,10 @@ peer.on('error', (error) => {
 });
 
 // Handle incoming data connection
-let adminConn;
+let theadminConn;
 peer.on('connection', (conn) => {
   logMessage('Incoming peer connection');
-  adminConn = conn;
+  theadminConn = conn;
   conn.on('open', () => {
     logMessage('Established connection with room participant');
     //conn.send('This is a message from room admin');
@@ -157,9 +157,9 @@ window.sendGyroData = sendGyroData;
 // Function sends marker to room participant
 let sendMarker = (data) => {
   // If connected
-  if (adminConn) {
+  if (theadminConn) {
     console.log('Sending', data, adminConn);
-    adminConn.send(data);
+    theadminConn.send(data.join());
   }
 }
 
