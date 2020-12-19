@@ -173,7 +173,8 @@ let sendMarker = (data) => {
   // If connected
   if (theadminConn) {
     console.log('Sending', data);
-    theadminConn.send(data.join());
+    //theadminConn.send(data.join());
+    theadminConn.send(data);
   }
 }
 

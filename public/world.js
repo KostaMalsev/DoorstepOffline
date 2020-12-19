@@ -105,7 +105,7 @@ function clickedOnScreen(event) {
   }
 }
 
-//Create marker on mobile client:
+//Create marker on mobile and stationary client:
 function createPoint(pt) {
   // Create CSS2D object:
   var element1 = document.createElement('div');
