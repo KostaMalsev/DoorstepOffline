@@ -62,7 +62,8 @@ peer.on('open', (id) => {
       //conn.send({});
     });
     conn.on('data', (data) => {
-      logMessage('Received marker '+data);
+      logMessage('Received marker '+ data);
+      messagesEl.innerHTML='Received marker '+ data;
       createPoint(data.split());
     });
   }
@@ -131,7 +132,7 @@ if (peerId) {
 else {
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
-  
+
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
   navigator.mediaDevices.getUserMedia({
@@ -152,12 +153,12 @@ else {
 let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
-    // Rotate scene camera    
+    // Rotate scene camera
     rotateCamera(data);
     //logMessage(`alpha = ${data.alpha.toFixed(1)} beta=${data.beta.toFixed(1)`);
     // Send data
     peerConn.send(data);
-    
+
     messagesEl.innerHTML = JSON.stringify(data);
   }
 }

@@ -1,3 +1,7 @@
+//Implements monitor for supporter (stationary client):
+//Rotation of the invisible camera is given by network from mobile client
+
+
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 0, 0.1);
@@ -61,6 +65,10 @@ scene.add(camera)
 
 cssRenderer.domElement.addEventListener('click', clickedOnScreen);
 
+//Create device binded controls:
+//They will listen also to rotation from net
+var DevControls = new DeviceOrientationController( camera, renderer.domElement );
+
 // Set resize (reshape) callback
 window.addEventListener( 'resize', resize );
 
@@ -85,9 +93,9 @@ function setRaycaster(event){
 function clickedOnScreen(event) {
   setRaycaster(event);
   var intersects = raycaster.intersectObjects(scene.children, true);
-  
+
   console.log('clicked', intersects);
-  
+
   // If we got intersection, make a marker on xyz point
   if (intersects.length > 0) {
     createPoint(intersects);
@@ -95,8 +103,8 @@ function clickedOnScreen(event) {
   }
 }
 
-function createPoint(intersects) {  
-  // Create CSS2D object: 
+function createPoint(intersects) {
+  // Create CSS2D object:
   var element1 = document.createElement('div');
   element1.classList = 'marker';
 
@@ -122,9 +130,13 @@ function resize() {
 
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
-  camera.rotation.x = -data.gamma*3.14/180;//pitch
-  camera.rotation.y = data.alpha*3.14/180;//azimuth
-  camera.rotation.z = -data.beta*3.14/180; //roll
+  //Send custom event to udpate rotation
+  window.dispatchEvent(new CustomEvent('rotation-is-set',
+                  {alpha: data.alpha, beta:data.beta,gamma:data.gamma}));
+
+  //camera.rotation.x = -data.gamma*3.14/180;//pitch
+  //camera.rotation.y = data.alpha*3.14/180;//azimuth
+  //camera.rotation.z = -data.beta*3.14/180; //roll
 }
 
 function render(){
