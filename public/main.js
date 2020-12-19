@@ -65,7 +65,9 @@ peer.on('open', (id) => {
       //Received marker on mobile client:
       logMessage('Received marker '+ data);
       messagesEl.innerHTML='Received marker '+ JSON.stringify(data);
-      createPoint(data.split());
+      //let dstr = JSON.stringify(data);
+      let pt = {x: data.x, y: data.y, z: data.z};
+      createPoint(pt);//data.split());
     });
   }
 });
