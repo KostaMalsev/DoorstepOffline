@@ -70,7 +70,7 @@ peer.on('connection', (conn) => {
     logMessage(data);
   });
   conn.on('open', () => {
-    conn.send('hello!');
+    conn.send('Passing data from room admin to room participant');
   });
 });
 
