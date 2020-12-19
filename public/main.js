@@ -51,8 +51,8 @@ peer.on('open', (id) => {
   }
   else {
     let conn = peer.connect(peerId);
+    peerConn = conn;
     conn.on('open', () => {
-      peerConn = conn;
       logMessage('Established connection with room admin');
       //conn.send('This is a message from room participant');
     });
@@ -70,14 +70,14 @@ peer.on('error', (error) => {
 let adminConn;
 peer.on('connection', (conn) => {
   logMessage('Incoming peer connection');
+  adminConn = conn;
   conn.on('open', () => {
-    adminConn = conn;
     logMessage('Established connection with room participant');
     //conn.send('This is a message from room admin');
   });
   conn.on('data', (data) => {
-    //messagesEl.children[messagesEl.children.length - 1].remove();
-    //logMessage(data);
+    messagesEl.children[messagesEl.children.length - 1].remove();
+    logMessage(JSON.parse(data));
     rotateCamera(data);
   });
 });
