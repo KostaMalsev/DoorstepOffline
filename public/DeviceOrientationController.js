@@ -403,9 +403,9 @@ var DeviceOrientationController = function ( object, domElement ) {
       window.removeEventListener( 'resize', this.onDocumentMouseDown, false );
       window.removeEventListener( 'resize', this.onDocumentTouchStart, false );
 
-      this.deviceOrientation.alpha = e.alpha;
-      this.deviceOrientation.beta = e.beta;
-      this.deviceOrientation.gamma = e.gamma;
+      this.deviceOrientation.alpha = e.detail.alpha;
+      this.deviceOrientation.beta = e.detail.beta;
+      this.deviceOrientation.gamma = e.detail.gamma;
       //Update rotation with new data:
       this.updateDeviceMove();
     }();
