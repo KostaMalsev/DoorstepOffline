@@ -56,7 +56,7 @@ peer.on('error', (error) => {
 
 peer.on('connect', (conn) => {
   conn.send(button.id + ' joined.');
-}
+})
 
 // Handle incoming data connection
 peer.on('connection', (conn) => {
