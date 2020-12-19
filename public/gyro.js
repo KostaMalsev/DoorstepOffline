@@ -55,6 +55,7 @@ window.addEventListener("deviceorientationabsolute", function (event) {
 
 
 // If orientation not granted
+let promptEl = document.querySelector('.prompt-wrapper');
 if (orientationGranted == false) {
   // Show prompt
   promptEl.classList.add('visible');
