@@ -396,6 +396,9 @@ var DeviceOrientationController = function ( object, domElement ) {
 
     //Update rotation from net:
     UpdateRotFromNet = function(event){
+      console.log("Got rotation event from net")
+      console.log(event);//TBD
+
       //Remove touch events of mouse when is controlled by net:
       window.removeEventListener( 'resize', this.onDocumentMouseDown, false );
       window.removeEventListener( 'resize', this.onDocumentTouchStart, false );
