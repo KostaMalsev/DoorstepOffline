@@ -85,6 +85,107 @@ body {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
+.prompt-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s ease;
+}
+
+.prompt-wrapper.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.prompt {
+  width: 200px;
+  height: 120px;
+  border-radius: 15px;
+  background: #272727;
+  text-align: center;
+  box-sizing: border-box;
+  color: white;
+  font-size: 13.5px;
+  line-height: 1.561;
+  position: relative;
+  font-family: "SF Pro Text";
+  letter-spacing: -0.1px;
+  transform: scale(1.05);
+  transition: .2s ease;
+}
+
+.prompt-wrapper.visible .prompt {
+  transform: none;
+}
+
+.prompt h1 {
+  font-weight: 400;
+  font-size: inherit;
+  margin: 0;
+  padding: 15px;
+  line-height: 1.23536;
+  letter-spacing: -.022em;
+  height: calc(100% - 35px);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.buttons {
+  border-top: 1px solid #424245;
+  width: 200px;
+  position: absolute;
+  top: 85px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.buttons div {
+  font-size: 13.5px;
+  line-height: 1.23536;
+  font-weight: 300;
+  letter-spacing: -.022em;
+  color: #2997ff;
+  width: 50%;
+  height: 100%;
+  margin-top: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0 15px;
+}
+
+.buttons div:nth-of-type(2) {
+  font-weight: 600;
+  border-radius: 0 0 15px;
+}
+
+.buttons div:hover {
+  background: #3C3C3C;
+}
+
+.buttons hr {
+  margin: 0;
+  position: absolute;
+  border: 0;
+  height: 34px;
+  background: #424245;
+  width: 1px;
+  pointer-events: none;
+  margin-top: -0.5px;
+}
+
 @keyframes spin12 {
   to {
     transform: rotate(1turn);
