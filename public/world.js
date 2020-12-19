@@ -99,12 +99,14 @@ function clickedOnScreen(event) {
 
   // If we got intersection, make a marker on xyz point
   if (intersects.length > 0) {
-    createPoint(intersects);
-    sendMarker(intersects);
+    let pt = {x:intersects[0].point.x, y: intersects[0].point.y, z: intersects[0].point.z};
+    createPoint(pt);
+    sendMarker(pt);
   }
 }
 
-function createPoint(intersects) {
+//Create marker on mobile client:
+function createPoint(pt) {
   // Create CSS2D object:
   var element1 = document.createElement('div');
   element1.classList = 'marker';
@@ -113,9 +115,9 @@ function createPoint(intersects) {
   var vricon = new CSS2DObject(element1);
 
   scene2.add(vricon);
-  vricon.position.x = intersects[0].point.x;
-  vricon.position.y = intersects[0].point.y;
-  vricon.position.z = intersects[0].point.z + 0.1;
+  vricon.position.x = pt.x;//intersects[0].point.x;
+  vricon.position.y = pt.y;//intersects[0].point.y;
+  vricon.position.z = pt.z;//intersects[0].point.z + 0.1;
 }
 
 function resize() {

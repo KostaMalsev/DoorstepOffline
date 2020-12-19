@@ -8,7 +8,7 @@ let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 10
 
 
 
-
+//Log message:
 let logMessage = (message) => {
   let newMessage = document.createElement('div');
   newMessage.innerHTML = message;
@@ -62,8 +62,9 @@ peer.on('open', (id) => {
       //conn.send({});
     });
     conn.on('data', (data) => {
+      //Received marker on mobile client:
       logMessage('Received marker '+ data);
-      messagesEl.innerHTML='Received marker '+ data;
+      messagesEl.innerHTML='Received marker '+ JSON.stringify(data);
       createPoint(data.split());
     });
   }
@@ -85,6 +86,7 @@ peer.on('connection', (conn) => {
   conn.on('data', (data) => {
     //messagesEl.children[messagesEl.children.length - 1].remove();
     //logMessage(JSON.parse(data));
+    //Rotate synthetic camer on stationary client:
     rotateCamera(data);
     //Rotate the camera based on orientation data:
   });
@@ -155,19 +157,18 @@ let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
     // Rotate scene camera
-    rotateCamera(data);
+    //rotateCamera(data); //TBD@@
     //logMessage(`alpha = ${data.alpha.toFixed(1)} beta=${data.beta.toFixed(1)`);
     // Send data
     peerConn.send(data);
-
-    messagesEl.innerHTML = JSON.stringify(data);
+    //messagesEl.innerHTML = JSON.stringify(data);
   }
 }
 
 window.sendGyroData = sendGyroData;
 
 // Hook with world.js
-// Function sends marker to room participant
+// Function sends marker to room participant - mobile client
 let sendMarker = (data) => {
   // If connected
   if (theadminConn) {

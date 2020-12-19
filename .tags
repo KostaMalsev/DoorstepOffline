@@ -89,7 +89,7 @@ cookie-signature	.\package-lock.json	/^        "cookie-signature": {$/;"	f
 coplanarPoint	.\public\world.js	/^var coplanarPoint = plane.coplanarPoint();$/;"	v
 cors	.\package-lock.json	/^        "cors": "^2.8.5",$/;"	f
 cors	.\package-lock.json	/^        "cors": {$/;"	f
-createPoint	.\public\world.js	/^function createPoint(intersects) {$/;"	f
+createPoint	.\public\world.js	/^function createPoint(pt) {$/;"	f
 createQuaternion	.\public\DeviceOrientationController.js	/^    var createQuaternion = function () {$/;"	f
 createRotationMatrix	.\public\DeviceOrientationController.js	/^    var createRotationMatrix = function () {$/;"	f
 debug	.\package-lock.json	/^            "debug": "2.6.9",$/;"	f
@@ -246,6 +246,7 @@ ipaddr.js	.\package-lock.json	/^        "ipaddr.js": {$/;"	f
 is-fullwidth-code-point	.\package-lock.json	/^            "is-fullwidth-code-point": "^3.0.0",$/;"	f
 is-fullwidth-code-point	.\package-lock.json	/^        "is-fullwidth-code-point": {$/;"	f
 keywords	.\package.json	/^  "keywords": [$/;"	f
+let.x	.\public\world.js	/^    let pt = {x:intersects[0].point.x, y: intersects[0].point.y, z: intersects[0].point.z};$/;"	p
 license	.\package.json	/^  "license": "MIT",$/;"	f
 locate-path	.\package-lock.json	/^            "locate-path": "^5.0.0",$/;"	f
 locate-path	.\package-lock.json	/^        "locate-path": {$/;"	f
