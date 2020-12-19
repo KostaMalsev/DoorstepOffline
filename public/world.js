@@ -132,7 +132,7 @@ function resize() {
 function rotateCamera(data) {
   //Send custom event to udpate rotation
   window.dispatchEvent(new CustomEvent('rotation-is-set',
-                  {alpha: data.alpha, beta:data.beta,gamma:data.gamma}));
+                  {event:{alpha: data.alpha, beta:data.beta,gamma:data.gamma}}));
 
   //camera.rotation.x = -data.gamma*3.14/180;//pitch
   //camera.rotation.y = data.alpha*3.14/180;//azimuth
