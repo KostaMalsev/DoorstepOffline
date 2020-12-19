@@ -497,19 +497,19 @@ DeviceOrientationController.prototype = Object.create( THREE.EventDispatcher.pro
 
 
 //Update rotation from net:
-function UpdateRotFromNet2 (e){
+function UpdateRotFromNet2 (e,DevControls_){
   console.log("Got rotation event from net")
   console.log(e);//TBD
 
   //Remove touch events of mouse when is controlled by net:
-  window.removeEventListener( 'resize', DeviceOrientationController.onDocumentMouseDown, false );
-  window.removeEventListener( 'resize', DeviceOrientationController.onDocumentTouchStart, false );
+  window.removeEventListener( 'resize', DevControls_.onDocumentMouseDown, false );
+  window.removeEventListener( 'resize', DevControls_.onDocumentTouchStart, false );
 
-  DeviceOrientationController.deviceOrientation.alpha = e.detail.alpha;
-  DeviceOrientationController.deviceOrientation.beta = e.detail.beta;
-  DeviceOrientationController.deviceOrientation.gamma = e.detail.gamma;
+  DevControls_.deviceOrientation.alpha = e.alpha;
+  DevControls_.deviceOrientation.beta = e.beta;
+  DevControls_.deviceOrientation.gamma = e.gamma;
   //Update rotation with new data:
-  DeviceOrientationController.updateDeviceMove();
+  DevControls_.updateDeviceMove();
 }
 
 //Call back for Rotation request:
