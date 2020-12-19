@@ -51,6 +51,7 @@ peer.on('open', (id) => {
   else {
     let conn = peer.connect(peerId);
     conn.on('open', () => {
+      logMessage('Established connection with room admin');
       conn.send('Passing data from room participant to room admin');
     });
     conn.on('data', (data) => {
@@ -70,6 +71,7 @@ peer.on('connection', (conn) => {
     logMessage(data);
   });
   conn.on('open', () => {
+    logMessage('Established connection with room participant');
     conn.send('Passing data from room admin to room participant');
   });
 });
