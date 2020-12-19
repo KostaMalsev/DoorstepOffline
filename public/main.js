@@ -51,13 +51,13 @@ peer.on('open', (id) => {
   }
   else {
     let conn = peer.connect(peerId);
-    peerConn = conn;
     conn.on('open', () => {
+      peerConn = conn;
       logMessage('Established connection with room admin');
-      conn.send('This is a message from room participant');
+      //conn.send('This is a message from room participant');
     });
     conn.on('data', (data) => {
-      logMessage(data);
+      createPoint(data);
     });
   }
 });
@@ -67,15 +67,18 @@ peer.on('error', (error) => {
 });
 
 // Handle incoming data connection
+let adminConn;
 peer.on('connection', (conn) => {
   logMessage('Incoming peer connection');
   conn.on('open', () => {
+    adminConn = conn;
     logMessage('Established connection with room participant');
-    conn.send('This is a message from room admin');
+    //conn.send('This is a message from room admin');
   });
   conn.on('data', (data) => {
-    messagesEl.children[messagesEl.children.length - 1].remove();
-    logMessage(data);
+    //messagesEl.children[messagesEl.children.length - 1].remove();
+    //logMessage(data);
+    rotateCamera(data);
   });
 });
 
@@ -143,11 +146,22 @@ else {
 let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
-    peerConn.send(JSON.stringify(data));
+    peerConn.send(data);
   }
 }
 
 window.sendGyroData = sendGyroData;
+
+// Hook with world.js
+// Function sends marker to room participant
+let sendMarker = (data) => {
+  // If connected
+  if (adminConn) {
+    adminConn.send(data);
+  }
+}
+
+window.sendMarker = sendMarker;
 
 let copy = (text) => {
   var textArea = document.createElement("textarea");
