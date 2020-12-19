@@ -14,7 +14,7 @@ let logMessage = (message) => {
 
 let removeConnectionMessage = () => {
   messagesEl.querySelectorAll('div').forEach(div => {
-    if (div.innerHTML == (loaderSVG + ' Connecting')) { div.remove() };
+    if (div.innerHTML == (loaderSVG + 'Connecting')) { div.remove() };
   })
 };
 
@@ -67,7 +67,7 @@ peer.on('connection', (conn) => {
 
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
-  logMessage(loaderSVG + ' Connecting');
+  logMessage(loaderSVG + 'Connecting');
   myVideoEl.classList.remove('big');
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
@@ -81,7 +81,7 @@ var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 if (peerId) {
-  logMessage(loaderSVG + ' Connecting');
+  logMessage(loaderSVG + 'Connecting');
 
   let conn = peer.connect(peerId);
   conn.on('data', (data) => {
@@ -109,7 +109,7 @@ if (peerId) {
 }
 else {
   // Show "Connecting" message
-  logMessage(loaderSVG + ' Connecting');
+  logMessage(loaderSVG + 'Connecting');
   
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
