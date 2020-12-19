@@ -131,7 +131,7 @@ function resize() {
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
 
-  UpdateRotFromNet2(data, DevControls)
+  UpdateRotFromNet2(data)
   //Send custom event to udpate rotation
   //window.dispatchEvent(new CustomEvent('rotation-is-set',
   //                {detail: {alpha: data.alpha, beta:data.beta,gamma:data.gamma}}));

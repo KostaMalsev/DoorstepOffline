@@ -471,7 +471,7 @@ var DeviceOrientationController = function ( object, domElement ) {
         window.addEventListener( 'compassneedscalibration', this.onCompassNeedsCalibration, false );
 
         //Bind the  rotation event from net:
-        window.addEventListener('rotation-is-set', this.UpdateRotFromNet);
+        window.addEventListener('rotation-net-set', this.UpdateRotFromNet);
 
         this.element.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
         this.element.addEventListener( 'touchstart', this.onDocumentTouchStart, false );
@@ -499,10 +499,10 @@ DeviceOrientationController.prototype = Object.create( THREE.EventDispatcher.pro
 
 
 //Update rotation from net:
-function UpdateRotFromNet2 (e,DevControls_){
+function UpdateRotFromNet2 (e){
   //console.log("Got rotation event from net")
   //console.log(e);//TBD
-  window.dispatchEvent(new CustomEvent('rotation-is-set',
+  window.dispatchEvent(new CustomEvent('rotation-net-set',
                   {detail: {alpha: e.alpha, beta: e.beta, gamma: e.gamma}}));
 
   //Remove touch events of mouse when is controlled by net:
