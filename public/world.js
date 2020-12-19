@@ -45,8 +45,8 @@ mesh1.position.x = 0;
 scene.add(mesh1);
 
 // Create forward plane (to tap on)
-const material1 = new THREE.MeshBasicMaterial({color: 0x248f24, alphaTest: 0, visible: false});
-const mesh = new THREE.Mesh(new THREE.PlaneGeometry(document.body.clientWidth, document.body.clientHeight), material1);
+const material1 = new THREE.MeshBasicMaterial({color: 0x000000, alphaTest: 0, visible: true});
+const mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), material1);
 mesh.rotation.x = 0;
 mesh.position.y = 0;
 mesh.position.z = -80;
@@ -59,7 +59,7 @@ camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
-document.body.addEventListener('click', clickedOnScreen);
+renderer.domElement.addEventListener('click', clickedOnScreen);
 
 // Set resize (reshape) callback
 window.addEventListener( 'resize', resize );
