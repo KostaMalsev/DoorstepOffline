@@ -395,7 +395,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 
     //Update rotation from net:
-    UpdateRotFromNet = function(event){
+    UpdateRotFromNet = function(e){
       console.log("Got rotation event from net")
       console.log(event);//TBD
 
@@ -403,9 +403,9 @@ var DeviceOrientationController = function ( object, domElement ) {
       window.removeEventListener( 'resize', this.onDocumentMouseDown, false );
       window.removeEventListener( 'resize', this.onDocumentTouchStart, false );
 
-      this.deviceOrientation.alpha = event.alpha;
-      this.deviceOrientation.beta = event.beta;
-      this.deviceOrientation.gamma = event.gamma;
+      this.deviceOrientation.alpha = e.alpha;
+      this.deviceOrientation.beta = e.beta;
+      this.deviceOrientation.gamma = e.gamma;
       //Update rotation with new data:
       this.updateDeviceMove();
     }();

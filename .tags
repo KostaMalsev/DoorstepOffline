@@ -45,7 +45,7 @@ DeviceOrientationController.CONTROLLER_STATE.MANUAL_ROTATE	.\public\DeviceOrient
 DeviceOrientationController.CONTROLLER_STATE.MANUAL_ZOOM	.\public\DeviceOrientationController.js	/^        MANUAL_ZOOM: 2$/;"	p
 DeviceOrientationController.fireEvent	.\public\DeviceOrientationController.js	/^    var fireEvent = function () {$/;"	m
 OrientationGrantedFlag	.\public\DeviceOrientationController.js	/^var OrientationGrantedFlag=false;$/;"	v
-UpdateRotFromNet	.\public\DeviceOrientationController.js	/^    UpdateRotFromNet = function(event){$/;"	c
+UpdateRotFromNet	.\public\DeviceOrientationController.js	/^    UpdateRotFromNet = function(e){$/;"	c
 accepts	.\package-lock.json	/^            "accepts": "~1.3.7",$/;"	f
 accepts	.\package-lock.json	/^        "accepts": "~1.3.7",$/;"	f
 accepts	.\package-lock.json	/^        "accepts": {$/;"	f
