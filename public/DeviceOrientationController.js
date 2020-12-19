@@ -513,7 +513,7 @@ function UpdateRotFromNet2 (e,DevControls_){
   DevControls_.deviceOrientation.gamma = e.gamma;
   //Update rotation with new data:
   console.log("Got rotation event from net")
-  DevControls_.updateDeviceMove();
+  DevControls_.update();
 }
 
 //Call back for Rotation request:
