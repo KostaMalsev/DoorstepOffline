@@ -158,7 +158,7 @@ let sendGyroData = (data) => {
     // Send data
     peerConn.send(data);
     
-    messagesEl.innerHTML = data;
+    messagesEl.innerHTML = JSON.parse(data);
   }
 }
 
