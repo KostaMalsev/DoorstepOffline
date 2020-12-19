@@ -50,6 +50,7 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
+  removeConnectionMessage();
   logMessage(error);
 });
 
@@ -102,7 +103,8 @@ if (peerId) {
      });
   })
   .catch((err) => {
-    logMessage('Allow camera acess for video chat');
+    removeConnectionMessage();
+    logMessage('Allow camera acess for video chat.<br>' + err);
   });
 }
 else {
@@ -119,7 +121,8 @@ else {
     renderMyVideo(myVideoStream);
   })
   .catch((err) => {
-    logMessage('Allow camera acess for video chat');
+    removeConnectionMessage();
+    logMessage('Allow camera acess for video chat.<br>' + err);
   });
 }
 
