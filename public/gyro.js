@@ -53,8 +53,6 @@ window.addEventListener("deviceorientationabsolute", function (event) {
 
     // Hook with main.js to pass gyro data to peer
     sendGyroData(data);
-    // Rotate scene camera
-    rotateCamera(data);
   }
 });
 
