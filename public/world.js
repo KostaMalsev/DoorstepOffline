@@ -53,7 +53,7 @@ const material1 = new THREE.MeshBasicMaterial({color: 0x000000, alphaTest: 0, vi
 const mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), material1);
 mesh.rotation.x = 0;
 mesh.position.y = 0;
-mesh.position.z = -1000;//-80
+mesh.position.z = -10;//-80
 mesh.position.x = 0;
 
 // Bind the plane with roating camera
