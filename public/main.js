@@ -141,12 +141,14 @@ else {
 
 // Hook with gyro.js
 // Function sends orientation data to room admin
-function sendGyroData(data) {
+let sendGyroData = (data) => {
   // If connected
   if (peerConn) {
     peerConn.send(JSON.stringify(data));
   }
 }
+
+window.sendGyroData = sendGyroData;
 
 let copy = (text) => {
   var textArea = document.createElement("textarea");
