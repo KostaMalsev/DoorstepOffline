@@ -157,7 +157,7 @@ window.sendGyroData = sendGyroData;
 let sendMarker = (data) => {
   // If connected
   if (adminConn) {
-    console.log('Sending');
+    console.log('Sending', data, adminConn);
     adminConn.send(data);
   }
 }
