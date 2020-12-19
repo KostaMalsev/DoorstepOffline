@@ -55,7 +55,8 @@ peer.on('error', (error) => {
 });
 
 peer.on('connect', (conn) => {
-  conn.send(button.id + ' joined.');
+  logMessage('Connected!');
+  //conn.send(button.id + ' joined.');
 })
 
 // Handle incoming data connection
