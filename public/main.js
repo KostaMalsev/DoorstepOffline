@@ -85,7 +85,10 @@ peer.on('connection', (conn) => {
   conn.on('data', (data) => {
     //messagesEl.children[messagesEl.children.length - 1].remove();
     //logMessage(JSON.parse(data));
-    rotateCamera(data);
+    //rotateCamera(data);
+    //Rotate the camera based on orientation data:
+    window.dispatchEvent(new CustomEvent('rotation-is-set',
+                    {detail: {alpha: data.alpha, beta:data.beta,gamma:data.gamma}}));
   });
 });
 
