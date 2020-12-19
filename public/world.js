@@ -45,7 +45,7 @@ mesh1.position.x = 0;
 scene.add(mesh1);
 
 // Create forward plane (to tap on)
-const material1 = new THREE.MeshBasicMaterial({color: 0x000000, alphaTest: 0, visible: true});
+const material1 = new THREE.MeshBasicMaterial({color: 0x000000, alphaTest: 0, visible: false});
 const mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), material1);
 mesh.rotation.x = 0;
 mesh.position.y = 0;
