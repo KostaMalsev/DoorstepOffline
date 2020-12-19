@@ -78,6 +78,9 @@ peer.on('call', (call) => {
   call.on('stream', (s) => {
     renderVideo(s);
   });
+  call.on('close', () => {
+    logMessage('Meeting ended');
+  });
 });
 
 // Initiate outgoing connection
@@ -104,6 +107,9 @@ if (peerId) {
        renderMyVideo(s);
        renderVideo(stream);
        videoEl.muted = "muted";
+     });
+     call.on('close', () => {
+       logMessage('Meeting ended');
      });
   })
   .catch((err) => {
