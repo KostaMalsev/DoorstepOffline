@@ -138,8 +138,6 @@ else {
   });
 }
 
-window.peerId = peerId;
-
 // Hook with gyro.js
 // Function sends orientation data to room admin
 let sendGyroData = (data) => {
