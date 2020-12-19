@@ -7,6 +7,7 @@ document.body.appendChild(renderer.domElement);
 renderer.domElement.style.position = 'fixed';
 renderer.domElement.style.top = 0;
 renderer.domElement.style.left = 0;
+renderer.domElement.style.zIndex = '3';
 
 // Create CSS scene:
 const scene2 = new THREE.Scene();
@@ -18,7 +19,7 @@ cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
-cssRenderer.domElement.style.zIndex = '-1';
+cssRenderer.domElement.style.zIndex = '2';
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
@@ -119,9 +120,9 @@ function resize() {
 
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
-  camera.rotation.x = data.gamma;//pitch
-  camera.rotation.y = data.alpha;//azimuth
-  camera.rotation.z = data.beta; //roll
+  camera.rotation.x = data.gamma*3.14/180;//pitch
+  camera.rotation.y = data.alpha*3.14/180;//azimuth
+  camera.rotation.z = data.beta*3.14/180; //roll
 }
 
 function render(){
