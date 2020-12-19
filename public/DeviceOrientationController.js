@@ -412,8 +412,6 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 
     this.updateDeviceMove = function () {
-        console.log("Updating rotation of device")
-        console.log(this.deviceOrientation);
 
         var alpha, beta, gamma, orient;
 
@@ -471,7 +469,7 @@ var DeviceOrientationController = function ( object, domElement ) {
         window.addEventListener( 'compassneedscalibration', this.onCompassNeedsCalibration, false );
 
         //Bind the  rotation event from net:
-        window.addEventListener('rotation-net-set', this.UpdateRotFromNet);
+        window.addEventListener('rotation-net-set', this.UpdateRotFromNet,false);
 
         this.element.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
         this.element.addEventListener( 'touchstart', this.onDocumentTouchStart, false );
