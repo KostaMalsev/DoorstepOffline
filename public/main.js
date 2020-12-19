@@ -79,7 +79,7 @@ peer.on('call', (call) => {
   call.on('stream', (s) => {
     renderVideo(s);
   });
-  call.on('close', () => {
+  call.on('error', () => {
     logMessage('Meeting ended');
   });
 });
@@ -109,7 +109,7 @@ if (peerId) {
        renderVideo(stream);
        videoEl.muted = "muted";
      });
-     call.on('close', () => {
+     call.on('error', () => {
        logMessage('Meeting ended');
      });
   })
