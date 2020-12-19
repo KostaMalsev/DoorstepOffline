@@ -51,7 +51,10 @@ peer.on('open', (id) => {
   else {
     let conn = peer.connect(peerId);
     conn.on('open', () => {
-      conn.send('Yahoo! '+id+' Connected.');
+      conn.send('Passing data from room participant to room admin');
+    });
+    conn.on('data', (data) => {
+      logMessage(data);
     });
   }
 });
@@ -62,7 +65,7 @@ peer.on('error', (error) => {
 
 // Handle incoming data connection
 peer.on('connection', (conn) => {
-  logMessage('Incoming peer connection!', conn);
+  logMessage('Incoming peer connection');
   conn.on('data', (data) => {
     logMessage(data);
   });
