@@ -95,7 +95,6 @@ createRotationMatrix	.\public\DeviceOrientationController.js	/^    var createRot
 debug	.\package-lock.json	/^            "debug": "2.6.9",$/;"	f
 debug	.\package-lock.json	/^        "debug": "2.6.9",$/;"	f
 debug	.\package-lock.json	/^        "debug": {$/;"	f
-debug_	.\public\DeviceOrientationController.js	/^function debug_(e)$/;"	f
 decamelize	.\package-lock.json	/^            "decamelize": "^1.2.0"$/;"	f
 decamelize	.\package-lock.json	/^            "decamelize": "^1.2.0",$/;"	f
 decamelize	.\package-lock.json	/^        "decamelize": {$/;"	f

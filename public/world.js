@@ -68,6 +68,7 @@ cssRenderer.domElement.addEventListener('click', clickedOnScreen);
 //Create device binded controls:
 //They will listen also to rotation from net
 var DevControls = new DeviceOrientationController( camera, renderer.domElement );
+DevControls.connect();
 
 // Set resize (reshape) callback
 window.addEventListener( 'resize', resize );
@@ -146,6 +147,7 @@ function render(){
 	requestAnimationFrame(render);
   renderer.render(scene, camera);
   cssRenderer.render(scene2, camera);
+  DevControls.update();
 }
 
 render();

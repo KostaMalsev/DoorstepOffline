@@ -497,12 +497,13 @@ DeviceOrientationController.prototype = Object.create( THREE.EventDispatcher.pro
 
 
 //TBD
+/*
 window.addEventListener('rotation-net-set', debug_);
 function debug_(e)
 {
   console.log(e);
 }
-
+*/
 
 //Update rotation from net:
 function UpdateRotFromNet2 (e){
