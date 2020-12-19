@@ -42,6 +42,7 @@ let peer = new Peer({
 });
 
 // Show "Copy link" button and insert peer ID
+let peerConn;
 peer.on('open', (id) => {
   // If creating meeting
   if (!peerId) {
@@ -51,6 +52,7 @@ peer.on('open', (id) => {
   }
   else {
     let conn = peer.connect(peerId);
+    peerConn = conn;
     conn.on('open', () => {
       logMessage('Established connection with room admin');
       conn.send('This is a message from room participant');
@@ -68,12 +70,13 @@ peer.on('error', (error) => {
 // Handle incoming data connection
 peer.on('connection', (conn) => {
   logMessage('Incoming peer connection');
-  conn.on('data', (data) => {
-    logMessage(data);
-  });
   conn.on('open', () => {
     logMessage('Established connection with room participant');
     conn.send('This is a message from room admin');
+  });
+  conn.on('data', (data) => {
+    messagesEl.children[messagesEl.children.length].remove();
+    logMessage(data);
   });
 });
 
@@ -114,7 +117,7 @@ if (peerId) {
   })
   .catch((err) => {
     removeConnectionMessage();
-    logMessage('Allow camera acess for video chat.<br>' + err);
+    logMessage('Allow camera acess for video chat.');
   });
 }
 else {
@@ -132,8 +135,17 @@ else {
   })
   .catch((err) => {
     removeConnectionMessage();
-    logMessage('Allow camera acess for video chat.<br>' + err);
+    logMessage('Allow camera acess for video chat.');
   });
+}
+
+// Hook with gyro.js
+// Function sends orientation data to room admin
+function sendGyroData(data) {
+  // If connected
+  if (peerConn) {
+    peerConn.send(JSON.stringify(data));
+  }
 }
 
 let copy = (text) => {
