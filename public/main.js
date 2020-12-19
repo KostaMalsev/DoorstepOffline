@@ -54,7 +54,7 @@ peer.on('open', (id) => {
     peerConn = conn;
     conn.on('open', () => {
       logMessage('Established connection with room admin');
-      //conn.send('This is a message from room participant');
+      conn.send({});
     });
     conn.on('data', (data) => {
       logMessage('Received marker '+data);
