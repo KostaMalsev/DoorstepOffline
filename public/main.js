@@ -74,7 +74,7 @@ peer.on('connection', (conn) => {
     conn.send('This is a message from room admin');
   });
   conn.on('data', (data) => {
-    messagesEl.children[messagesEl.children.length].remove();
+    messagesEl.children[messagesEl.children.length - 1].remove();
     logMessage(data);
   });
 });
