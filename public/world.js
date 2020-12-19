@@ -59,7 +59,7 @@ camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
-document.body.addEventListener('onclick', clickedOnScreen, false);
+document.body.addEventListener('click', clickedOnScreen);
 
 // Set resize (reshape) callback
 window.addEventListener( 'resize', resize );
@@ -83,9 +83,10 @@ function setRaycaster(event){
 
 // Function gets intersection with the plane and draw markers
 function clickedOnScreen(event) {
-  console.log('clicked');
   setRaycaster(event);
   var intersects = raycaster.intersectObjects(scene.children, true);
+  
+  console.log('clicked', intersects);
   
   // If we got intersection, make a marker on xyz point
   if (intersects.length > 0) {
