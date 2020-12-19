@@ -122,9 +122,9 @@ function resize() {
 
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
-  camera.rotation.x = data.gamma*3.14/180;//pitch
+  camera.rotation.x = -data.gamma*3.14/180;//pitch
   camera.rotation.y = data.alpha*3.14/180;//azimuth
-  camera.rotation.z = data.beta*3.14/180; //roll
+  camera.rotation.z = -data.beta*3.14/180; //roll
 }
 
 function render(){
