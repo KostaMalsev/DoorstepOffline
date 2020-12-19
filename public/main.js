@@ -57,6 +57,7 @@ peer.on('open', (id) => {
       //conn.send('This is a message from room participant');
     });
     conn.on('data', (data) => {
+      logMessage('Received marker '+data);
       createPoint(data);
     });
   }
