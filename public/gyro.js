@@ -64,7 +64,7 @@ var peerId = url.searchParams.get('room');
 
 // If orientation not granted and not creating room
 let promptEl = document.querySelector('.prompt-wrapper');
-if (orientationGranted == false && !peerId) {
+if (orientationGranted == false && peerId != null) {
   // Show prompt
   promptEl.classList.add('visible');
 }
