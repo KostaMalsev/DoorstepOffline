@@ -641,7 +641,9 @@ window.addEventListener("deviceorientationabsolute", function (event) {
     }
     //document.getElementById("AndroidEvent").innerHTML =
     //    `ANDR_ORNT_EVENT [abs= ${event.absolute} alpha= ${event.alpha.toFixed(1)}]`;
-    handleOrientationEvent(event);
+    if (event!=null && event.alpha!=null && event.beta!=null && event.gamma!=null) {
+        handleOrientationEvent(event);
+    }
 });
 
 
