@@ -30,6 +30,7 @@ scene2.add(camera);
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = 'fixed';
+cssRenderer.domElement.style.cursor = 'pointer';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
