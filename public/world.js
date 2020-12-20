@@ -141,7 +141,7 @@ function createPoint(pt) {
   
   setTimeout(() => {
     scene2.remove(vricon);
-  }, 500);
+  }, 5000);
 }
 
 function resize() {
