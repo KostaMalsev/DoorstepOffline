@@ -195,6 +195,7 @@ else {
   logMessage(loaderSVG + 'Connecting');
 
   // Show big video
+  videoEl.classList.add('remote');
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
   
