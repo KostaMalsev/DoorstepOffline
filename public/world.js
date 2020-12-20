@@ -185,12 +185,16 @@ function resize() {
 }
 
 function resizeTo(width, height) {
+  console.log(width, height);
+
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
 
   var left = document.querySelector('.remote-video').getBoundingClientRect().left;
   var top = document.querySelector('.remote-video').getBoundingClientRect().top;
+
+  console.log(document.querySelector('.remote-video').getBoundingClientRect());
 
   renderer.domElement.style.left = left + 'px';
   cssRenderer.domElement.style.left = left + 'px';
