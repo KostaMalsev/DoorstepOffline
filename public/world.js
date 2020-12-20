@@ -79,6 +79,9 @@ mesh.position.x = 0;
 //Create forward plane - elipsoid (on to write on)
 
 function resizeSphere(width, height) {
+  var width = document.querySelector('.remote-video').clientWidth;
+  var height = document.querySelector('.remote-video').clientHeight;
+
   resizeTo(width, height);
 
   /*
@@ -185,8 +188,6 @@ function resize() {
 }
 
 function resizeTo(width, height) {
-  console.log(width, height);
-
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();

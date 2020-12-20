@@ -45,6 +45,15 @@ let renderVideo = (stream) => {
   }
 };
 
+let renderVideoAdmin = (stream) => {
+  videoEl.srcObject = stream;
+  videoEl.onloadedmetadata = () => {
+    videoEl.play();
+    removeConnectionMessage();
+    resizeSphere();
+  }
+};
+
 // Render tiny video
 let renderMyVideo = (stream) => {
   myVideoEl.srcObject = stream;
@@ -140,8 +149,7 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
-    renderVideo(s);
-    resizeSphere(videoEl.clientWidth, videoEl.clientHeight);
+    renderVideoAdmin(s);
   });
 
   call.on('error', () => {
