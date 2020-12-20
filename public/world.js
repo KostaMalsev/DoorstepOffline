@@ -66,10 +66,20 @@ const material1 = new THREE.MeshBasicMaterial({
   alphaTest: 0,
   visible: false
 });
+
+/*
 const mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), material1);
 mesh.rotation.x = 0;
 mesh.position.y = 0;
 mesh.position.z = -10; //-80
+mesh.position.x = 0;
+*/
+var geometry = new THREE.SphereGeometry(15, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
+//var material = new THREE.MeshNormalMaterial();
+var mesh = new THREE.Mesh(geometry, material1);
+mesh.rotation.x = 0;
+mesh.position.y = 0;
+mesh.position.z = 0;
 mesh.position.x = 0;
 
 // Bind the plane with roating camera
@@ -136,7 +146,7 @@ function createPoint(pt) {
   vricon.position.x = pt.x; //intersects[0].point.x;
   vricon.position.y = pt.y; //intersects[0].point.y;
   vricon.position.z = pt.z; //intersects[0].point.z + 0.1;
-  
+
   setTimeout(() => {
     scene2.remove(vricon);
   }, 8000);
