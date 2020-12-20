@@ -1,5 +1,5 @@
 /*
- * Camarker
+ * Camarker (MIT License)
  * DeviceOrientationController.js
  *
  * Modified version of threeVR (https://github.com/richtr/threeVR)
