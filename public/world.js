@@ -206,7 +206,7 @@ function resizeTo(width, height) {
     renderer.setSize(width, height);
     cssRenderer.setSize(width, height);
     render();
-  }, 20);
+  }, 200);
 }
 
 function render() {
