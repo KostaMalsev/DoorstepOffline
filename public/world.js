@@ -94,7 +94,7 @@ function resizeSphere(width, height) {
   mesh.position.x = 0;
   camera.add(mesh)
   */
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material1);
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000), material1);
   mesh.rotation.x = 0;
   mesh.position.y = 0;
   mesh.position.z = -200; //-10 -80
