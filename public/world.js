@@ -1,10 +1,12 @@
-/* Camarker (MIT License)
+/*
+ * Camarker (MIT License)
  * world.js
  *
  * Script creates 3d world and CSS2D world
  * and hooks to main.js for rotating 3d camera
  * and placing markers in the 3d world
  * based on data from peer in real time.
+ *
  */
 
 var scene = new THREE.Scene();
