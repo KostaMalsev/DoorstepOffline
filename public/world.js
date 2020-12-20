@@ -12,7 +12,7 @@ var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHei
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+document.querySelector('.video-wrapper .wrapper').appendChild(renderer.domElement);
 renderer.domElement.style.position = 'absolute';
 renderer.domElement.style.top = 0;
 renderer.domElement.style.left = 0;
@@ -29,7 +29,7 @@ cssRenderer.domElement.style.position = 'absolute';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
-document.body.appendChild(cssRenderer.domElement);
+document.querySelector('.video-wrapper .wrapper').appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
 var normal = new THREE.Vector3(0, 0, -1);
