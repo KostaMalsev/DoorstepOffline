@@ -67,7 +67,7 @@ let peerConn;
 peer.on('open', (id) => {
 
   // If creating meeting
-  if (!peerId) {
+  if (peerId == null) {
 
     // Show "Copy link" button
     button.style.display = 'block';
@@ -156,7 +156,7 @@ var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
 // If joining meeting
-if (peerId) {
+if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
 
   // Get voice/video permissions
