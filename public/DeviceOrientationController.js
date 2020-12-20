@@ -508,7 +508,7 @@ function UpdateRotFromNet2 (e){
 }
 
 //Call back for Rotation request:
-var OrientationGrantedFlag=false;
+//var OrientationGrantedFlag=false;
 /*
 function onClick() {
     // feature detect
@@ -553,7 +553,7 @@ function activateLocation()
 */
 
 
-
+/*
 // Error. Params: message (required), source (optional)
 function error(message, source) {
     document.querySelector('.title').classList.add('error');
@@ -564,26 +564,25 @@ function error(message, source) {
             source +
             '</span>';
     }
-}
+}*/
 
 
-
+/*
 
 //For IOS devices:
 window.addEventListener("deviceorientation", function (event) {
     {
-        let compass_ = GetCompassHeading(event.webkitCompassHeading,
-            event.beta, event.gamma);
+        //let compass_ = GetCompassHeading(event.webkitCompassHeading,
+        //    event.beta, event.gamma);
         //let compass_ = event.webkitCompassHeading;
-
-        if(compass_!=null && event!=null && event.alpha!=null && event.beta!=null && event.gamma!=null) {
+        // compass_!=null && 
+        if(event!=null && event.alpha!=null && event.beta!=null && event.gamma!=null) 
             document.getElementById("IOSEvent").innerHTML =
                 `orientation event fired, webkit cmpss=${compass_.toFixed(1)}}
                         alpha=${event.alpha.toFixed(1)}
                         beta=${event.beta.toFixed(1)}
                         gamma=${event.gamma.toFixed(1)}
                         `;
-        }
         //gamma is pitch.
         //alpha is azimuth
         //beta is roll
@@ -593,12 +592,14 @@ window.addEventListener("deviceorientation", function (event) {
         {
           document.getElementById("RotPerm").style.display='none';
         }
+        
         //let comp_ptr = document.querySelector('[rotation-helper]').components['rotation-helper'];
         if(!isNaN(compass_) && compass_!=null) {
             //comp_ptr.data.cmpss_heading = compass_;//compass heading relative to z axis.
             window.dispatchEvent(new CustomEvent('rotation-is-set',
                 {detail: {compass_reading: compass_}}));
         }
+    }
     }
 });
 
@@ -647,7 +648,7 @@ window.addEventListener("deviceorientationabsolute", function (event) {
 });
 
 
-
+*/
 
 
 
