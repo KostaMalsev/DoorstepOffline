@@ -1,6 +1,11 @@
-//Implements monitor for supporter (stationary client):
-//Rotation of the invisible camera is given by network from mobile client
-
+/* Camarker (MIT License)
+ * world.js
+ *
+ * Script creates 3d world and CSS2D world
+ * and hooks to main.js for rotating 3d camera
+ * and placing markers in the 3d world
+ * based on data from peer in real time.
+ */
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
@@ -129,20 +134,6 @@ function resize() {
 	renderer.setSize(width,height);
   cssRenderer.setSize(width,height);
 	render();
-}
-
-// Rotate camera with pitch, roll, yual
-function rotateCamera(data) {
-
-  UpdateRotFromNet2(data)
-  //Send custom event to udpate rotation
-  //window.dispatchEvent(new CustomEvent('rotation-is-set',
-  //                {detail: {alpha: data.alpha, beta:data.beta,gamma:data.gamma}}));
-                  //{detail: {compass_reading: compass_}}
-
-  //camera.rotation.x = -data.gamma*3.14/180;//pitch
-  //camera.rotation.y = data.alpha*3.14/180;//azimuth
-  //camera.rotation.z = -data.beta*3.14/180; //roll
 }
 
 function render(){
