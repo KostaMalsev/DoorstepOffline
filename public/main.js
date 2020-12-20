@@ -62,6 +62,8 @@ let peer = new Peer({
 // On connection to server
 let peerConn;
 peer.on('open', (id) => {
+  
+  logMessage('');
 
   // If creating meeting
   if (!peerId) {
@@ -81,12 +83,12 @@ peer.on('open', (id) => {
     peerConn = conn;
 
     conn.on('open', () => {
-      logMessage('Established connection with room admin');
+      //logMessage('Established connection with room admin');
     });
 
     // When receiving data from admin
     conn.on('data', (data) => {
-      messagesEl.innerHTML = 'Received marker ' + JSON.stringify(data);
+      //messagesEl.innerHTML = 'Received marker ' + JSON.stringify(data);
 
       // Add point to 3d world
       let pt = {
@@ -100,20 +102,19 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
-  removeConnectionMessage();
-  logMessage(error);
+  //logMessage(error);
 });
 
 // Handle incoming data connection
 let theadminConn;
 peer.on('connection', (conn) => {
-  logMessage('Incoming peer connection');
+  //logMessage('Incoming peer connection');
   
   // Save connection for later use
   theadminConn = conn;
 
   conn.on('open', () => {
-    logMessage('Established connection with room participant');
+    //logMessage('Established connection with room participant');
   });
 
   // When reciving data from participant
@@ -140,6 +141,7 @@ peer.on('call', (call) => {
   });
   
   call.on('error', () => {
+    myVideoEl.classList.add('big');
     logMessage('Meeting ended');
   });
 });
@@ -176,6 +178,7 @@ if (peerId) {
       });
     
       call.on('error', () => {
+        myVideoEl.classList.add('big');
         logMessage('Meeting ended');
       });
 
