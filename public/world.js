@@ -141,11 +141,14 @@ function createPoint(pt) {
 function resizeTo(innerWidth, innerHeight) {
 	width = innerWidth;
 	height = innerHeight;
+	
 	camera.right = innerWidth;
 	camera.bottom = innerHeight;
 	camera.updateProjectionMatrix();
+	
 	renderer.setSize(innerWidth,innerHeight);
-  cssRenderer.setSize(innerWidth,innerHeight);
+  	cssRenderer.setSize(innerWidth,innerHeight);
+	
 	render();
 }
 
