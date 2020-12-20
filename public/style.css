@@ -6,16 +6,24 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.remote-video {
-  width: 100vw;
+.video-wrapper {
   position: fixed;
   z-index: -1000;
   left: 0;
   top: 0;
-  background: black;
+  width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  display: grid;
+  place-content: center;
+  background: black;
+}
+
+.remote-video {
+  width: 100vw;
+  height: 100vh;
+  background: black;
   object-fit: none;
+  border-radius: 35px;
 }
 
 .my-video {
