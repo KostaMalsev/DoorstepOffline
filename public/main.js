@@ -132,8 +132,8 @@ peer.on('connection', (conn) => {
       logMessage('Recived dimensions. Width: '+data.width+', height: '+data.height);
       
       resizeTo(data.width, data.height);
-      videoEl.style.width = data.width;
-      videoEl.style.height = data.height;
+      videoEl.style.width = data.width + 'px';
+      videoEl.style.height = data.height + 'px';
     }
 
   });
