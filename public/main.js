@@ -1,4 +1,5 @@
-/* Camarker (MIT License)
+/*
+ * Camarker (MIT License)
  * main.js
  *
  * Script handles peer-to-peer communication
@@ -10,6 +11,7 @@
  * to differentiate between peers.
  * "Admin": Room Creator (Typically: Computer)
  * "Participant": Room Joiner (Typically: Mobile Device)
+ *
  */
 
 let Peer = window.Peer;
