@@ -4,7 +4,7 @@
  *
  * Script handles peer-to-peer communication
  * and hooks to world.js and gyro.js
- * to synchronize rotation with 3d world. 
+ * to synchronize rotation with 3d world.
  *
  * Script terms:
  * These terms are used in the script
@@ -78,7 +78,7 @@ peer.on('open', (id) => {
 
   // If joining meeting
   else {
-    
+
     // Connect with room admin
     let conn = peer.connect(peerId);
     peerConn = conn;
@@ -98,7 +98,7 @@ peer.on('open', (id) => {
         z: data.z
       };
       createPoint(pt);
-      
+
     });
   }
 });
@@ -110,7 +110,7 @@ peer.on('error', (error) => {
 let theadminConn;
 peer.on('connection', (conn) => {
   //logMessage('Incoming peer connection');
-  
+
   // Save connection for later use
   theadminConn = conn;
 
@@ -138,11 +138,12 @@ peer.on('call', (call) => {
   myVideoEl.classList.remove('big');
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
-  
+
   call.on('stream', (s) => {
     renderVideo(s);
+    resizeSphere(videoEl.clientWidth, videoEl.clientHeight);
   });
-  
+
   call.on('error', () => {
     myVideoEl.classList.add('big');
     logMessage('Meeting ended');
@@ -172,14 +173,14 @@ if (peerId != null) {
       // Call admin
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
-        
+
         // Render video
         renderMyVideo(s);
         renderVideo(stream);
         videoEl.muted = "muted";
-        
+
       });
-    
+
       call.on('error', () => {
         myVideoEl.classList.add('big');
         logMessage('Meeting ended');
@@ -190,7 +191,7 @@ if (peerId != null) {
       removeConnectionMessage();
       logMessage('Allow camera acess for video chat.');
     });
-} 
+}
 
 // If creating meeting
 else {
@@ -201,19 +202,19 @@ else {
   videoEl.classList.add('remote');
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
-  
+
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true
     })
-    
+
     .then((stream) => {
       // Render video
       myVideoStream = stream;
       renderMyVideo(myVideoStream);
     })
-  
+
     .catch((err) => {
       removeConnectionMessage();
       logMessage('Allow camera acess for video chat.');
@@ -223,15 +224,15 @@ else {
 // Hook with gyro.js:
 // Function sends orientation data to room admin
 let sendGyroData = (data) => {
-  
+
   // If connected to admin
   if (peerConn) {
-    
+
     // Send gyro data
     peerConn.send(data);
-    
+
   }
-  
+
 }
 
 window.sendGyroData = sendGyroData;
@@ -239,16 +240,16 @@ window.sendGyroData = sendGyroData;
 // Hook with world.js:
 // Function sends marker data to room participant
 let sendMarker = (data) => {
-  
+
   // If connected to participant
   if (theadminConn) {
-    
+
     // Send marker data
     console.log('Sending', data);
     theadminConn.send(data);
-    
+
   }
-  
+
 }
 
 window.sendMarker = sendMarker;

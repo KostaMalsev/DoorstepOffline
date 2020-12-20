@@ -332,6 +332,7 @@ requires	.\package-lock.json	/^          "requires": {$/;"	f
 requires	.\package-lock.json	/^      "requires": {$/;"	f
 requires	.\package-lock.json	/^  "requires": true,$/;"	f
 resize	.\public\world.js	/^function resize() {$/;"	f
+resizeSphere	.\public\world.js	/^function resizeSphere(width, height) {$/;"	f
 resolved	.\package-lock.json	/^              "resolved": "https:\/\/registry.npmjs.org\/ms\/-\/ms-2.1.1.tgz",$/;"	f
 resolved	.\package-lock.json	/^          "resolved": "https:\/\/registry.npmjs.org\/@types\/body-parser\/-\/body-parser-1.19.0.tgz",$/;"	f
 resolved	.\package-lock.json	/^          "resolved": "https:\/\/registry.npmjs.org\/@types\/connect\/-\/connect-3.4.34.tgz",$/;"	f

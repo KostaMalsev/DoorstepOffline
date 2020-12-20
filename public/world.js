@@ -74,18 +74,28 @@ mesh.position.y = 0;
 mesh.position.z = -10; //-80
 mesh.position.x = 0;
 */
-var geometry = new THREE.SphereGeometry(15, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
-//var material = new THREE.MeshNormalMaterial();
-var mesh = new THREE.Mesh(geometry, material1);
-mesh.rotation.x = 0;
-mesh.position.y = 0;
-mesh.position.z = 0;
-mesh.position.x = 0;
+
+//Create forward plane - elipsoid (on to write on)
+
+function resizeSphere(width, height) {
+  let radius = height / 2;
+  var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
+
+  scalex = (width / 2) / radius;
+  scaley = (height / 2) / radius;
+  geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, 1 ) );
+
+  var mesh = new THREE.Mesh(geometry, material1);
+  mesh.rotation.x = 0;
+  mesh.position.y = 0;
+  mesh.position.z = 0;
+  mesh.position.x = 0;
+  camera.add(mesh)
+}
 
 // Bind the plane with roating camera
 let pivot_ = new THREE.Object3D();
 pivot_.position.z = 0;
-camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
