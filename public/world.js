@@ -12,8 +12,8 @@ var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHei
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.querySelector('.video-wrapper .wrapper').appendChild(renderer.domElement);
-renderer.domElement.style.position = 'absolute';
+document.body.appendChild(renderer.domElement);
+renderer.domElement.style.position = 'fixed';
 renderer.domElement.style.top = 0;
 renderer.domElement.style.left = 0;
 renderer.domElement.style.zIndex = 2;
@@ -25,11 +25,11 @@ scene2.add(camera);
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
-cssRenderer.domElement.style.position = 'absolute';
+cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
-document.querySelector('.video-wrapper .wrapper').appendChild(cssRenderer.domElement);
+document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
 var normal = new THREE.Vector3(0, 0, -1);
@@ -144,12 +144,18 @@ function resizeTo(innerWidth, innerHeight) {
 	width = innerWidth;
 	height = innerHeight;
 	
-	camera.right = innerWidth;
-	camera.bottom = innerHeight;
+	camera.right = width;
+	camera.bottom = height;
 	camera.updateProjectionMatrix();
 	
-	renderer.setSize(innerWidth,innerHeight);
-  	cssRenderer.setSize(innerWidth,innerHeight);
+	renderer.setSize(width,height);
+  cssRenderer.setSize(width,height);
+	
+	renderer.domElement.style.left = videoEl.getBoundingClientRect().left + 'px';
+	renderer.domElement.style.top = videoEl.getBoundingClientRect().top + 'px';
+	
+	cssRenderer.domElement.style.left = videoEl.getBoundingClientRect().left + 'px';
+  cssRenderer.domElement.style.top = videoEl.getBoundingClientRect().top + 'px';
 	
 	render();
 }
