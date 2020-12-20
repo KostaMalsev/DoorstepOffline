@@ -144,3 +144,9 @@ function render(){
 }
 
 render();
+
+
+// Rotate camera with pitch, roll, yual
+function rotateCamera(data) {
+  UpdateRotFromNet2(data)
+}
