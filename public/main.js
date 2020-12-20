@@ -200,9 +200,7 @@ else {
   
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: "environment"
-      },
+      video: true,
       audio: true
     })
     
