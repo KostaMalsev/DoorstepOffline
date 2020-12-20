@@ -122,7 +122,7 @@ peer.on('connection', (conn) => {
     // Hook with world.js:
     // Rotate the admin's virtual camera
     // Based on participant's device rotation
-    logMessage(JSON.parse(data));
+    logMessage(data);
     rotateCamera(data);
 
   });
