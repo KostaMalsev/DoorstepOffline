@@ -191,12 +191,12 @@ function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
+  
+  console.log(document.querySelector('.remote-video').getBoundingClientRect());
+  console.log(document.querySelector('.remote-video').getBoundingClientRect());
 
   var left = document.querySelector('.remote-video').getBoundingClientRect().left;
   var top = document.querySelector('.remote-video').getBoundingClientRect().top;
-
-  console.log(document.querySelector('.remote-video').getBoundingClientRect());
-  console.log(document.querySelector('.remote-video').getBoundingClientRect());
 
   renderer.domElement.style.left = left + 'px';
   cssRenderer.domElement.style.left = left + 'px';
