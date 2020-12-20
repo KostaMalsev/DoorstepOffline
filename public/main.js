@@ -82,6 +82,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       logMessage('Established connection with room admin');
+      logMessage('Sending width: '+window.innerWidth+', height: '+window.innerHeight);
       conn.send({width: window.innerWidth, height: window.innerHeight});
     });
 
@@ -128,6 +129,8 @@ peer.on('connection', (conn) => {
     }
     
     else {
+      logMessage('Recived dimensions. Width: '+data.width+', height: '+data.height);
+      
       resizeTo(data.width, data.height);
       videoEl.style.width = data.width;
       videoEl.style.height = data.height;
