@@ -79,13 +79,6 @@ camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
-var url = new URL(window.location.href);
-var peerId = url.searchParams.get('room');
-if (!peerId) {
-  cssRenderer.domElement.addEventListener('click', clickedOnScreen);
-  cssRenderer.domElement.style.cursor = 'pointer';
-}
-
 //Create device binded controls:
 //They will listen also to rotation from net
 var DevControls = new DeviceOrientationController(camera, cssRenderer.domElement);
