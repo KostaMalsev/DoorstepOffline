@@ -15,6 +15,7 @@ body {
   background: black;
   height: 100vh;
   object-fit: cover;
+  object-fit: none;
 }
 
 .my-video {
