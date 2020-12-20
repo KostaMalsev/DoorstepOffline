@@ -112,33 +112,33 @@ body {
 }
 
 .prompt {
-  width: 200px;
-  height: 120px;
+  width: 15.500em;
+  height: 8.736em;
   border-radius: 15px;
   background: #272727;
   text-align: center;
   box-sizing: border-box;
   color: white;
-  font-size: 13.5px;
-  line-height: 1.561;
+  font-size: 1.06568em;
+  line-height: 1.23536;
   position: relative;
   letter-spacing: -0.1px;
   transform: scale(1.05);
-  transition: .2s ease;
 }
 
 .prompt-wrapper.visible .prompt {
   transform: none;
+  transition: .2s ease;
 }
 
 .prompt h1 {
   font-weight: 400;
   font-size: inherit;
   margin: 0;
-  padding: 15px;
+  padding: 1.7363em;
   line-height: 1.23536;
   letter-spacing: -.022em;
-  height: calc(100% - 35px);
+  height: calc(100% - 3.27974em);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -146,29 +146,28 @@ body {
 
 .buttons {
   border-top: 1px solid #424245;
-  width: 200px;
+  width: 15.500em;
   position: absolute;
-  top: 85px;
-  height: 34px;
+  height: 3.27974em;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  bottom: 0;
 }
 
 .buttons div {
-  font-size: 13.5px;
   line-height: 1.23536;
   font-weight: 400;
   letter-spacing: -.022em;
   color: #2997ff;
   width: 50%;
   height: 100%;
-  margin-top: -0.5px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0 0 0 15px;
+  font-size: 1.06568em;
 }
 
 .buttons div:nth-of-type(2) {
@@ -184,11 +183,10 @@ body {
   margin: 0;
   position: absolute;
   border: 0;
-  height: 34px;
+  height: 3.27974em;
   background: #424245;
   width: 1px;
   pointer-events: none;
-  margin-top: -0.5px;
 }
 
 .marker {
@@ -197,7 +195,7 @@ body {
   border-radius: 50%;
   box-shadow: inset 0 0 0 6px white, inset 0 0 0 17px #1F8AFF, 0 0 0 1px RGBA(31, 138, 255, 0.7);
   padding: 7px;
-  border: 35px solid RGBA(31, 138, 255, 0.2);
+  border: 35px solid rgba(31, 138, 255, 0.2);
   animation: pop .25s cubic-bezier(.18,.89,.32,1.28), 8s .25s fade forwards;
 }
 
