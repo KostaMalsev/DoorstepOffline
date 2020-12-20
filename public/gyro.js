@@ -1,9 +1,11 @@
-/* Camarker (MIT License)
+/*
+ * Camarker (MIT License)
  * gyro.js
  *
  * Script gets orientation permission
  * and hooks to main.js for passing gyro
  * rotation to peer in real time.
+ *
  */
 
 // Flag determines whether orientation granted or not
