@@ -78,11 +78,11 @@ mesh.position.x = 0;
 //Create forward plane - elipsoid (on to write on)
 
 function resizeSphere(width, height) {
-  let radius = height / 2;
+  let radius = 1;
   var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
 
-  scalex = (width / 2) / radius;
-  scaley = (height / 2) / radius;
+  scalex = width / 2;
+  scaley = height / 2;
   geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, scalex ) );
 
   var mesh = new THREE.Mesh(geometry, material1);
