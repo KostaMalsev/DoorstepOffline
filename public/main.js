@@ -38,6 +38,7 @@ let removeConnectionMessage = () => {
 
 // Render main video
 let renderVideo = (stream) => {
+  console.log("Rendering big video", stream);
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
     videoEl.play();
