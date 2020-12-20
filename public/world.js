@@ -30,7 +30,6 @@ scene2.add(camera);
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = 'fixed';
-cssRenderer.domElement.style.cursor = 'pointer';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
@@ -80,7 +79,12 @@ camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
-cssRenderer.domElement.addEventListener('click', clickedOnScreen);
+var url = new URL(window.location.href);
+var peerId = url.searchParams.get('room');
+if (!peerId) {
+  cssRenderer.domElement.addEventListener('click', clickedOnScreen);
+  cssRenderer.domElement.style.cursor = 'pointer';
+}
 
 //Create device binded controls:
 //They will listen also to rotation from net
