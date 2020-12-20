@@ -82,6 +82,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       logMessage('Established connection with room admin');
+      conn.send({width: window.innerWidth, height: window.innerHeight});
     });
 
     // When receiving data from admin
@@ -119,10 +120,16 @@ peer.on('connection', (conn) => {
   // When reciving data from participant
   conn.on('data', (data) => {
 
-    // Hook with world.js:
-    // Rotate the admin's virtual camera
-    // Based on participant's device rotation
-    rotateCamera(data);
+    if (!data.width) {
+      // Hook with world.js:
+      // Rotate the admin's virtual camera
+      // Based on participant's device rotation
+      rotateCamera(data);
+    }
+    
+    else {
+      resizeTo(data.width, data.height);
+    }
 
   });
 
