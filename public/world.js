@@ -83,6 +83,8 @@ var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 var tempRadius = new THREE.Vector3();
 
+var videoEl = document.querySelector('.remote-video');
+
 // Sample mouse readings
 function setMouse(event){
   //mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
