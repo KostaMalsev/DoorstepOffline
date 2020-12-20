@@ -78,34 +78,14 @@ mesh.position.x = 0;
 
 //Create forward plane - elipsoid (on to write on)
 
-function resizeSphere(width, height) {
-  var width = document.querySelector('.remote-video').clientWidth;
-  var height = document.querySelector('.remote-video').clientHeight;
 
-  resizeTo(width, height);
 
-  /*
-  let radius = 1;
-  var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
-
-  scalex = (width / 2) / 1000;
-  scaley = (height / 2) / 1000;
-  geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, scalex ) );
-
-  var mesh = new THREE.Mesh(geometry, material1);
-  mesh.rotation.x = 0;
-  mesh.position.y = 0;
-  mesh.position.z = 0;
-  mesh.position.x = 0;
-  camera.add(mesh)
-  */
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000), material1);
-  mesh.rotation.x = 0;
-  mesh.position.y = 0;
-  mesh.position.z = -1; //-10 -80
-  mesh.position.x = 0;
-  camera.add(mesh)
-}
+const mesh = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000), material1);
+mesh.rotation.x = 0;
+mesh.position.y = 0;
+mesh.position.z = -1; //-10 -80
+mesh.position.x = 0;
+camera.add(mesh)
 
 // Bind the plane with roating camera
 let pivot_ = new THREE.Object3D();
@@ -187,12 +167,45 @@ function resize() {
   render();
 }
 
+
+
+function render() {
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+  cssRenderer.render(scene2, camera);
+  DevControls.update();
+}
+
+render();
+
+// Rotate camera with pitch, roll, yual
+function rotateCamera(data) {
+  UpdateRotFromNet2(data)
+}
+
+
+
 function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
 
+  function getPosition(elm) {
+    var xPos = 0, yPos = 0;
+
+    while(elm) {
+      xPos += (elm.offsetLeft - elm.scrollLeft + elm.clientLeft);
+      yPos += (elm.offsetTop - elm.scrollTop + elm.clientTop);
+      elm = elm.offsetParent;
+    }
+
+    return { x: xPos, y: yPos };
+  }
+
+  let result = getPosition(document.querySelector('.remote-video'));
+
   console.log(document.querySelector('.remote-video').getBoundingClientRect());
+  console.log(result);
 
   setTimeout(() => {
     var left = document.querySelector('.remote-video').getBoundingClientRect().left;
@@ -209,16 +222,27 @@ function resizeTo(width, height) {
   }, 200);
 }
 
-function render() {
-  requestAnimationFrame(render);
-  renderer.render(scene, camera);
-  cssRenderer.render(scene2, camera);
-  DevControls.update();
-}
 
-render();
+function resizeSphere(width, height) {
+  var width = document.querySelector('.remote-video').clientWidth;
+  var height = document.querySelector('.remote-video').clientHeight;
 
-// Rotate camera with pitch, roll, yual
-function rotateCamera(data) {
-  UpdateRotFromNet2(data)
+  resizeTo(width, height);
+
+  /*
+  let radius = 1;
+  var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
+
+  scalex = (width / 2) / 1000;
+  scaley = (height / 2) / 1000;
+  geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, scalex ) );
+
+  var mesh = new THREE.Mesh(geometry, material1);
+  mesh.rotation.x = 0;
+  mesh.position.y = 0;
+  mesh.position.z = 0;
+  mesh.position.x = 0;
+  camera.add(mesh)
+  */
+
 }
