@@ -503,7 +503,7 @@ DeviceOrientationController.prototype = Object.create(THREE.EventDispatcher.prot
 // Update rotation from net
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
-  DeviceOrientationController.UpdateRotFromNet({
+  new DeviceOrientationController(camera, cssRenderer.domElement).UpdateRotFromNet({
     alpha: parseFloat(data.alpha),
     beta: parseFloat(data.beta),
     gamma: parseFloat(data.gamma)
