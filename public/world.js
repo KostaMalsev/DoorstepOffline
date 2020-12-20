@@ -76,7 +76,7 @@ var DevControls = new DeviceOrientationController( camera, cssRenderer.domElemen
 DevControls.connect();
 
 // Set resize (reshape) callback
-window.addEventListener( 'resize', resize );
+//window.addEventListener( 'resize', resize );
 
 // Create raycaster
 var raycaster = new THREE.Raycaster();
@@ -125,7 +125,7 @@ function createPoint(pt) {
   vricon.position.z = pt.z;//intersects[0].point.z + 0.1;
 }
 
-function resize() {
+/*function resize() {
 	width = window.innerWidth;
 	height = window.innerHeight;
 	camera.right = width;
@@ -134,7 +134,7 @@ function resize() {
 	renderer.setSize(width,height);
   cssRenderer.setSize(width,height);
 	render();
-}
+}*/
 
 function resizeTo(innerWidth, innerHeight) {
 	width = innerWidth;
