@@ -10,8 +10,8 @@
  * These terms are used in the script
  * to differentiate between peers:
  *
- * "Admin": Room Creator (Usually: Computer)
- * "Participant": Room Joiner (Usually: Mobile Device)
+ * "Admin": Room Creator (Typically: Computer)
+ * "Participant": Room Joiner (Typically: Mobile Device)
  */
 
 let Peer = window.Peer;
@@ -122,6 +122,7 @@ peer.on('connection', (conn) => {
     // Hook with world.js:
     // Rotate the admin's virtual camera
     // Based on participant's device rotation
+    logMessage(JSON.parse(data));
     rotateCamera(data);
 
   });
