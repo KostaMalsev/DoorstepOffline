@@ -18,6 +18,10 @@ body {
   background: black;
 }
 
+.video-wrapper .wrapper {
+  position: relative;
+}
+
 .remote-video {
   width: 100vw;
   height: 100vh;
