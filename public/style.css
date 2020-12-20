@@ -5,6 +5,7 @@ body {
   line-height: 1.5em;
   margin: 0;
   height: 100vh;
+  display: flex;
   background: black;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -15,6 +16,7 @@ body {
   background: black;
   object-fit: none;
   margin: auto;
+  position: relative;
 }
 
 .remote-video.remote {
