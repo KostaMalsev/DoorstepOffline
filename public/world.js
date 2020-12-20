@@ -11,7 +11,7 @@
 
 var scene = new THREE.Scene();
 //var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-var camera = new THREE.PerspectiveCamera(89, window.innerWidth / window.innerHeight, 0.1, 900000);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
@@ -97,7 +97,7 @@ function resizeSphere(width, height) {
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000), material1);
   mesh.rotation.x = 0;
   mesh.position.y = 0;
-  mesh.position.z = -90000; //-10 -80
+  mesh.position.z = -500; //-10 -80
   mesh.position.x = 0;
   camera.add(mesh)
 }
