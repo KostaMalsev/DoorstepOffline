@@ -4,12 +4,10 @@
  * Script handles peer-to-peer communication
  * and hooks to world.js and gyro.js
  * to synchronize rotation with 3d world. 
- */
-
-/* Script terms:
- * These terms are used in the script
- * to differentiate between peers:
  *
+ * Script terms:
+ * These terms are used in the script
+ * to differentiate between peers.
  * "Admin": Room Creator (Typically: Computer)
  * "Participant": Room Joiner (Typically: Mobile Device)
  */
