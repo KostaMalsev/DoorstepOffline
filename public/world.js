@@ -10,7 +10,8 @@
  */
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+//var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
@@ -165,6 +166,15 @@ function createPoint(pt) {
 function resize() {
   width = window.innerWidth;
   height = window.innerHeight;
+  camera.right = width;
+  camera.bottom = height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+  cssRenderer.setSize(width, height);
+  render();
+}
+
+function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
