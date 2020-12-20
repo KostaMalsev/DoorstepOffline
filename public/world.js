@@ -205,13 +205,14 @@ function resizeTo(width, height) {
   let result = getPosition(document.querySelector('.remote-video'));
 
   console.log(document.querySelector('.remote-video').getBoundingClientRect());
-  console.log(result);
+
 
   setTimeout(() => {
     //var left = document.querySelector('.remote-video').getBoundingClientRect().left;
     //var top = document.querySelector('.remote-video').getBoundingClientRect().top;
     var left = result.x;
     var top = result.y;
+    console.log(top);
 
     renderer.domElement.style.left = left + 'px';
     cssRenderer.domElement.style.left = left + 'px';
