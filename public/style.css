@@ -5,6 +5,7 @@ body {
   line-height: 1.5em;
   margin: 0;
   height: 100vh;
+  background: black;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -14,10 +15,10 @@ body {
   background: black;
   object-fit: none;
   margin: auto;
-  box-shadow: 0 0 45px #fff;
 }
 
 .remote-video.remote {
+  box-shadow: 0 0 45px #fff;
   border-radius: 53px;
 }
 
@@ -40,6 +41,7 @@ body {
   right: 0;
   bottom: 0;
   border-radius: 0;
+  transition: none;
 }
 
 .messages {
