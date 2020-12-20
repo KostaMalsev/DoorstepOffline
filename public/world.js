@@ -79,6 +79,8 @@ mesh.position.x = 0;
 //Create forward plane - elipsoid (on to write on)
 
 function resizeSphere(width, height) {
+  resizeTo(width, height);
+
   /*
   let radius = 1;
   var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
@@ -186,6 +188,15 @@ function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
+
+  var left = document.querySelector('.remote-video').getBoundingClientRect().left;
+  var top = document.querySelector('.remote-video').getBoundingClientRect().top;
+
+  renderer.domElement.style.left = left + 'px';
+  cssRenderer.domElement.style.left = left + 'px';
+  renderer.domElement.style.left = top + 'px';
+  cssRenderer.domElement.style.left = top + 'px';
+
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
