@@ -24,7 +24,7 @@ let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 10
 
 // Utility function - Log message
 let logMessage = (message) => {
-  messagesEl.innerHTML = message;
+  messagesEl.innerHTML = '<div>' + message + '</div>';
 };
 
 // Utility function - Remove connectivity message
