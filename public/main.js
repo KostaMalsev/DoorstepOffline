@@ -38,7 +38,6 @@ let removeConnectionMessage = () => {
 
 // Render main video
 let renderVideo = (stream) => {
-  console.log("Rendering big video", stream);
   videoEl.srcObject = stream;
   videoEl.onloadedmetadata = () => {
     videoEl.play();
@@ -60,12 +59,11 @@ let peer = new Peer({
   path: '/peerjs/myapp'
 });
 
-// Show "Connecting" message
-logMessage(loaderSVG + 'Connecting');
-
 // On connection to server
 let peerConn;
 peer.on('open', (id) => {
+  
+  logMessage('');
 
   // If creating meeting
   if (!peerId) {
@@ -104,7 +102,7 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
-  logMessage(error);
+  //logMessage(error);
 });
 
 // Handle incoming data connection
@@ -117,8 +115,6 @@ peer.on('connection', (conn) => {
 
   conn.on('open', () => {
     //logMessage('Established connection with room participant');
-    cssRenderer.domElement.addEventListener('click', clickedOnScreen);
-    cssRenderer.domElement.style.cursor = 'pointer';
   });
 
   // When reciving data from participant
@@ -199,7 +195,6 @@ else {
   logMessage(loaderSVG + 'Connecting');
 
   // Show big video
-  videoEl.classList.add('remote');
   myVideoEl.classList.add('big');
   myVideoEl.muted = "muted";
   
