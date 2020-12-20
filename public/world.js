@@ -76,21 +76,17 @@ var DevControls = new DeviceOrientationController( camera, cssRenderer.domElemen
 DevControls.connect();
 
 // Set resize (reshape) callback
-//window.addEventListener( 'resize', resize );
+window.addEventListener( 'resize', resize );
 
 // Create raycaster
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 var tempRadius = new THREE.Vector3();
 
-var videoEl = document.querySelector('.remote-video');
-
 // Sample mouse readings
 function setMouse(event){
-  //mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  //mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-  mouse.x = ( event.clientX / videoEl.clientWidth ) * 2 - 1;
-  mouse.y = - ( event.clientY / videoEl.clientHeight ) * 2 + 1;
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 }
 
 //Set raycaster from camera:
@@ -129,7 +125,7 @@ function createPoint(pt) {
   vricon.position.z = pt.z;//intersects[0].point.z + 0.1;
 }
 
-/*function resize() {
+function resize() {
 	width = window.innerWidth;
 	height = window.innerHeight;
 	camera.right = width;
@@ -137,26 +133,6 @@ function createPoint(pt) {
 	camera.updateProjectionMatrix();
 	renderer.setSize(width,height);
   cssRenderer.setSize(width,height);
-	render();
-}*/
-
-function resizeTo(innerWidth, innerHeight) {
-	width = innerWidth;
-	height = innerHeight;
-	
-	camera.right = width;
-	camera.bottom = height;
-	camera.updateProjectionMatrix();
-	
-	renderer.setSize(width,height);
-  cssRenderer.setSize(width,height);
-	
-	renderer.domElement.style.left = videoEl.getBoundingClientRect().left + 'px';
-	renderer.domElement.style.top = videoEl.getBoundingClientRect().top + 'px';
-	
-	cssRenderer.domElement.style.left = videoEl.getBoundingClientRect().left + 'px';
-  cssRenderer.domElement.style.top = videoEl.getBoundingClientRect().top + 'px';
-	
 	render();
 }
 
