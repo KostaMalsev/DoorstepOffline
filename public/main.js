@@ -129,6 +129,8 @@ peer.on('connection', (conn) => {
     
     else {
       resizeTo(data.width, data.height);
+      videoEl.style.width = data.width;
+      videoEl.style.height = data.height;
     }
 
   });
