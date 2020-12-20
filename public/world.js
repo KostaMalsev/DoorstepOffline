@@ -81,8 +81,8 @@ function resizeSphere(width, height) {
   let radius = 1;
   var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
 
-  scalex = (width / 2) / 5;
-  scaley = (height / 2) / 5;
+  scalex = (width / 2) / 10;
+  scaley = (height / 2) / 10;
   geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, scalex ) );
 
   var mesh = new THREE.Mesh(geometry, material1);
