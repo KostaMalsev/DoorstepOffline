@@ -118,11 +118,13 @@ peer.on('connection', (conn) => {
 
   // When reciving data from participant
   conn.on('data', (data) => {
+    
+    /// @@@ DEBUG
+    logMessage(JSON.stringify(data));
 
     // Hook with world.js:
     // Rotate the admin's virtual camera
     // Based on participant's device rotation
-    logMessage(data);
     rotateCamera(data);
 
   });
