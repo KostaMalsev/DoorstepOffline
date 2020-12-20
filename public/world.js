@@ -208,8 +208,10 @@ function resizeTo(width, height) {
   console.log(result);
 
   setTimeout(() => {
-    var left = document.querySelector('.remote-video').getBoundingClientRect().left;
-    var top = document.querySelector('.remote-video').getBoundingClientRect().top;
+    //var left = document.querySelector('.remote-video').getBoundingClientRect().left;
+    //var top = document.querySelector('.remote-video').getBoundingClientRect().top;
+    var left = result.x;
+    var top = result.y;
 
     renderer.domElement.style.left = left + 'px';
     cssRenderer.domElement.style.left = left + 'px';
@@ -219,7 +221,7 @@ function resizeTo(width, height) {
     renderer.setSize(width, height);
     cssRenderer.setSize(width, height);
     render();
-  }, 200);
+  }, 10);
 }
 
 
