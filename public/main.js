@@ -59,11 +59,12 @@ let peer = new Peer({
   path: '/peerjs/myapp'
 });
 
+// Show "Connecting" message
+logMessage(loaderSVG + 'Connecting');
+
 // On connection to server
 let peerConn;
 peer.on('open', (id) => {
-  
-  logMessage('');
 
   // If creating meeting
   if (!peerId) {
@@ -102,7 +103,7 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
-  //logMessage(error);
+  logMessage(error);
 });
 
 // Handle incoming data connection
