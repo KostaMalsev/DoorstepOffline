@@ -13,7 +13,7 @@ camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-renderer.domElement.style.position = 'fixed';
+renderer.domElement.style.position = 'absolute';
 renderer.domElement.style.top = 0;
 renderer.domElement.style.left = 0;
 renderer.domElement.style.zIndex = 2;
@@ -25,7 +25,7 @@ scene2.add(camera);
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
-cssRenderer.domElement.style.position = 'fixed';
+cssRenderer.domElement.style.position = 'absolute';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
