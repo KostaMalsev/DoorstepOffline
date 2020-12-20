@@ -1,5 +1,7 @@
+@import url('https://bassets.github.io/SFProText/SFProText.css');
+
 body {
-  font-family: sans-serif;
+  font-family: 'SF Pro Text', Segoe UI, sans-serif;
   line-height: 1.5em;
   margin: 0;
   user-select: none;
@@ -117,7 +119,6 @@ body {
   font-size: 13.5px;
   line-height: 1.561;
   position: relative;
-  font-family: "SF Pro Text";
   letter-spacing: -0.1px;
   transform: scale(1.05);
   transition: .2s ease;
