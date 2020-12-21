@@ -140,6 +140,7 @@ body {
   line-height: 1.23536;
   letter-spacing: -.022em;
   height: calc(100% - 3.27974em);
+  height: calc(100% - 2.61974em);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -150,6 +151,7 @@ body {
   width: 15.500em;
   position: absolute;
   height: 3.27974em;
+  height: 2.61974em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,7 +186,7 @@ body {
   margin: 0;
   position: absolute;
   border: 0;
-  height: 3.27974em;
+  height: 100%;
   background: #424245;
   width: 1px;
   pointer-events: none;
