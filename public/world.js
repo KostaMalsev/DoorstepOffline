@@ -97,8 +97,10 @@ var tempRadius = new THREE.Vector3();
 
 // Sample mouse readings
 function setMouse(event) {
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  //mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  //mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  mouse.x = (event.clientX / 375) * 2 - 1;
+  mouse.y = -(event.clientY / 375) * 2 + 1;
 }
 
 //Set raycaster from camera:
