@@ -17,9 +17,11 @@ var renderer = new THREE.WebGLRenderer({
   alpha: true
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
-
-renderer.domElement.classList = 'threeRenderer';
-document.querySelector('.world').appendChild(renderer.domElement);
+document.body.appendChild(renderer.domElement);
+renderer.domElement.style.position = 'fixed';
+renderer.domElement.style.top = 0;
+renderer.domElement.style.left = 0;
+renderer.domElement.style.zIndex = 2;
 
 // Create CSS scene:
 const scene2 = new THREE.Scene();
@@ -28,9 +30,11 @@ scene2.add(camera);
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
-
-cssRenderer.domElement.classList = 'cssRenderer';
-document.querySelector('.world').appendChild(cssRenderer.domElement);
+cssRenderer.domElement.style.position = 'fixed';
+cssRenderer.domElement.style.top = 0;
+cssRenderer.domElement.style.left = 0;
+cssRenderer.domElement.style.zIndex = 3;
+document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
 var normal = new THREE.Vector3(0, 0, -1);
@@ -153,10 +157,8 @@ function createPoint(pt) {
 }
 
 function resize() {
-  /*width = window.innerWidth;
-  height = window.innerHeight;*/
-  //width = 100;
-  //height = 100;
+  width = window.innerWidth;
+  height = window.innerHeight;
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
@@ -181,32 +183,21 @@ function rotateCamera(data) {
   updateRotationTo(data)
 }
 
-function resizeTo(pwidth, pheight) {
-  /*
-  console.log(pwidth,pheight);
-  let cwidth = window.innerWidth;
-  let cheight = window.innerHeight;
-  //Calculate the video size shrinked to computer size (cheight)
-  let height = cheight;//for portrait cases
-  let width = cheight*(pwidth/pheight);//fit to new width size
-
-  document.querySelector('.remote-video').style.width = width + 'px';
-  document.querySelector('.remote-video').style.height = height + 'px';
-
+function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
-  cssRenderer.setSize(width, height);
-  render();*/
+  
+  var left = (window.innerWidth - width) / 2;
+  var top = (window.innerHeight - height) / 2;
+  console.log(top, left);
 
-  width = pwidth;
-  height = pheight;
-  camera.right = width;
-  camera.bottom = height;
-  camera.updateProjectionMatrix();
+  renderer.domElement.style.left = left + 'px';
+  cssRenderer.domElement.style.left = left + 'px';
+  renderer.domElement.style.left = top + 'px';
+  cssRenderer.domElement.style.left = top + 'px';
+
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
-  */
 }
