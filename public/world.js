@@ -166,3 +166,7 @@ render();
 function rotateCamera(data) {
   updateRotationTo(data)
 }
+
+function resizeTHREETo(width, height) {
+  // Do something with [width] and [height]
+}
