@@ -153,8 +153,10 @@ function createPoint(pt) {
 }
 
 function resize() {
-  width = window.innerWidth;
-  height = window.innerHeight;
+  /*width = window.innerWidth;
+  height = window.innerHeight;*/
+  width = 100;
+  height = 100;
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
