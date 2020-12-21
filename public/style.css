@@ -125,6 +125,7 @@ body {
   position: relative;
   letter-spacing: -0.1px;
   transform: scale(1.05);
+  transition: 0s .2s;
 }
 
 .prompt-wrapper.visible .prompt {
