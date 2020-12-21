@@ -10,8 +10,7 @@
  */
 
 var scene = new THREE.Scene();
-//var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
@@ -67,29 +66,16 @@ const material1 = new THREE.MeshBasicMaterial({
   alphaTest: 0,
   visible: false
 });
-
-/*
 const mesh = new THREE.Mesh(new THREE.PlaneGeometry(window.innerWidth, window.innerHeight), material1);
 mesh.rotation.x = 0;
 mesh.position.y = 0;
 mesh.position.z = -10; //-80
 mesh.position.x = 0;
-*/
-
-//Create forward plane - elipsoid (on to write on)
-
-
-
-const mesh = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000), material1);
-mesh.rotation.x = 0;
-mesh.position.y = 0;
-mesh.position.z = -1; //-10 -80
-mesh.position.x = 0;
-camera.add(mesh)
 
 // Bind the plane with roating camera
 let pivot_ = new THREE.Object3D();
 pivot_.position.z = 0;
+camera.add(mesh)
 camera.add(pivot_)
 scene.add(camera)
 
@@ -150,7 +136,7 @@ function createPoint(pt) {
   vricon.position.x = pt.x; //intersects[0].point.x;
   vricon.position.y = pt.y; //intersects[0].point.y;
   vricon.position.z = pt.z; //intersects[0].point.z + 0.1;
-
+  
   setTimeout(() => {
     scene2.remove(vricon);
   }, 8000);
@@ -167,8 +153,6 @@ function resize() {
   render();
 }
 
-
-
 function render() {
   requestAnimationFrame(render);
   renderer.render(scene, camera);
@@ -181,25 +165,4 @@ render();
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
   updateRotationTo(data)
-}
-
-function resizeTo(width, height) {
-  /*
-  camera.right = width;
-  camera.bottom = height;
-  camera.updateProjectionMatrix();
-
-  var left = (window.innerWidth - width) / 2;
-  var top = (window.innerHeight - height) / 2;
-  console.log(top, left);
-
-  renderer.domElement.style.left = left + 'px';
-  cssRenderer.domElement.style.left = left + 'px';
-  renderer.domElement.style.left = top + 'px';
-  cssRenderer.domElement.style.left = top + 'px';
-
-  renderer.setSize(width, height);
-  cssRenderer.setSize(width, height);
-  render();
-  */
 }
