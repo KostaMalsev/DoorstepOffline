@@ -155,8 +155,8 @@ function createPoint(pt) {
 function resize() {
   /*width = window.innerWidth;
   height = window.innerHeight;*/
-  width = 100;
-  height = 100;
+  //width = 100;
+  //height = 100;
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
@@ -189,7 +189,7 @@ function resizeTo(pwidth, pheight) {
   //Calculate the video size shrinked to computer size (cheight)
   let height = cheight;//for portrait cases
   let width = cheight*(pwidth/pheight);//fit to new width size
-  
+
   document.querySelector('.remote-video').style.width = width + 'px';
   document.querySelector('.remote-video').style.height = height + 'px';
 
@@ -199,7 +199,7 @@ function resizeTo(pwidth, pheight) {
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();*/
-  
+
   width = pwidth;
   height = pheight;
   camera.right = width;
@@ -208,4 +208,5 @@ function resizeTo(pwidth, pheight) {
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
+  */
 }
