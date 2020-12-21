@@ -47,15 +47,6 @@ let renderVideo = (stream) => {
   }
 };
 
-let renderVideoAdmin = (stream) => {
-  videoEl.srcObject = stream;
-  videoEl.onloadedmetadata = () => {
-    videoEl.play();
-    removeConnectionMessage();
-    resizeSphere();
-  }
-};
-
 // Render tiny video
 let renderMyVideo = (stream) => {
   myVideoEl.srcObject = stream;
@@ -96,6 +87,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
+      conn.send({ width: window.innerWidth, height: window.innerHeight });
     });
 
     // When receiving data from admin
@@ -132,10 +124,16 @@ peer.on('connection', (conn) => {
   // When reciving data from participant
   conn.on('data', (data) => {
 
-    // Hook with world.js:
-    // Rotate the admin's virtual camera
-    // Based on participant's device rotation
-    rotateCamera(data);
+    if (data.width == undefined) {
+      // Hook with world.js:
+      // Rotate the admin's virtual camera
+      // Based on participant's device rotation
+      rotateCamera(data);
+    }
+    
+    else {
+      resizeTo(data);
+    }
 
   });
 
@@ -149,7 +147,7 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
-    renderVideoAdmin(s);
+    renderVideo(s);
   });
 
   call.on('error', () => {
