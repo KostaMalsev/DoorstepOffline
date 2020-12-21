@@ -188,16 +188,16 @@ function resizeTo(width, height) {
   camera.bottom = height;
   camera.updateProjectionMatrix();
   
-  var left = (window.innerWidth - width) / 2;
-  var top = (window.innerHeight - height) / 2;
+  var left = (document.body.clientWidth - width) / 2;
+  var top = (document.body.clientHeight - height) / 2;
   console.log(top, left);
 
+  /*
   renderer.domElement.style.left = left + 'px';
   cssRenderer.domElement.style.left = left + 'px';
   renderer.domElement.style.left = top + 'px';
   cssRenderer.domElement.style.left = top + 'px';
-
-  console.log(renderer.domElement, cssRenderer.domElement);
+  */
   
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
