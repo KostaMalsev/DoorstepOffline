@@ -205,7 +205,8 @@ function resizeSphere(pwidth, pheight) {
   //var width = document.querySelector('.remote-video').clientWidth;
   //var height = document.querySelector('.remote-video').clientHeight;
 
-  console.log("received size from client" ,pwidth,pheight);
+  console.log("received size from client");
+  console.log(pwidth,pheight);
   let cwidth = window.innerWidth;
   let cheight = window.innerHeight;
   //Calculate the video size shrinked to computer size (cheight)
