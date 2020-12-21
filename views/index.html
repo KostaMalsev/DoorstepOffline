@@ -1,3 +1,5 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,9 +10,11 @@
 
     <title>Camarker - Join Meeting</title>
 
+    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
   </head>
 <body>
+  <video class="remote-video" playsinline="" crossorigin="anonymous"></video>
   <video class="my-video" playsinline="" crossorigin="anonymous"></video>
   <div class="messages"></div>
   <div class="button-wrapper">
@@ -26,18 +30,13 @@
       </div>
     </div>
   </div>
-  <div class="world-wrapper">
-    <div class="world">
-      <video class="remote-video" playsinline="" crossorigin="anonymous"></video>
-    </div>
-  </div>
 
 <!-- import libraries -->
 <script src="/lib/peerjs.js"></script>
 <script src="/lib/three.min.js"></script>
 <script src="/lib/CSS2DRenderer.js"></script>
 
-<!-- import javascript files -->
+<!-- import the webpage's client-side javascript files -->
 <script src="/main.js" type="module"></script>
 <script src="/DeviceOrientationController.js"></script>
 <script src="/world.js"></script>
