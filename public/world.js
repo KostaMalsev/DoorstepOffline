@@ -184,10 +184,11 @@ function rotateCamera(data) {
 }
 
 function resizeTo(width, height) {
+  /*
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
-  
+
   var left = (window.innerWidth - width) / 2;
   var top = (window.innerHeight - height) / 2;
   console.log(top, left);
@@ -200,4 +201,5 @@ function resizeTo(width, height) {
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
+  */
 }
