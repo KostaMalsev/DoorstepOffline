@@ -180,10 +180,8 @@ render();
 
 // Rotate camera with pitch, roll, yual
 function rotateCamera(data) {
-  UpdateRotFromNet2(data)
+  updateRotationTo(data)
 }
-
-
 
 function resizeTo(width, height) {
   camera.right = width;
