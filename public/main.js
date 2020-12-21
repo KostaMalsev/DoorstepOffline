@@ -132,7 +132,7 @@ peer.on('connection', (conn) => {
     }
     
     else {
-      resizeTo(data);
+      resizeTo(data.width, data.height);
     }
 
   });
