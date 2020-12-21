@@ -182,30 +182,37 @@ function rotateCamera(data) {
 function resizeTo(width, height) {
   document.querySelector('.remote-video').style.width = width + 'px';
   document.querySelector('.remote-video').style.height = height + 'px';
-  
+
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
-  
+
   //var left = (document.body.clientWidth - width) / 2;
   //var top = (document.body.clientHeight - height) / 2;
-  
+
   //renderer.domElement.style.left = left + 'px';
   //cssRenderer.domElement.style.left = left + 'px';
   //renderer.domElement.style.top = top + 'px';
   //cssRenderer.domElement.style.top = top + 'px';
-  
+
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
 }
 
 
-function resizeSphere(width, height) {
-  var width = document.querySelector('.remote-video').clientWidth;
-  var height = document.querySelector('.remote-video').clientHeight;
+function resizeSphere(pwidth, pheight) {
+  //var width = document.querySelector('.remote-video').clientWidth;
+  //var height = document.querySelector('.remote-video').clientHeight;
 
-  resizeTo(width, height);
+  console.log("received size from client" ,pwidth,pheight);
+  let cwidth = window.innerWidth;
+  let cheight = window.innerHeight;
+  //Calculate the video size shrinked to computer size (cheight)
+  let vheight = cheight;//for portrait cases
+  let vwidth = cheight*(pwidth/pheight);//fit to new width size
+
+  resizeTo(vwidth, vheight);
 
   /*
   let radius = 1;
