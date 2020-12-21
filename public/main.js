@@ -100,8 +100,6 @@ peer.on('open', (id) => {
 
     // When receiving data from admin
     conn.on('data', (data) => {
-      //messagesEl.innerHTML = 'Received marker ' + JSON.stringify(data);
-
       // Add point to 3d world
       let pt = {
         x: data.x,
@@ -255,7 +253,6 @@ let sendMarker = (data) => {
   if (theadminConn) {
 
     // Send marker data
-    console.log('Sending', data);
     theadminConn.send(data);
 
   }
