@@ -17,11 +17,9 @@ var renderer = new THREE.WebGLRenderer({
   alpha: true
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-renderer.domElement.style.position = 'fixed';
-renderer.domElement.style.top = 0;
-renderer.domElement.style.left = 0;
-renderer.domElement.style.zIndex = 2;
+
+renderer.domElement.classList = 'threeRenderer';
+document.querySelector('.world').appendChild(renderer.domElement);
 
 // Create CSS scene:
 const scene2 = new THREE.Scene();
@@ -30,11 +28,9 @@ scene2.add(camera);
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
-cssRenderer.domElement.style.position = 'fixed';
-cssRenderer.domElement.style.top = 0;
-cssRenderer.domElement.style.left = 0;
-cssRenderer.domElement.style.zIndex = 3;
-document.body.appendChild(cssRenderer.domElement);
+
+cssRenderer.domElement.classList = 'cssRenderer';
+document.querySelector('.world').appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
 var normal = new THREE.Vector3(0, 0, -1);
@@ -188,14 +184,13 @@ function resizeTo(width, height) {
   camera.bottom = height;
   camera.updateProjectionMatrix();
   
-  var left = (document.body.clientWidth - width) / 2;
-  var top = (document.body.clientHeight - height) / 2;
-  console.log(top, left);
+  //var left = (document.body.clientWidth - width) / 2;
+  //var top = (document.body.clientHeight - height) / 2;
   
-  renderer.domElement.style.left = '10px';
-  cssRenderer.domElement.style.left = '10px';
-  renderer.domElement.style.top = '10px';
-  cssRenderer.domElement.style.top = '10px';
+  //renderer.domElement.style.left = left + 'px';
+  //cssRenderer.domElement.style.left = left + 'px';
+  //renderer.domElement.style.top = top + 'px';
+  //cssRenderer.domElement.style.top = top + 'px';
   
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
