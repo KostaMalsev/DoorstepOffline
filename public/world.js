@@ -10,12 +10,14 @@
  */
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+//var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+var camera = new THREE.PerspectiveCamera(60, 375 / 375, 1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
+//renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(375, 375);
 document.body.appendChild(renderer.domElement);
 renderer.domElement.style.position = 'fixed';
 renderer.domElement.style.top = 0;
@@ -28,7 +30,8 @@ scene2.add(camera);
 
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
-cssRenderer.setSize(window.innerWidth, window.innerHeight);
+//cssRenderer.setSize(window.innerWidth, window.innerHeight);
+cssRenderer.setSize(375, 375);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
@@ -143,6 +146,7 @@ function createPoint(pt) {
 }
 
 function resize() {
+  /*
   width = window.innerWidth;
   height = window.innerHeight;
   camera.right = width;
@@ -150,7 +154,7 @@ function resize() {
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
-  render();
+  render();*/
 }
 
 function render() {
