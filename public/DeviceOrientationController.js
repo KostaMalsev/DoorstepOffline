@@ -396,6 +396,8 @@ var DeviceOrientationController = function(object, domElement) {
 
   //Update rotation from net:
   this.UpdateRotFromNet = function(e) {
+    console.log("In UpdateRotFromNet");
+    
     //Remove touch events of mouse when is controlled by net
     window.removeEventListener('resize', this.onDocumentMouseDown, false);
     window.removeEventListener('resize', this.onDocumentTouchStart, false);
@@ -403,7 +405,7 @@ var DeviceOrientationController = function(object, domElement) {
     this.deviceOrientation.alpha = e.detail.alpha;
     this.deviceOrientation.beta = e.detail.beta;
     this.deviceOrientation.gamma = e.detail.gamma;
-    
+
     // Update rotation with new data
     this.updateDeviceMove();
   }.bind(this);
@@ -495,6 +497,7 @@ DeviceOrientationController.prototype = Object.create(THREE.EventDispatcher.prot
 
 // Update rotation from peer
 function updateRotationTo(e) {
+
   window.dispatchEvent(new CustomEvent('rotation-net-set', {
     detail: {
       alpha: e.alpha,
