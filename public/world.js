@@ -180,6 +180,9 @@ function rotateCamera(data) {
 }
 
 function resizeTo(width, height) {
+  document.querySelector('.remote-video').style.width = width + 'px';
+  document.querySelector('.remote-video').style.height = height + 'px';
+  
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
