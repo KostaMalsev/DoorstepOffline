@@ -187,40 +187,19 @@ function resizeTo(width, height) {
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
+  
+  var left = (window.innerWidth - width) / 2;
+  var top = (window.innerHeight - height) / 2;
+  console.log(top, left);
 
-  function getPosition(elm) {
-    var xPos = 0, yPos = 0;
+  renderer.domElement.style.left = left + 'px';
+  cssRenderer.domElement.style.left = left + 'px';
+  renderer.domElement.style.left = top + 'px';
+  cssRenderer.domElement.style.left = top + 'px';
 
-    while(elm) {
-      xPos += (elm.offsetLeft - elm.scrollLeft + elm.clientLeft);
-      yPos += (elm.offsetTop - elm.scrollTop + elm.clientTop);
-      elm = elm.offsetParent;
-    }
-
-    return { x: xPos, y: yPos };
-  }
-
-  let result = getPosition(document.querySelector('.remote-video'));
-
-  console.log(document.querySelector('.remote-video').getBoundingClientRect());
-
-
-  setTimeout(() => {
-    //var left = document.querySelector('.remote-video').getBoundingClientRect().left;
-    //var top = document.querySelector('.remote-video').getBoundingClientRect().top;
-    var left = result.x;
-    var top = result.y;
-    console.log(top);
-
-    renderer.domElement.style.left = left + 'px';
-    cssRenderer.domElement.style.left = left + 'px';
-    renderer.domElement.style.left = top + 'px';
-    cssRenderer.domElement.style.left = top + 'px';
-
-    renderer.setSize(width, height);
-    cssRenderer.setSize(width, height);
-    render();
-  }, 10);
+  renderer.setSize(width, height);
+  cssRenderer.setSize(width, height);
+  render();
 }
 
 
