@@ -191,13 +191,11 @@ function resizeTo(width, height) {
   var left = (document.body.clientWidth - width) / 2;
   var top = (document.body.clientHeight - height) / 2;
   console.log(top, left);
-
-  /*
-  renderer.domElement.style.left = left + 'px';
-  cssRenderer.domElement.style.left = left + 'px';
-  renderer.domElement.style.left = top + 'px';
-  cssRenderer.domElement.style.left = top + 'px';
-  */
+  
+  renderer.domElement.style.left = '10px';
+  cssRenderer.domElement.style.left = '10px';
+  renderer.domElement.style.left = '10px';
+  cssRenderer.domElement.style.left = '10px';
   
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
