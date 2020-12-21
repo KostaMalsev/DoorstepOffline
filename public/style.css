@@ -4,24 +4,24 @@ body {
   font-family: 'SF Pro Text', Segoe UI, sans-serif;
   line-height: 1.5em;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  background: black;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 .remote-video {
+  width: 100vw;
+  position: fixed;
   z-index: -1000;
+  left: 0;
+  top: 0;
   background: black;
-  object-fit: none;
-  margin: auto;
-  position: relative;
+  height: 100vh;
+  object-fit: cover;
 }
 
-.remote-video.remote {
+/*.remote-video.remote {
   border-radius: 53px;
-}
+}*/
 
 .my-video {
   position: fixed;
