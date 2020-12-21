@@ -86,6 +86,7 @@ var DeviceOrientationController = function(object, domElement) {
 
   this.onDeviceOrientationChange = function(event) {
     this.deviceOrientation = event;
+    console.log("Gog deveice orientation change");
     //document.getElementById("Logs").innerHTML = `${event}`;
     //document.getElementById("Rotation").innerHTML = `${event.alpha}`;
 
@@ -95,6 +96,7 @@ var DeviceOrientationController = function(object, domElement) {
     this.screenOrientation = window.orientation || 0;
 
     fireEvent(CONTROLLER_EVENT.SCREEN_ORIENTATION);
+    console.log("Got onScreenOrientationChange");
   }.bind(this);
 
   this.onCompassNeedsCalibration = function(event) {
@@ -396,8 +398,7 @@ var DeviceOrientationController = function(object, domElement) {
 
   //Update rotation from net:
   this.UpdateRotFromNet = function(e) {
-    console.log(e)
-
+  
     //Remove touch events of mouse when is controlled by net
     window.removeEventListener('resize', this.onDocumentMouseDown, false);
     window.removeEventListener('resize', this.onDocumentTouchStart, false);
