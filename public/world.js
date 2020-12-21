@@ -180,6 +180,7 @@ function rotateCamera(data) {
 }
 
 function resizeTo(width, height) {
+  /*
   document.querySelector('.remote-video').style.width = width + 'px';
   document.querySelector('.remote-video').style.height = height + 'px';
 
@@ -198,6 +199,7 @@ function resizeTo(width, height) {
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
+  */
 }
 
 
