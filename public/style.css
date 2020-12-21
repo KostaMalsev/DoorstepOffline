@@ -14,13 +14,9 @@ body {
 .remote-video {
   z-index: -1000;
   background: black;
-  object-fit: fill;
+  object-fit: none;
   margin: auto;
   position: relative;
-  max-width: 100vw;
-  max-height: 100vh;
-  width: 100vw;
-  height: 100vh;
 }
 
 .remote-video.remote {
@@ -205,37 +201,6 @@ body {
   padding: 7px;
   border: 35px solid rgba(31, 138, 255, 0.2);
   animation: pop .25s cubic-bezier(.18,.89,.32,1.28), 8s .25s fade forwards;
-}
-
-.world-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-}
-
-.world {
-  position: relative;
-  margin: auto;
-}
-
-.world .threeRenderer {
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background: #add8e659;
-  position: absolute;
-}
-
-.world .cssRenderer {
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 3;
-  background: #f5deb340;
 }
 
 @keyframes pop {
