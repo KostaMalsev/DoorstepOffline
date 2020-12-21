@@ -396,17 +396,15 @@ var DeviceOrientationController = function(object, domElement) {
 
   //Update rotation from net:
   this.UpdateRotFromNet = function(e) {
-    //console.log("Got rotation event from net")
-    //console.log(e);//TBD
-
-    //Remove touch events of mouse when is controlled by net:
+    //Remove touch events of mouse when is controlled by net
     window.removeEventListener('resize', this.onDocumentMouseDown, false);
     window.removeEventListener('resize', this.onDocumentTouchStart, false);
 
     this.deviceOrientation.alpha = e.detail.alpha;
     this.deviceOrientation.beta = e.detail.beta;
     this.deviceOrientation.gamma = e.detail.gamma;
-    //Update rotation with new data:
+    
+    // Update rotation with new data
     this.updateDeviceMove();
   }.bind(this);
 
@@ -441,7 +439,6 @@ var DeviceOrientationController = function(object, domElement) {
 
         if (this.freeze) return;
 
-        //this.object.quaternion.slerp( deviceQuat, 0.07 ); // smoothing
         this.object.quaternion.copy(deviceQuat);
 
       }
@@ -459,7 +456,7 @@ var DeviceOrientationController = function(object, domElement) {
   };
 
 
-  //Bind controls to events:
+  // Bind controls to events
   this.connect = function() {
     window.addEventListener('resize', this.constrainObjectFOV, false);
 
@@ -468,7 +465,7 @@ var DeviceOrientationController = function(object, domElement) {
 
     window.addEventListener('compassneedscalibration', this.onCompassNeedsCalibration, false);
 
-    //Bind the  rotation event from net:
+    // Bind the rotation event from net
     window.addEventListener('rotation-net-set', this.UpdateRotFromNet, false);
 
     this.element.addEventListener('mousedown', this.onDocumentMouseDown, false);
@@ -497,7 +494,7 @@ DeviceOrientationController.prototype = Object.create(THREE.EventDispatcher.prot
 
 
 // Update rotation from peer
-function UpdateRotFromNet2(e) {
+function updateRotationTo(e) {
   window.dispatchEvent(new CustomEvent('rotation-net-set', {
     detail: {
       alpha: e.alpha,
