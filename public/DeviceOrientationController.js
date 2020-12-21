@@ -10,6 +10,9 @@
  *
  */
 
+// Check for mobile device
+let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
 var DeviceOrientationController = function(object, domElement) {
 
   this.object = object;
@@ -86,7 +89,6 @@ var DeviceOrientationController = function(object, domElement) {
 
   this.onDeviceOrientationChange = function(event) {
     this.deviceOrientation = event;
-    console.log("Gog deveice orientation change");
     //document.getElementById("Logs").innerHTML = `${event}`;
     //document.getElementById("Rotation").innerHTML = `${event.alpha}`;
 
@@ -96,7 +98,6 @@ var DeviceOrientationController = function(object, domElement) {
     this.screenOrientation = window.orientation || 0;
 
     fireEvent(CONTROLLER_EVENT.SCREEN_ORIENTATION);
-    console.log("Got onScreenOrientationChange");
   }.bind(this);
 
   this.onCompassNeedsCalibration = function(event) {
@@ -398,7 +399,7 @@ var DeviceOrientationController = function(object, domElement) {
 
   //Update rotation from net:
   this.UpdateRotFromNet = function(e) {
-  
+
     //Remove touch events of mouse when is controlled by net
     window.removeEventListener('resize', this.onDocumentMouseDown, false);
     window.removeEventListener('resize', this.onDocumentTouchStart, false);
@@ -463,9 +464,12 @@ var DeviceOrientationController = function(object, domElement) {
   this.connect = function() {
     window.addEventListener('resize', this.constrainObjectFOV, false);
 
-    window.addEventListener('orientationchange', this.onScreenOrientationChange, false);
-    window.addEventListener('deviceorientation', this.onDeviceOrientationChange, false);
-
+    //If is mobile device, bind orientation bindings:
+    if(isMobile)
+    {
+      window.addEventListener('orientationchange', this.onScreenOrientationChange, false);
+      window.addEventListener('deviceorientation', this.onDeviceOrientationChange, false);
+    }
     window.addEventListener('compassneedscalibration', this.onCompassNeedsCalibration, false);
 
     // Bind the rotation event from net
