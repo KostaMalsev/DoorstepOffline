@@ -180,6 +180,7 @@ function rotateCamera(data) {
 }
 
 function resizeTo(pwidth, pheight) {
+  /*
   console.log(pwidth,pheight);
   let cwidth = window.innerWidth;
   let cheight = window.innerHeight;
@@ -190,6 +191,15 @@ function resizeTo(pwidth, pheight) {
   document.querySelector('.remote-video').style.width = width + 'px';
   document.querySelector('.remote-video').style.height = height + 'px';
 
+  camera.right = width;
+  camera.bottom = height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+  cssRenderer.setSize(width, height);
+  render();*/
+  
+  width = pwidth;
+  height = pheight;
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
