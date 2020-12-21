@@ -232,7 +232,6 @@ body {
   left: 0;
   position: absolute;
   z-index: 3;
-  cursor: pointer;
   background: wheat;
 }
 
