@@ -179,56 +179,21 @@ function rotateCamera(data) {
   updateRotationTo(data)
 }
 
-function resizeTo(width, height) {
+function resizeTo(pwidth, pheight) {
+  console.log(pwidth,pheight);
+  let cwidth = window.innerWidth;
+  let cheight = window.innerHeight;
+  //Calculate the video size shrinked to computer size (cheight)
+  let height = cheight;//for portrait cases
+  let width = cheight*(pwidth/pheight);//fit to new width size
+  
   document.querySelector('.remote-video').style.width = width + 'px';
   document.querySelector('.remote-video').style.height = height + 'px';
 
   camera.right = width;
   camera.bottom = height;
   camera.updateProjectionMatrix();
-
-  //var left = (document.body.clientWidth - width) / 2;
-  //var top = (document.body.clientHeight - height) / 2;
-
-  //renderer.domElement.style.left = left + 'px';
-  //cssRenderer.domElement.style.left = left + 'px';
-  //renderer.domElement.style.top = top + 'px';
-  //cssRenderer.domElement.style.top = top + 'px';
-
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
   render();
-}
-
-
-function resizeSphere(pwidth, pheight) {
-  //var width = document.querySelector('.remote-video').clientWidth;
-  //var height = document.querySelector('.remote-video').clientHeight;
-
-  console.log("received size from client");
-  console.log(pwidth,pheight);
-  let cwidth = window.innerWidth;
-  let cheight = window.innerHeight;
-  //Calculate the video size shrinked to computer size (cheight)
-  let vheight = cheight;//for portrait cases
-  let vwidth = cheight*(pwidth/pheight);//fit to new width size
-
-  resizeTo(vwidth, vheight);
-
-  /*
-  let radius = 1;
-  var geometry = new THREE.SphereGeometry(radius, 32, 32, 0, Math.PI * 2, 0, Math.PI * 2);
-
-  scalex = (width / 2) / 1000;
-  scaley = (height / 2) / 1000;
-  geometry.applyMatrix( new THREE.Matrix4().makeScale( scalex, scaley, scalex ) );
-
-  var mesh = new THREE.Mesh(geometry, material1);
-  mesh.rotation.x = 0;
-  mesh.position.y = 0;
-  mesh.position.z = 0;
-  mesh.position.x = 0;
-  camera.add(mesh)
-  */
-
 }
