@@ -194,8 +194,8 @@ function resizeTo(width, height) {
   
   renderer.domElement.style.left = '10px';
   cssRenderer.domElement.style.left = '10px';
-  renderer.domElement.style.left = '10px';
-  cssRenderer.domElement.style.left = '10px';
+  renderer.domElement.style.top = '10px';
+  cssRenderer.domElement.style.top = '10px';
   
   renderer.setSize(width, height);
   cssRenderer.setSize(width, height);
