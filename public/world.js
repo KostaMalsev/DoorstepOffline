@@ -141,10 +141,10 @@ function createPoint(pt) {
   vricon.position.x = pt.x; //intersects[0].point.x;
   vricon.position.y = pt.y; //intersects[0].point.y;
   vricon.position.z = pt.z; //intersects[0].point.z + 0.1;
-  
+
   setTimeout(() => {
     scene2.remove(vricon);
-  }, 8000);
+  }, 15000);
 }
 
 function resize() {
