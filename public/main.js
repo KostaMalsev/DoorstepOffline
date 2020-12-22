@@ -88,7 +88,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
-      //conn.send({ width: window.innerWidth, height: window.innerHeight });
+      conn.send({ width: window.innerWidth, height: window.innerHeight });
     });
 
     // When receiving data from admin
@@ -111,7 +111,7 @@ peer.on('error', (error) => {
 // Handle incoming data connection
 let theadminConn;
 peer.on('connection', (conn) => {
-  logMessage('Incoming peer connection');
+  //logMessage('Incoming peer connection');
 
   // Save connection for later use
   theadminConn = conn;
