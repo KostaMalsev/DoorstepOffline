@@ -147,10 +147,10 @@ peer.on('connection', (conn) => {
           //console.log(JSON.stringify(data));
       }
       //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
-      if(Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2))<185){
+      if(Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2))<50){
         rotateCamera(data);
       }else{
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
       }
       last_rot_data = data;
     }
