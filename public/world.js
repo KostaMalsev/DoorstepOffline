@@ -116,7 +116,6 @@ function clickedOnScreen(event) {
   var intersects = raycaster.intersectObjects(scene.children, true);
 
   //console.log('clicked', intersects);
-  logMessage('clicked');
 
   // If we got intersection, make a marker on xyz point
   if (intersects.length > 0) {
