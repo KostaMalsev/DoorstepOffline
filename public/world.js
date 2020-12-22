@@ -37,7 +37,6 @@ cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
 cssRenderer.domElement.onclick = clickedOnScreen;
-logMessage(cssRenderer.domElement.onclick);
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
