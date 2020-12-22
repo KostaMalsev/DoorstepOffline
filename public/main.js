@@ -117,7 +117,7 @@ peer.on('connection', (conn) => {
 
   conn.on('open', () => {
     logMessage('Established connection with room participant');
-    cssRenderer.domElement.addEventListener('onclick', clickedOnScreen); // cssRenderer.domElement
+    document.body.addEventListener('onclick', clickedOnScreen); // cssRenderer.domElement
     //cssRenderer.domElement.style.cursor = 'pointer';
   });
 
