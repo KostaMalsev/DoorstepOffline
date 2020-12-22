@@ -150,9 +150,9 @@ peer.on('call', (call) => {
     renderVideo(s);
   });
 
-  call.on('error', () => {
+  call.on('error', (error) => {
     myVideoEl.classList.add('big');
-    logMessage('Meeting ended');
+    logMessage('Meeting ended: '+error);
   });
 });
 
@@ -187,9 +187,9 @@ if (peerId != null) {
 
       });
 
-      call.on('error', () => {
+      call.on('error', (error) => {
         myVideoEl.classList.add('big');
-        logMessage('Meeting ended');
+        logMessage('Meeting ended: '+error);
       });
 
     })
