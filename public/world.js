@@ -177,8 +177,8 @@ function rotateCamera(data) {
 
 function resizeTHREETo(width_, height_) {
   // Do something with [width] and [height]
-  width = width_;
-  height = width_;
+  let width = width_;
+  let height = width_;
   camera.right = width_;
   camera.bottom = width_;
   camera.updateProjectionMatrix();
