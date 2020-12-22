@@ -149,6 +149,8 @@ peer.on('connection', (conn) => {
       //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
       if(Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2))<185){
         rotateCamera(data);
+      }else{
+        console.log(JSON.stringify(data));
       }
       last_rot_data = data;
     }
