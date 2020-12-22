@@ -112,6 +112,7 @@ function setRaycaster(event) {
 
 // Function gets intersection with the plane and draw markers
 function clickedOnScreen(event) {
+  logMessage('got click');
   setRaycaster(event);
   var intersects = raycaster.intersectObjects(scene.children, true);
 
