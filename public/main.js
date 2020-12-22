@@ -110,15 +110,15 @@ peer.on('error', (error) => {
 // Handle incoming data connection
 let theadminConn;
 peer.on('connection', (conn) => {
-  //logMessage('Incoming peer connection');
+  logMessage('Incoming peer connection');
 
   // Save connection for later use
   theadminConn = conn;
 
   conn.on('open', () => {
-    //logMessage('Established connection with room participant');
-    cssRenderer.domElement.addEventListener('click', (e) => { logMessage("Clicked!"); clickedOnScreen(e) }); // cssRenderer.domElement
-    cssRenderer.domElement.style.cursor = 'pointer';
+    logMessage('Established connection with room participant');
+    document.addEventListener('click', clickedOnScreen); // cssRenderer.domElement
+    //cssRenderer.domElement.style.cursor = 'pointer';
   });
 
   // When reciving data from participant
@@ -128,7 +128,7 @@ peer.on('connection', (conn) => {
       // Hook with world.js:
       // Rotate the admin's virtual camera
       // Based on participant's device rotation
-      logMessage(JSON.stringify(data));
+      //logMessage(JSON.stringify(data));
       rotateCamera(data);
     }
 
