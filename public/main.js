@@ -140,13 +140,17 @@ peer.on('connection', (conn) => {
       //logMessage(JSON.stringify(data));
       let d = Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2)+
               Math.pow(last_rot_data.beta - data.beta,2)+
-              Math.pow(last_rot_data.gamma - data.gamma,2));
-      last_rot_data = data;
+              Math.pow(last_rot_data.gamma - data.gamma,2))/3;
+
+
       if(d > 50){
-          console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
       }
       //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
-      rotateCamera(data);
+      if(Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2))<185){
+        rotateCamera(data);
+      }
+      last_rot_data = data;
     }
     else {
       resizeTHREETo(data.width, data.height);
