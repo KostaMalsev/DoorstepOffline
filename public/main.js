@@ -141,6 +141,7 @@ peer.on('connection', (conn) => {
       let d = Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2)+
               Math.pow(last_rot_data.beta - data.beta,2)+
               Math.pow(last_rot_data.gamma - data.gamma,2));
+      last_rot_data = data;
       if(d > 50){
           console.log(JSON.stringify(data));
       }
