@@ -473,13 +473,15 @@ var DeviceOrientationController = function(object, domElement) {
       window.addEventListener('orientationchange', this.onScreenOrientationChange, false);
       window.addEventListener('deviceorientation', this.onDeviceOrientationChange, false);
     }
+    else {
+      this.element.addEventListener('mousedown', this.onDocumentMouseDown, false);
+      this.element.addEventListener('touchstart', this.onDocumentTouchStart, false);
+    }
+
     window.addEventListener('compassneedscalibration', this.onCompassNeedsCalibration, false);
 
     // Bind the rotation event from net
     window.addEventListener('rotation-net-set', this.UpdateRotFromNet, false);
-
-    this.element.addEventListener('mousedown', this.onDocumentMouseDown, false);
-    this.element.addEventListener('touchstart', this.onDocumentTouchStart, false);
 
     this.freeze = false;
   };
