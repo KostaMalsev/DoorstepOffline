@@ -118,8 +118,8 @@ peer.on('connection', (conn) => {
 
   conn.on('open', () => {
     //logMessage('Established connection with room participant');
-    cssRenderer.domElement.addEventListener('click', clickedOnScreen);
-    cssRenderer.domElement.style.cursor = 'pointer';
+    document.addEventListener('click', clickedOnScreen);//cssrenderer
+    document.style.cursor = 'pointer';
   });
 
   // When reciving data from participant
@@ -132,7 +132,7 @@ peer.on('connection', (conn) => {
       logMessage(JSON.stringify(data));
       rotateCamera(data);
     }
-    
+
     else {
       resizeTHREETo(data.width, data.height);
     }
