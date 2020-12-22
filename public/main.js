@@ -110,14 +110,14 @@ peer.on('error', (error) => {
 // Handle incoming data connection
 let theadminConn;
 peer.on('connection', (conn) => {
-  logMessage('Incoming peer connection');
+  //logMessage('Incoming peer connection');
 
   // Save connection for later use
   theadminConn = conn;
 
   conn.on('open', () => {
     logMessage('Established connection with room participant');
-    document.addEventListener('click', clickedOnScreen); // cssRenderer.domElement
+    cssRenderer.domElement.addEventListener('onclick', clickedOnScreen); // cssRenderer.domElement
     //cssRenderer.domElement.style.cursor = 'pointer';
   });
 
