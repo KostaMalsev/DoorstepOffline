@@ -57,7 +57,8 @@ let renderMyVideo = (stream) => {
 
 // Register with the peer server
 let peer = new Peer({
-  host: '/',
+  /*
+  host: '/',*/
   path: '/peerjs/myapp'
 });
 
