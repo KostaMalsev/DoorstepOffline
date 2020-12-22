@@ -243,6 +243,9 @@ ipaddr.js	.\package-lock.json	/^        "ipaddr.js": {$/;"	f
 is-fullwidth-code-point	.\package-lock.json	/^            "is-fullwidth-code-point": "^3.0.0",$/;"	f
 is-fullwidth-code-point	.\package-lock.json	/^        "is-fullwidth-code-point": {$/;"	f
 keywords	.\package.json	/^  "keywords": [$/;"	f
+let.alpha	.\public\main.js	/^let last_rot_data={alpha: 0,beta: 0, gamma: 0};$/;"	p
+let.beta	.\public\main.js	/^let last_rot_data={alpha: 0,beta: 0, gamma: 0};$/;"	p
+let.gamma	.\public\main.js	/^let last_rot_data={alpha: 0,beta: 0, gamma: 0};$/;"	p
 let.x	.\public\world.js	/^      x: intersects[0].point.x,$/;"	p
 license	.\package.json	/^  "license": "MIT",$/;"	f
 locate-path	.\package-lock.json	/^            "locate-path": "^5.0.0",$/;"	f

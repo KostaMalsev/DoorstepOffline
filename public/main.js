@@ -115,6 +115,8 @@ peer.on('error', (error) => {
 
 //Admin side functions:
 // Handle incoming data connection
+let last_rot_data={alpha: 0,beta: 0, gamma: 0};
+
 let theadminConn;
 peer.on('connection', (conn) => {
   //logMessage('Incoming peer connection');
@@ -136,7 +138,13 @@ peer.on('connection', (conn) => {
       // Rotate the admin's virtual camera
       // Based on participant's device rotation
       //logMessage(JSON.stringify(data));
-      console.log(JSON.stringify(data));
+      let d = Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2)+
+              Math.pow(last_rot_data.beta - data.beta,2)+
+              Math.pow(last_rot_data.gamma - data.gamma,2));
+      if(d > 50){
+          console.log(JSON.stringify(data));
+      }
+      //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
       rotateCamera(data);
     }
     else {
