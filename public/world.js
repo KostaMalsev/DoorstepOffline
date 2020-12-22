@@ -36,7 +36,7 @@ cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.zIndex = 3;
-cssRenderer.domElement.onclick = clickedOnScreen;
+cssRenderer.domElement.onclick = (e) => { logMessage("CLicked"); clickedOnScreen(e) };
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
@@ -115,7 +115,7 @@ function clickedOnScreen(event) {
   setRaycaster(event);
   var intersects = raycaster.intersectObjects(scene.children, true);
 
-  console.log('clicked', intersects);
+  //console.log('clicked', intersects);
 
   // If we got intersection, make a marker on xyz point
   if (intersects.length > 0) {
