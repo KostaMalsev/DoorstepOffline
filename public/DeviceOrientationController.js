@@ -13,6 +13,10 @@
 // Check for mobile device
 let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
+// Retrieve parameter "?room=" from url
+var url = new URL(window.location.href);
+var peerId = url.searchParams.get('room');
+
 var DeviceOrientationController = function(object, domElement) {
 
   this.object = object;
@@ -464,9 +468,8 @@ var DeviceOrientationController = function(object, domElement) {
   this.connect = function() {
     window.addEventListener('resize', this.constrainObjectFOV, false);
 
-    //If is mobile device, bind orientation bindings:
-    if(isMobile)
-    {
+    //If is mobile device and not joining room, bind orientation bindings:
+    if (isMobile && peerId != null) {
       window.addEventListener('orientationchange', this.onScreenOrientationChange, false);
       window.addEventListener('deviceorientation', this.onDeviceOrientationChange, false);
     }
@@ -502,7 +505,6 @@ DeviceOrientationController.prototype = Object.create(THREE.EventDispatcher.prot
 
 // Update rotation from peer
 function updateRotationTo(e) {
-
   window.dispatchEvent(new CustomEvent('rotation-net-set', {
     detail: {
       alpha: e.alpha,

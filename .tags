@@ -305,6 +305,7 @@ path-to-regexp	.\package-lock.json	/^        "path-to-regexp": "0.1.7",$/;"	f
 path-to-regexp	.\package-lock.json	/^        "path-to-regexp": {$/;"	f
 peer	.\package-lock.json	/^    "peer": {$/;"	f
 peer	.\package.json	/^    "peer": "^0.5.3"$/;"	f
+peerId	.\public\DeviceOrientationController.js	/^var peerId = url.searchParams.get('room');$/;"	v
 peerId	.\public\gyro.js	/^var peerId = url.searchParams.get('room');$/;"	v
 peerId	.\public\main.js	/^var peerId = url.searchParams.get('room');$/;"	v
 proxy-addr	.\package-lock.json	/^            "proxy-addr": "~2.0.5",$/;"	f
