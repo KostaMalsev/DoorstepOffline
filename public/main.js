@@ -88,7 +88,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
-      conn.send({ width: window.innerWidth, height: window.innerHeight });
+      //conn.send({ width: window.innerWidth, height: window.innerHeight });
     });
 
     // When receiving data from admin
@@ -118,8 +118,9 @@ peer.on('connection', (conn) => {
 
   conn.on('open', () => {
     //logMessage('Established connection with room participant');
-    document.addEventListener('click', clickedOnScreen);//cssrenderer
-    document.style.cursor = 'pointer';
+    logMessage("Added event listener");
+    cssRenderer.domElement.addEventListener('click', (e) => { logMessage("Clicked!"); clickedOnScreen(e) }); // cssRenderer.domElement
+    cssRenderer.domElement.style.cursor = 'pointer';
   });
 
   // When reciving data from participant
