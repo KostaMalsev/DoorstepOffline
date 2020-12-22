@@ -91,7 +91,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
-      //conn.send({ width: window.innerWidth, height: window.innerHeight });
+      conn.send({ width: window.innerWidth, height: window.innerHeight });
     });
 
     // When receiving data from admin
@@ -138,14 +138,7 @@ peer.on('connection', (conn) => {
       // Rotate the admin's virtual camera
       // Based on participant's device rotation
       //logMessage(JSON.stringify(data));
-      let d = Math.sqrt(Math.pow(last_rot_data.alpha - data.alpha,2)+
-              Math.pow(last_rot_data.beta - data.beta,2)+
-              Math.pow(last_rot_data.gamma - data.gamma,2))/3;
 
-
-      if(d > 50){
-          //console.log(JSON.stringify(data));
-      }
       //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
       if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2)))<15){
         rotateCamera(data);
