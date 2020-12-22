@@ -40,6 +40,8 @@ let removeConnectionMessage = () => {
   })
 };
 
+
+//Client (participant) side section functions:
 // Render main video
 let renderVideo = (stream) => {
   videoEl.srcObject = stream;
@@ -109,6 +111,9 @@ peer.on('error', (error) => {
   logMessage(error);
 });
 
+
+
+//Admin side functions:
 // Handle incoming data connection
 let theadminConn;
 peer.on('connection', (conn) => {
@@ -131,13 +136,12 @@ peer.on('connection', (conn) => {
       // Rotate the admin's virtual camera
       // Based on participant's device rotation
       //logMessage(JSON.stringify(data));
+      console.log(JSON.stringify(data));
       rotateCamera(data);
     }
-
     else {
       resizeTHREETo(data.width, data.height);
     }
-
   });
 
 });
