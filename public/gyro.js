@@ -44,7 +44,8 @@ window.addEventListener("deviceorientation", function (event) {
 });
 
 // Android
-window.addEventListener("deviceorientation", function (event) { 
+
+window.addEventListener("orientationchange", function (event) { // deviceorientation
 //window.addEventListener("deviceorientationabsolute", function (event) {
   var orientationExists = (event != null && event.alpha != null && event.beta != null && event.gamma != null);
   if (orientationExists) {
