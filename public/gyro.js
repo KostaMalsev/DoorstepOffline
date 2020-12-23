@@ -44,7 +44,8 @@ window.addEventListener("deviceorientation", function (event) {
 });
 
 // Android
-window.addEventListener("deviceorientationabsolute", function (event) {
+window.addEventListener("deviceorientation", function (event) { 
+//window.addEventListener("deviceorientationabsolute", function (event) {
   var orientationExists = (event != null && event.alpha != null && event.beta != null && event.gamma != null);
   if (orientationExists) {
     orientationGranted = true;
