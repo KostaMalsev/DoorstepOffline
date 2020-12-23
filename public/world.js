@@ -182,6 +182,7 @@ function rotateCamera(data) {
 }
 
 function resizeTHREETo(width_, height_) {
+  return;//tBD
   // Do something with [width] and [height]
   gwidth = width_;
   gheight = height_;
