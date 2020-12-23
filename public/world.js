@@ -9,16 +9,21 @@
  *
  */
 
+//Global size of the window
+var gwidth=375;
+var gheight=375;
+
+
 var scene = new THREE.Scene();
 //var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 //var camera = new THREE.PerspectiveCamera(60, 375 / 375, 1, 1000);
-var camera = new THREE.PerspectiveCamera(60, 375 / 375, 0.1, 1000);
+var camera = new THREE.PerspectiveCamera(60, gwidth / 375, 0.1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
 });
 //renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setSize(375, 375);
+renderer.setSize(gwidth, gheight);
 document.body.appendChild(renderer.domElement);
 renderer.domElement.style.position = 'fixed';
 renderer.domElement.style.top = 0;
@@ -32,7 +37,7 @@ scene2.add(camera);
 // Create CSS2D renderer:
 var cssRenderer = new CSS2DRenderer();
 //cssRenderer.setSize(window.innerWidth, window.innerHeight);
-cssRenderer.setSize(375, 375);
+cssRenderer.setSize(gwidth, gheight);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
@@ -101,8 +106,8 @@ var tempRadius = new THREE.Vector3();
 function setMouse(event) {
   //mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   //mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  mouse.x = (event.clientX / 375) * 2 - 1;
-  mouse.y = -(event.clientY / 375) * 2 + 1;
+  mouse.x = (event.clientX / gwidth) * 2 - 1;
+  mouse.y = -(event.clientY / gheight) * 2 + 1;
 }
 
 //Set raycaster from camera:
@@ -178,6 +183,9 @@ function rotateCamera(data) {
 
 function resizeTHREETo(width_, height_) {
   // Do something with [width] and [height]
+  gwidth = width_;
+  gheight = height_;
+  
   let width = width_;
   let height = width_;
   camera.right = width_;

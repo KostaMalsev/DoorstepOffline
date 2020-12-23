@@ -139,6 +139,8 @@ fresh	.\package-lock.json	/^        "fresh": {$/;"	f
 get-caller-file	.\package-lock.json	/^            "get-caller-file": "^2.0.1",$/;"	f
 get-caller-file	.\package-lock.json	/^        "get-caller-file": {$/;"	f
 getDistanceToSquared	.\public\lib\CSS2DRenderer.js	/^    var getDistanceToSquared = function () {$/;"	f
+gheight	.\public\world.js	/^var gheight=375;$/;"	v
+gwidth	.\public\world.js	/^var gwidth=375;$/;"	v
 http-errors	.\package-lock.json	/^            "http-errors": "1.7.2",$/;"	f
 http-errors	.\package-lock.json	/^            "http-errors": "~1.7.2",$/;"	f
 http-errors	.\package-lock.json	/^        "http-errors": {$/;"	f
