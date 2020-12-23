@@ -42,9 +42,8 @@ window.addEventListener("deviceorientation", function (event) {
     sendGyroData(data);
   }
 });
-
+/*
 // Android
-
 window.addEventListener("orientationchange", function (event) { // deviceorientation
 //window.addEventListener("deviceorientationabsolute", function (event) {
   var orientationExists = (event != null && event.alpha != null && event.beta != null && event.gamma != null);
@@ -59,6 +58,24 @@ window.addEventListener("orientationchange", function (event) { // deviceorienta
     sendGyroData(data);
   }
 });
+
+//Android
+window.addEventListener("deviceorientation", function (event) { // deviceorientation
+//window.addEventListener("deviceorientationabsolute", function (event) {
+  var orientationExists = (event != null && event.alpha != null && event.beta != null && event.gamma != null);
+  if (orientationExists) {
+    orientationGranted = true;
+
+    // Recive orientation data
+    // alpha is rotation around z-axis, beta is front back motion, gamma is left to right
+    var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
+
+    // Hook with main.js to pass gyro data to peer
+    sendGyroData(data);
+  }
+});
+*/
+
 
 // Retrieve parameter "?room=" from url
 var url = new URL(window.location.href);
