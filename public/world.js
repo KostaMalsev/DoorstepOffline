@@ -17,7 +17,7 @@ var gheight=375;
 var scene = new THREE.Scene();
 //var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 //var camera = new THREE.PerspectiveCamera(60, 375 / 375, 1, 1000);
-var camera = new THREE.PerspectiveCamera(60, gwidth / 375, 0.1, 1000);
+var camera = new THREE.PerspectiveCamera(60, gwidth / gheight, 0.1, 1000);
 camera.position.set(0, 0, 0.1);
 var renderer = new THREE.WebGLRenderer({
   alpha: true
@@ -185,7 +185,7 @@ function resizeTHREETo(width_, height_) {
   // Do something with [width] and [height]
   gwidth = width_;
   gheight = height_;
-  
+
   let width = width_;
   let height = width_;
   camera.right = width_;
