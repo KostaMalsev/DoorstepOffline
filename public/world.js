@@ -182,6 +182,7 @@ function rotateCamera(data) {
 }
 
 function resizeTHREETo(width_, height_) {
+  /*
   return;//tBD
   // Do something with [width] and [height]
   gwidth = width_;
@@ -194,5 +195,5 @@ function resizeTHREETo(width_, height_) {
   camera.updateProjectionMatrix();
   renderer.setSize(width_, width_);
   cssRenderer.setSize(width_, width_);
-  render();
+  render();*/
 }
