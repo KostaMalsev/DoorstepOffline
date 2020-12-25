@@ -20,6 +20,7 @@ body {
   top: 0;
   background: black;
   object-fit: cover;
+  transform: rotateY(180deg);
 }
 
 /*.remote-video.remote {
@@ -36,6 +37,7 @@ body {
   border-radius: 20px;
   right: 10px;
   bottom: 10px;
+  transform: rotateY(180deg);
   transition: .5s cubic-bezier(0.1, 0.82, 0.25, 1);
 }
 
