@@ -65,12 +65,27 @@ let renderMyVideo = (stream) => {
   path: '/peerjs/myapp'
 });
 */
+/*
 let peer = new Peer({
   //initiator,
   //stream: this.stream,
   trickle: true,
-  config: { iceServers: [{ urls: 'turn:18.193.254.239:3478?transport=tcp', username: 'user', credential: 'limor1' }] }
+  config: { 
+    iceServers: [{ 
+      urlstun:stun2.l.google.com:19302
+      urls: 'turn:18.193.254.239:3478?transport=tcp', username: 'user', credential: 'limor1' }] }
   //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
+});
+*/
+let peer = new Peer({
+  //initiator,
+  //stream: this.stream,
+  //trickle: true,
+config: {'iceServers': [
+        {url: 'stun2.l.google.com:19302'},
+        {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
+        ]
+    }
 });
 
 // Show "Connecting" message
