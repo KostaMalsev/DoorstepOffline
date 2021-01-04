@@ -82,7 +82,7 @@ let peer = new Peer({
   //stream: this.stream,
   //trickle: true,
   config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:172.31.44.89:3478?transport=tcp', credential: 'limor1', username: 'user'}]
+                    {urls: 'turn:18.184.155.196:3478?transport=tcp', credential: 'limor1', username: 'user'}]
           }
 /*config: {iceServers: [
         {url: 'stun2.l.google.com:19302'},
