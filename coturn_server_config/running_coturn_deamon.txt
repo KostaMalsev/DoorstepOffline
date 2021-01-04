@@ -1,0 +1,43 @@
+run server on ubuntu :
+turnserver -v
+
+with configuration file which is in the following path: /etc/turnserver.conf
+
+changes requred:
+#internal ip is the listening ip:
+listening-ip=172.31.44.89
+external-ip=54.93.214.159
+
+#internal ip here also
+relay-ip=172.31.44.89
+
+#for ip under NAT like amazon: internal ip/ external ip
+external-ip=54.93.214.159/172.31.44.89
+
+#using static authentication
+lt-cred-mech
+
+#define some realm
+realm=realm
+
+#define user and password (usr:pass)
+user=user:limor1
+
+
+
+ 
+
+
+
+
+
+//----------------OLD:
+turnserver -a -o -v -n -u <username>:<password> -p 3478 -r someRealm -X <Public_IP>/<Private_IP> --no-dtls --no-tls
+
+turnserver -a -o -v -n -u user:limor1 -p 3478 -r someRealm -X 18.184.155.196/172.31.44.89 --no-dtls --no-tls
+
+working (not so much):
+turnserver -v -o -a -n -u user:limor1 -f -L 172.31.44.89 -X 54.93.214.159 -E 172.31.44.89 -min-port=3478 -max-port=3478 -r 54.93.214.159 --no-tls --no-dtls
+
+not working:
+turnserver -v -o -a -n -u user:limor1 -f -L 172.31.44.89 listening-ip=172.31.44.89 -min-port=3478 external-ip=54.93.214.159 -max-port=3478 --no-tls --no-dtls
