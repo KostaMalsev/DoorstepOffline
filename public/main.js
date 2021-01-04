@@ -60,9 +60,17 @@ let renderMyVideo = (stream) => {
 }
 
 // Register with the peer server
-let peer = new Peer({
+/*let peer = new Peer({
   host: '/',
   path: '/peerjs/myapp'
+});
+*/
+let peer = new Peer({
+  //initiator,
+  //stream: this.stream,
+  //trickle: true,
+  config: { iceServers: [{ urls: ‘turn:18.193.254.239:3478?transport=tcp’, username: user, credential: limor1 }] }
+  //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
 });
 
 // Show "Connecting" message
