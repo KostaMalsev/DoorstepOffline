@@ -58,13 +58,13 @@ let renderMyVideo = (stream) => {
     myVideoEl.play();
   }
 }
-
+/*
 // Register with the peer server
 let peer = new Peer({
   host: '/',
   path: '/peerjs/myapp'
 });
-
+*/
 /*
 let peer = new Peer({
   //initiator,
@@ -77,7 +77,7 @@ let peer = new Peer({
   //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
 });
 */
-/*
+
 let peer = new Peer({
   //initiator,
   //stream: this.stream,
@@ -98,7 +98,7 @@ let peer = new Peer({
   //      ]
   //  }
 });
-*/
+
 
 
 // Show "Connecting" message
