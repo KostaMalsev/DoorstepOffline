@@ -89,7 +89,7 @@ let peer = new Peer({
 */
   //Australia Pasific:
   config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:18.197.194.135:3478?transport=tcp', credential: 'limor1', username: 'user'}]
+                    {urls: 'turn:54.206.15.107:3478?transport=tcp', credential: 'limor1', username: 'user'}]
           }
 
   /*config: {iceServers: [
