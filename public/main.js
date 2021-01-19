@@ -60,11 +60,11 @@ let renderMyVideo = (stream) => {
 }
 
 // Register with the peer server
-/*let peer = new Peer({
+let peer = new Peer({
   host: '/',
   path: '/peerjs/myapp'
 });
-*/
+
 /*
 let peer = new Peer({
   //initiator,
@@ -77,27 +77,29 @@ let peer = new Peer({
   //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
 });
 */
+/*
 let peer = new Peer({
   //initiator,
   //stream: this.stream,
   //trickle: true,
   //EU server:
-  /*
-  config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:54.93.214.159:3478?transport=tcp', credential: 'limor1', username: 'user'}]
-          }
-*/
+  //config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
+  //                  {urls: 'turn:54.93.214.159:3478?transport=tcp', credential: 'limor1', username: 'user'}]
+  //        }
+
   //Australia Pasific:
   config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
                     {urls: 'turn:54.206.15.107:3478?transport=tcp', credential: 'limor1', username: 'user'}]
           }
 
-  /*config: {iceServers: [
-        {url: 'stun2.l.google.com:19302'},
-        {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
-        ]
-    }*/
+  //config: {iceServers: [
+  //      {url: 'stun2.l.google.com:19302'},
+  //      {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
+  //      ]
+  //  }
 });
+*/
+
 
 // Show "Connecting" message
 logMessage(loaderSVG + 'Connecting');
