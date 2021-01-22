@@ -47,7 +47,6 @@ body {
   bottom: 0;
   border-radius: 0;
   transition: none;
-  z-index: 4;
 }
 
 .messages {
