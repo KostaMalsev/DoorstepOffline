@@ -41,6 +41,7 @@ cssRenderer.setSize(gwidth, gheight);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
+cssRenderer.domElement.style.cursor = 'pointer';
 cssRenderer.domElement.style.zIndex = 3;
 cssRenderer.domElement.onclick = clickedOnScreen;
 document.body.appendChild(cssRenderer.domElement);
