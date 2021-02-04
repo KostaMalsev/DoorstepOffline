@@ -128,19 +128,24 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
-      conn.send({ width: window.innerWidth, height: window.innerHeight });
     });
-
-    // When receiving data from admin
+    
     conn.on('data', (data) => {
-      // Add point to 3d world
-      let pt = {
-        x: data.x,
-        y: data.y,
-        z: data.z
-      };
-      createPoint(pt);
+        // Hook with world.js:
+        // Rotate the participant's virtual camera
+        // Based on admin's device rotation
+        //logMessage(JSON.stringify(data));
 
+        //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
+        if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2))<15){
+          rotateCamera(data);
+        }else{
+          rotateCamera(last_rot_data);
+          //console.log(JSON.stringify(data));
+        }
+        last_rot_data.alpha = data.alpha;
+        last_rot_data.beta = data.beta;
+        last_rot_data.gamma = data.gamma;
     });
   }
 });
@@ -156,40 +161,22 @@ let last_rot_data={alpha: 0,beta: 0, gamma: 0};
 
 let theadminConn;
 peer.on('connection', (conn) => {
-  //logMessage('Incoming peer connection');
-
   // Save connection for later use
   theadminConn = conn;
 
   conn.on('open', () => {
     logMessage('Established connection with room participant');
-    //cssRenderer.domElement.addEventListener('click', clickedOnScreen); // cssRenderer.domElement
-    //cssRenderer.domElement.style.cursor = 'pointer';
   });
 
   // When reciving data from participant
   conn.on('data', (data) => {
-
-    if (data.width == undefined) {
-      // Hook with world.js:
-      // Rotate the admin's virtual camera
-      // Based on participant's device rotation
-      //logMessage(JSON.stringify(data));
-
-      //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
-      if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2))<15){
-        rotateCamera(data);
-      }else{
-        rotateCamera(last_rot_data);
-        //console.log(JSON.stringify(data));
-      }
-      last_rot_data.alpha = data.alpha;
-      last_rot_data.beta = data.beta;
-      last_rot_data.gamma = data.gamma;
-    }
-    else {
-      resizeTHREETo(data.width, data.height);
-    }
+    // Add point to 3d world
+    let pt = {
+      x: data.x,
+      y: data.y,
+      z: data.z
+    };
+    createPoint(pt);
   });
 
 });
@@ -221,12 +208,15 @@ var peerId = url.searchParams.get('room');
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
 
+  // Show big video
+  videoEl.classList.add('remote');
+  myVideoEl.classList.add('big');
+  myVideoEl.muted = "muted";
+
   // Get voice/video permissions
   navigator.mediaDevices.getUserMedia({
 
-      video: {
-        facingMode: "environment"
-      },
+      video: true,
       audio: true
 
     }).then(stream => { // When permissions granted
@@ -236,9 +226,9 @@ if (peerId != null) {
       call.on('stream', (s) => {
 
         // Render video
-        renderMyVideo(s);
-        renderVideo(stream);
-        videoEl.muted = "muted";
+        renderMyVideo(stream);
+        renderVideo(s);
+        myVideoEl.muted = "muted";
 
       });
 
@@ -256,24 +246,22 @@ if (peerId != null) {
 
 // If creating meeting
 else {
+
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
-
-  // Show big video
-  videoEl.classList.add('remote');
-  myVideoEl.classList.add('big');
-  myVideoEl.muted = "muted";
-
+  
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
-      video: true,
+      video: {
+        facingMode: "environment"
+      },
       audio: true
     })
 
     .then((stream) => {
       // Render video
       myVideoStream = stream;
-      renderMyVideo(myVideoStream);
+      renderVideo(myVideoStream);
     })
 
     .catch((err) => {
@@ -283,14 +271,14 @@ else {
 }
 
 // Hook with gyro.js:
-// Function sends orientation data to room admin
+// Function sends orientation data to room participant
 let sendGyroData = (data) => {
 
-  // If connected to admin
-  if (peerConn) {
+  // If connected to participant
+  if (theadminConn) {
 
-    // Send gyro data
-    peerConn.send(data);
+    // Send gyro participant
+    theadminConn.send(data);
 
   }
 
@@ -299,14 +287,14 @@ let sendGyroData = (data) => {
 window.sendGyroData = sendGyroData;
 
 // Hook with world.js:
-// Function sends marker data to room participant
+// Function sends marker data to room admin
 let sendMarker = (data) => {
 
-  // If connected to participant
-  if (theadminConn) {
+  // If connected to admin
+  if (peerConn) {
 
     // Send marker data
-    theadminConn.send(data);
+    peerConn.send(data);
 
   }
 
