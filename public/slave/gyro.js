@@ -81,9 +81,9 @@ window.addEventListener("deviceorientation", function (event) { // deviceorienta
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
-// If orientation not granted and not creating room
+// If orientation not granted and creating room
 let promptEl = document.querySelector('.prompt-wrapper');
-if (orientationGranted == false && peerId != null) {
+if (orientationGranted == false && peerId == null) {
   // Show prompt
   promptEl.classList.add('visible');
 }
