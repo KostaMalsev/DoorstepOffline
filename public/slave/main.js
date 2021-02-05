@@ -208,6 +208,8 @@ var peerId = url.searchParams.get('room');
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
 
+  document.title =  'Doorstep - Join Meeting'; // Set window title
+  
   // Show big video
   videoEl.classList.add('remote');
   myVideoEl.classList.add('big');
@@ -246,9 +248,10 @@ if (peerId != null) {
 
 // If creating meeting
 else {
-
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
+  
+  document.title =  'Doorstep - Create Meeting'; // Set window title
   
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
