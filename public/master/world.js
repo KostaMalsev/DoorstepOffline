@@ -60,7 +60,7 @@ planeGeometry.lookAt(focalPoint);
 planeGeometry.translate(coplanarPoint.x, coplanarPoint.y, coplanarPoint.z);
 
 // Draw reference blue plane
-const material2 = new THREE.MeshBasicMaterial({
+/*const material2 = new THREE.MeshBasicMaterial({
   color: 'blue',
   side: THREE.DoubleSide
 }); //MeshLambertMaterial
@@ -69,7 +69,7 @@ mesh1.rotation.x = 0;
 mesh1.position.y = 0;
 mesh1.position.z = 50;
 mesh1.position.x = 0;
-scene.add(mesh1);
+scene.add(mesh1);*/
 
 // Create forward plane (to tap on)
 const material1 = new THREE.MeshBasicMaterial({
