@@ -128,6 +128,7 @@ peer.on('open', (id) => {
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
+      removeConnectionMessage();
     });
     
     conn.on('data', (data) => {
@@ -181,6 +182,7 @@ peer.on('connection', (conn) => {
 
   conn.on('open', () => {
     logMessage('Established connection with room participant');
+    removeConnectionMessage();
   });
 
   // When reciving data from participant
