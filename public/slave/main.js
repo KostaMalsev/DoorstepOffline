@@ -33,11 +33,12 @@ window.logMessage = logMessage;
 
 // Utility function - Remove connectivity message
 let removeConnectionMessage = () => {
-  messagesEl.querySelectorAll('div').forEach(div => {
+  /*messagesEl.querySelectorAll('div').forEach(div => {
     if (div.innerHTML == (loaderSVG + 'Connecting')) {
       div.remove()
     };
-  })
+  })*/
+  messagesEl.innerHTML = '';
 };
 
 
@@ -283,6 +284,7 @@ else {
       // Render video
       myVideoStream = stream;
       renderVideo(myVideoStream);
+      videoEl.muted = "muted";
     
       removeConnectionMessage();
     })
