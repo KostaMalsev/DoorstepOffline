@@ -149,11 +149,26 @@ peer.on('open', (id) => {
     });
   }
 });
+
+
 peer.on('error', (error) => {
-  logMessage(error);
+  logMessage('Meeting ended: ' + error);
 });
 
 
+var retryCount = 0;
+peer.on('disconnected', function() {
+  logMessage(loaderSVG + 'Connecting');
+  
+  if (retryCount < 3) {
+    retryCount++;
+    peer.reconnect();
+  }
+  else {
+    peer.destroy();
+    logMessage('Meeting ended. Couldn\'t reconnect.');
+  }
+});
 
 //Admin side functions:
 // Handle incoming data connection
@@ -184,12 +199,12 @@ peer.on('connection', (conn) => {
 // Handle incoming voice/video connection
 peer.on('call', (call) => {
   logMessage(loaderSVG + 'Connecting');
-  myVideoEl.classList.remove('big');
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
     renderMyVideo(s);
+    removeConnectionMessage();
   });
 
   call.on('error', (error) => {
@@ -207,6 +222,8 @@ var peerId = url.searchParams.get('room');
 // If joining meeting
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
+  
+  myVideoEl.classList.add('big');
 
   document.title =  'Doorstep - Join Meeting'; // Set window title
 
@@ -222,10 +239,14 @@ if (peerId != null) {
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
 
+        removeConnectionMessage();
+        
         // Render video
         renderMyVideo(stream);
         renderVideo(s);
+        
         myVideoEl.muted = "muted";
+        myVideoEl.classList.remove('big');
 
       });
 
@@ -260,6 +281,8 @@ else {
       // Render video
       myVideoStream = stream;
       renderVideo(myVideoStream);
+    
+      removeConnectionMessage();
     })
 
     .catch((err) => {
