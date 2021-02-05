@@ -9,8 +9,8 @@
  * Script terms:
  * These terms are used in the script
  * to differentiate between peers.
- * "Master": Room Creator (Typically: Computer)
- * "Slave": Room Joiner (Typically: Mobile Device)
+ * "Master": Room Creator (Typically: Mobile Device)
+ * "Slave": Room Joiner (Typically: Mobile Device / Computer)
  *
  */
 
