@@ -189,11 +189,11 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
-    renderVideo(s);
+    renderMyVideo(s);
   });
 
   call.on('error', (error) => {
-    myVideoEl.classList.add('big');
+    //myVideoEl.classList.add('big');
     logMessage('Meeting ended: '+error);
   });
 });
@@ -209,11 +209,6 @@ if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
 
   document.title =  'Doorstep - Join Meeting'; // Set window title
-  
-  // Show big video
-  videoEl.classList.add('remote');
-  myVideoEl.classList.add('big');
-  myVideoEl.muted = "muted";
 
   // Get voice/video permissions
   navigator.mediaDevices.getUserMedia({
