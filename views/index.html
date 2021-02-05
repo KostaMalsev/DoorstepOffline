@@ -1,14 +1,23 @@
 <!-- This is a static file -->
 <!-- served from your routes in server.js -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Video meetings with AR markers.">
-
-    <title>Camarker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="Doorstep is the leader in modern augmented reality video communications, with an easy, reliable cloud platform for video and audio conferencing, across mobile, desktop, and room systems. Doorstep Rooms is the original software-based Augmented Reality communications solution used around the world. Founded in 2017, Doorstep helps carriers and businesses bring customers and carriers together in a frictionless environment to get more done. Doorstep is a private company headquartered in Fort Worth, TX.">
+    <meta property="og:type" content="activity">
+    <meta property="og:title" content="Join our Cloud AR Video Meeting">
+    <meta property="og:description" content="Doorstep is the leader in modern augmented reality video communications, with an easy, reliable cloud platform for video and audio conferencing, across mobile, desktop, and room systems. Doorstep Rooms is the original software-based Augmented Reality communications solution used around the world. Founded in 2017, Doorstep helps carriers and businesses bring customers and carriers together in a frictionless environment to get more done. Doorstep is a private company headquartered in Fort Worth, TX.">
+    <meta property="og:url" content="https://camarker.herokuapp.com/">
+    <meta property="og:image" content="/thumb.png">
+    <meta property="og:site_name" content="Doorstep Video">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <title>Doorstep</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
@@ -37,9 +46,9 @@
 <script src="/lib/CSS2DRenderer.js"></script>
 
 <!-- import the webpage's client-side javascript files -->
-<script src="/main.js" type="module"></script>
-<script src="/DeviceOrientationController.js"></script>
-<script src="/world.js"></script>
-<script src="/gyro.js"></script>
+<script src="/slave/main.js" type="module"></script>
+<script src="/slave/DeviceOrientationController.js"></script>
+<script src="/slave/world.js"></script>
+<script src="/slave/gyro.js"></script>
 </body>
 </html>
