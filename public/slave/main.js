@@ -261,7 +261,7 @@ if (peerId != null) {
     })
     .catch((err) => {
       removeConnectionMessage();
-      logMessage('Allow camera acess for video chat.');
+      logMessage('Allow camera access for video chat.');
     });
 }
 
@@ -291,7 +291,7 @@ else {
 
     .catch((err) => {
       removeConnectionMessage();
-      logMessage('Allow camera acess for video chat.');
+      logMessage('Allow camera access for video chat.');
     });
 }
 
