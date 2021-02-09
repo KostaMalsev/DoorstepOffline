@@ -80,14 +80,10 @@ window.addEventListener("deviceorientation", function (event) { // deviceorienta
 // Retrieve parameter "?room=" from url
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
-// Check for mobile
-var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
-// If orientation not granted, creating room and not computer
-let showPrompt = (orientationGranted == false && peerId == null && isMobile == true);
-
+// If orientation not granted and creating room
 let promptEl = document.querySelector('.prompt-wrapper');
-if (showPrompt) {
+if (orientationGranted == false && peerId == null) {
   // Show prompt
   promptEl.classList.add('visible');
 }
