@@ -57,7 +57,7 @@ body {
   display: grid;
   place-content: center;
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   top: 0;
   left: 0;
   text-align: center;
@@ -202,17 +202,17 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 375px;
   width: 85px;
   background: linear-gradient(90deg, #1F8AFF, #1f8aff00);
   z-index: 4;
   opacity: 0;
+  cursor: pointer;
 }
 
 .navigation.right {
   background: linear-gradient(90deg, #1f8aff00, #1F8AFF);
-  right: 0;
-  left: auto;
+  left: calc(375px - 85px);
 }
 
 .navigation.visible {
