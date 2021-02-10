@@ -339,7 +339,7 @@ let copy = (text) => {
 }
 
 let copyLink = () => {
-  var link = window.location.href + '/?room=' + this.id;
+  var link = window.location.href + '/?room=' + button.id;
   copy('Your package has arrived. Please direct it to your doorstep:\n' + link);
   button.innerHTML = 'Copied';
 }
