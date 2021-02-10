@@ -20,6 +20,7 @@ let messagesEl = document.querySelector('.messages');
 let videoEl = document.querySelector('.remote-video');
 let myVideoEl = document.querySelector('.my-video');
 let button = document.querySelector('.button');
+let navigation = document.querySelectorAll('.navigation');
 let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 100"><rect fill="white" height="6" opacity="0" rx="3" ry="3" transform="rotate(-90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.08333333333333333" rx="3" ry="3" transform="rotate(-60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.16666666666666666" rx="3" ry="3" transform="rotate(-30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.25" rx="3" ry="3" transform="rotate(0 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.3333333333333333" rx="3" ry="3" transform="rotate(30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.4166666666666667" rx="3" ry="3" transform="rotate(60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5" rx="3" ry="3" transform="rotate(90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5833333333333334" rx="3" ry="3" transform="rotate(120 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.6666666666666666" rx="3" ry="3" transform="rotate(150 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.75" rx="3" ry="3" transform="rotate(180 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.8333333333333334" rx="3" ry="3" transform="rotate(210 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.9166666666666666" rx="3" ry="3" transform="rotate(240 50 50)" width="25" x="72" y="47"></rect></svg>';
 
 
@@ -188,13 +189,30 @@ peer.on('connection', (conn) => {
 
   // When reciving data from participant
   conn.on('data', (data) => {
-    // Add point to 3d world
-    let pt = {
-      x: data.x,
-      y: data.y,
-      z: data.z
-    };
-    createPoint(pt);
+    
+    // If reciving marker
+    if (data.x != null) {
+      
+      // Add point to 3d world
+      let pt = {
+        x: data.x,
+        y: data.y,
+        z: data.z
+      };
+      createPoint(pt);
+      
+    }
+    
+    else {
+      
+      // Show navigation
+      navigation[data].classList.add('visible');
+      window.setTimeout(() => {
+        navigation[data].classList.remove('visible');
+      }, 2000);
+      
+    }
+    
   });
 
 });
@@ -326,6 +344,27 @@ let sendMarker = (data) => {
 }
 
 window.sendMarker = sendMarker;
+
+// Function sends navigation signal to room admin
+let sendNav = (index) => {
+  
+  // Show navigation
+  navigation[index].classList.add('visible');
+  window.setTimeout(() => {
+    navigation[index].classList.remove('visible');
+  }, 2000);
+  
+  // If connected to admin
+  if (peerConn) {
+
+    // Send navigation signal
+    peerConn.send(index);
+
+  }
+  
+}
+
+window.sendNav = sendNav;
 
 // Utility function - Copy text
 let copy = (text) => {
