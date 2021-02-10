@@ -205,7 +205,6 @@ body {
   height: 100vh;
   width: 85px;
   background: linear-gradient(90deg, #1F8AFF, #1f8aff00);
-  pointer-events: none;
   z-index: 4;
   opacity: 0;
 }
