@@ -329,4 +329,9 @@ let copy = (text) => {
   document.body.removeChild(textArea);
 }
 
-window.copy = copy;
+let copyLink = () => {
+  copy(window.location.href + '/?room=' + this.id);
+  button.innerHTML = 'Copied';
+}
+
+window.copyLink = copyLink;
