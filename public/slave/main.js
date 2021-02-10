@@ -338,4 +338,10 @@ let copy = (text) => {
   document.body.removeChild(textArea);
 }
 
-window.copy = copy;
+let copyLink = () => {
+  var link = window.location.href + '/?room=' + this.id;
+  copy('Your package has arrived. Please direct it to your doorstep:\n' + link);
+  button.innerHTML = 'Copied';
+}
+
+window.copyLink = copyLink;
