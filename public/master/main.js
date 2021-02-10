@@ -330,7 +330,7 @@ let copy = (text) => {
 }
 
 let copyLink = () => {
-  copy(window.location.href + '/?room=' + this.id);
+  copy(window.location.href + '/?room=' + button.id);
   button.innerHTML = 'Copied';
 }
 
