@@ -198,6 +198,29 @@ body {
   pointer-events: none;
 }
 
+.navigation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 85px;
+  background: linear-gradient(90deg, #1F8AFF, #1f8aff00);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+}
+
+.navigation.right {
+  background: linear-gradient(90deg, #1f8aff00, #1F8AFF);
+  right: 0;
+  left: auto;
+}
+
+.navigation.visible {
+  animation: fade 1s 1s linear forwards;
+  opacity: 1;
+}
+
 .marker {
   height: 16px;
   width: 16px;
@@ -206,7 +229,7 @@ body {
   padding: 7px;
   border: 35px solid rgba(31, 138, 255, 0.2);
   animation: pop .25s cubic-bezier(.18,.89,.32,1.28), 15s .25s fade forwards;
-}
+} 
 
 @keyframes pop {
   from {
