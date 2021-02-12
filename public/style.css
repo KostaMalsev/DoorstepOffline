@@ -213,7 +213,7 @@ body {
 
 .navigation.right {
   background: linear-gradient(90deg, #1f8aff00, #1F8AFF);
-  left: calc(375px - 85px);
+  left: calc(375px - 64px);
 }
 
 .navigation.visible {
