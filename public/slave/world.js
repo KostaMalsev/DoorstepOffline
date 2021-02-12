@@ -43,7 +43,7 @@ cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.cursor = 'pointer';
 cssRenderer.domElement.style.zIndex = 3;
-cssRenderer.domElement.onclick = clickedOnScreen;
+//cssRenderer.domElement.onclick = clickedOnScreen;
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
@@ -154,6 +154,91 @@ function createPoint(pt) {
   setTimeout(() => {
     scene2.remove(vricon);
   }, 15000);
+}
+
+// Drag (hook with main.js)
+
+var currentX;
+var initialX;
+var xOffset = 0;
+
+var active = false;
+var click = false;
+var sentNav = false;
+
+var direction = 0;
+
+cssRenderer.domElement.addEventListener("touchstart", dragStart, false);
+cssRenderer.domElement.addEventListener("touchend", dragEnd, false);
+cssRenderer.domElement.addEventListener("touchmove", drag, false);
+
+cssRenderer.domElement.addEventListener("mousedown", dragStart, false);
+cssRenderer.domElement.addEventListener("mouseup", dragEnd, false);
+cssRenderer.domElement.addEventListener("mousemove", drag, false);
+
+function dragStart(e) {
+  if (e.type === "touchstart") {
+    initialX = e.touches[0].clientX - xOffset;
+  } else {
+    initialX = e.clientX - xOffset;
+  }
+
+  active = true;
+  click = true;
+  sentNav = false;
+}
+
+function dragEnd(e) {
+  if (e.type === "touchend") {
+    e.clientX = e.touches[0].clientX;
+    e.clientY = e.touches[0].clientY;
+  }
+  
+  initialX = currentX;
+
+  if (click == true) {
+    clickedOnScreen(e);
+  }
+  
+  xOffset = 0;
+  active = false;
+}
+
+function drag(e) {
+  if (active) {
+    e.preventDefault();
+
+    if (e.type === "touchmove") {
+      currentX = e.touches[0].clientX - initialX;
+    } else {
+      currentX = e.clientX - initialX;
+    }
+
+    xOffset = currentX;
+
+    if (xOffset < 0) {
+      direction = -1;
+    }
+    else {
+      direction = 1;
+    }
+    
+    if (Math.abs(xOffset) < 30) {
+      direction = 0;
+    }
+    
+    if (sentNav == false) {
+      if (direction == 1) {
+        sendNav(1);
+        sentNav = true;
+      } else if (direction == -1) {
+        sendNav(0);
+        sentNav = true;
+      }
+    }
+    
+    click = false;
+  }
 }
 
 function resize() {
