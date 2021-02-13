@@ -164,7 +164,7 @@ var xOffset = 0;
 
 var active = false;
 var click = false;
-var sentNav = false;
+var swiped = false;
 
 var direction = 0;
 
@@ -185,7 +185,7 @@ function dragStart(e) {
 
   active = true;
   click = true;
-  sentNav = false;
+  swiped = false;
 }
 
 function dragEnd(e) {
@@ -227,15 +227,17 @@ function drag(e) {
       direction = 0;
     }
     
-    if (sentNav == false) {
-      if (direction == 1) {
-        sendNav(1);
-        sentNav = true;
-      } else if (direction == -1) {
-        sendNav(0);
-        sentNav = true;
-      }
+    if (direction == 1 && swiped == false) {
+      sendNav(0);
+      swiped = true;
+    } else if (direction == -1 && swiped == false) {
+      sendNav(1);
+      swiped = true;
     }
+    
+    /*if (swiped == false) {
+      message.innerHTML = 'Started swiping';
+    }*/
     
     click = false;
   }
