@@ -189,15 +189,15 @@ function dragStart(e) {
 }
 
 function dragEnd(e) {
-  if (e.type === "touchend") {
+  /*if (e.type === "touchend") {
     e.clientX = e.touches[0].clientX;
     e.clientY = e.touches[0].clientY;
-  }
+  }*/
   
   initialX = currentX;
 
   if (click == true) {
-    clickedOnScreen(e);
+    /*clickedOnScreen(e);*/
   }
   
   xOffset = 0;
