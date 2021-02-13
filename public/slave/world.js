@@ -158,8 +158,8 @@ function createPoint(pt) {
 
 // Drag (hook with main.js)
 
-var currentX;
-var initialX;
+var currentX;//last mouse/finger down reading
+var initialX; //first mouse down reading in drag mode
 var xOffset = 0;
 
 var active = false;
@@ -176,6 +176,7 @@ cssRenderer.domElement.addEventListener("mousedown", dragStart, false);
 cssRenderer.domElement.addEventListener("mouseup", dragEnd, false);
 cssRenderer.domElement.addEventListener("mousemove", drag, false);
 
+//Function gets mouse/finger down event
 function dragStart(e) {
   if (e.type === "touchstart") {
     initialX = e.touches[0].clientX - xOffset;
@@ -188,7 +189,12 @@ function dragStart(e) {
   swiped = false;
 }
 
+//Function gets mouse/finger up event
 function dragEnd(e) {
+  
+  xOffset = 0;
+  //initialX = currentX;
+
   var mouseEvent = {};
   if (e.type === "touchend") {
     mouseEvent.mouseX = e.touches[0].clientX;
@@ -198,43 +204,49 @@ function dragEnd(e) {
     mouseEvent.mouseY = e.clientY;
   }
   
-  initialX = currentX;
-
+  //If it's a simple click, send marker to slave
   if (click == true) {
     clickedOnScreen(mouseEvent);
   }
-  
-  xOffset = 0;
+  //Currently dragging state is false (finished dragging)
   active = false;
 }
 
+//Function called upon drag event
 function drag(e) {
   if (active) {
+    //prevent default dragging behavior (like dragging screen)
     e.preventDefault();
 
+    //If the device is mobile:
     if (e.type === "touchmove") {
       currentX = e.touches[0].clientX - initialX;
     } else {
       currentX = e.clientX - initialX;
     }
 
+    //XOffset is delta in pixels from start drag event
     xOffset = currentX;
 
+    //If Direction is 'right'
     if (xOffset < 0) {
       direction = -1;
     }
-    else {
+    else { //if direction is left
       direction = 1;
     }
     
+    //If mouse/finger drags less than threshold don't direction //TBD - consider removing
     if (Math.abs(xOffset) < 30) {
       direction = 0;
     }
     
     if (direction == 1 && swiped == false) {
+      //Draw right blue bar on master and send message to slave
       sendNav(0);
       swiped = true;
     } else if (direction == -1 && swiped == false) {
+      //Draw left blue bar on master and send to slave
       sendNav(1);
       swiped = true;
     }
