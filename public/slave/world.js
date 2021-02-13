@@ -107,8 +107,8 @@ var tempRadius = new THREE.Vector3();
 function setMouse(event) {
   //mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   //mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  mouse.x = (event.clientX / gwidth) * 2 - 1;
-  mouse.y = -(event.clientY / gheight) * 2 + 1;
+  mouse.x = (event.mouseX / gwidth) * 2 - 1;
+  mouse.y = -(event.mouseY / gheight) * 2 + 1;
 }
 
 //Set raycaster from camera:
@@ -189,15 +189,19 @@ function dragStart(e) {
 }
 
 function dragEnd(e) {
-  /*if (e.type === "touchend") {
-    e.clientX = e.touches[0].clientX;
-    e.clientY = e.touches[0].clientY;
-  }*/
+  var mouseEvent = {};
+  if (e.type === "touchend") {
+    mouseEvent.mouseX = e.touches[0].clientX;
+    mouseEvent.mouseY = e.touches[0].clientY;
+  } else {
+    mouseEvent.mouseX = e.clientX;
+    mouseEvent.mouseY = e.clientY;
+  }
   
   initialX = currentX;
 
   if (click == true) {
-    /*clickedOnScreen(e);*/
+    clickedOnScreen(mouseEvent);
   }
   
   xOffset = 0;
