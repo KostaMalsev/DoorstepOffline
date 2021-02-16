@@ -1,6 +1,0 @@
-Running shell on c2:
-ssh -i Cameramarker.pem ubuntu@54.93.214.159
-
-service --status-all
-
-sudo service daemon-name stop

@@ -1,6 +1,0 @@
-Testing turn server:
-url: https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
-
-STUN or TURN URI: turn:18.193.254.239:3478?transport=tcp
-TURN username: user
-TURN password: limor1
