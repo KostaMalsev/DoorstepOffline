@@ -61,13 +61,6 @@ let renderMyVideo = (stream) => {
   }
 }
 /*
-// Register with the peer server
-let peer = new Peer({
-  host: '/',
-  path: '/peerjs/myapp'
-});
-*/
-/*
 let peer = new Peer({
   //initiator,
   //stream: this.stream,
@@ -110,7 +103,8 @@ logMessage(loaderSVG + 'Connecting');
 // On connection to server
 let peerConn;
 peer.on('open', (id) => {
-
+  retryCount = 0;
+  
   // If creating meeting
   if (peerId == null) {
 
@@ -153,13 +147,21 @@ peer.on('open', (id) => {
   }
 });
 
+var retryCount = 0;
 
 peer.on('error', (error) => {
-  logMessage('Meeting ended: ' + error);
+  logMessage(loaderSVG + 'Connecting');
+  
+  if (retryCount < 3) {
+    retryCount++;
+    peer.reconnect();
+  }
+  else {
+    peer.destroy();
+    logMessage('Meeting ended: ' + error);
+  }
 });
 
-
-var retryCount = 0;
 peer.on('disconnected', function() {
   logMessage(loaderSVG + 'Connecting');
   
@@ -169,7 +171,7 @@ peer.on('disconnected', function() {
   }
   else {
     peer.destroy();
-    logMessage('Meeting ended. Couldn\'t reconnect.');
+    logMessage('Meeting ended.');
   }
 });
 
@@ -224,13 +226,23 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
+    retryCount = 0;
+    
     renderMyVideo(s);
     removeConnectionMessage();
   });
 
   call.on('error', (error) => {
-    //myVideoEl.classList.add('big');
-    logMessage('Meeting ended: '+error);
+    logMessage(loaderSVG + 'Connecting');
+
+    if (retryCount < 3) {
+      retryCount++;
+      peer.reconnect();
+    }
+    else {
+      peer.destroy();
+      logMessage('Meeting ended: ' + error);
+    }
   });
 });
 
@@ -259,6 +271,7 @@ if (peerId != null) {
       // Call admin
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
+        retryCount = 0;
 
         removeConnectionMessage();
         
@@ -273,7 +286,17 @@ if (peerId != null) {
 
       call.on('error', (error) => {
         myVideoEl.classList.add('big');
-        logMessage('Meeting ended: '+error);
+        
+        logMessage(loaderSVG + 'Connecting');
+
+        if (retryCount < 3) {
+          retryCount++;
+          peer.reconnect();
+        }
+        else {
+          peer.destroy();
+          logMessage('Meeting ended: ' + error);
+        }
       });
 
     })
