@@ -103,8 +103,6 @@ logMessage(loaderSVG + 'Connecting');
 // On connection to server
 let peerConn;
 peer.on('open', (id) => {
-  retryCount = 0;
-  
   // If creating meeting
   if (peerId == null) {
 
@@ -225,9 +223,7 @@ peer.on('call', (call) => {
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
-  call.on('stream', (s) => {
-    retryCount = 0;
-    
+  call.on('stream', (s) => {  
     renderMyVideo(s);
     removeConnectionMessage();
   });
@@ -271,8 +267,6 @@ if (peerId != null) {
       // Call admin
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
-        retryCount = 0;
-
         removeConnectionMessage();
         
         // Render video
