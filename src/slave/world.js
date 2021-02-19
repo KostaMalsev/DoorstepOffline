@@ -35,7 +35,7 @@ const scene2 = new THREE.Scene();
 scene2.add(camera);
 
 // Create CSS2D renderer:
-var cssRenderer = new CSS2DRenderer();
+var cssRenderer = new COOLRenderer();
 //cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.setSize(gwidth, gheight);
 cssRenderer.domElement.style.position = 'fixed';
@@ -144,7 +144,7 @@ function createPoint(pt) {
   element1.classList = 'marker';
 
   // Create CSS element:
-  var vricon = new CSS2DObject(element1);
+  var vricon = new COOLObject(element1);
 
   scene2.add(vricon);
   vricon.position.x = pt.x; //intersects[0].point.x;

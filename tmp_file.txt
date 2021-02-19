@@ -1,0 +1,43 @@
+#Steps:
+1. create 2 files
+cat /lib/peerjs.js /lib/three.min.js /lib/COOLRenderer.js /DeviceOrientationController.js /world.js /gyro.js > doorstep1.min_.js
+cat main.js > doorstep2.min_.js
+
+2. minify doorstep1.min.js, doorstep2.min.js at "https://jscompress.com/" result is compressed.js compressed.js
+3. take two files compressed.js and obfuscator it on https://obfuscator.io/ create doorstep1.obf.js and doorstep2.obf.js
+
+
+//----------Changes made for obuscator:
+1. changing sendGyroData to sendDataPacket
+2. changing CSS2DObject to COOLObject
+3. changing CSS2DRenderer to COOLRenderer
+4. changing file names to COOLRenderer.js
+
+
+
+#Files for obfuscator:
+Step A
+/lib/peerjs.js
+/lib/three.min.js
+/lib/COOLRenderer.js
+/DeviceOrientationController.js
+/world.js
+/gyro.js
+
+
+Step B
+/main.js
+
+
+
+original include in index.html
+<script src="/lib/peerjs.js"></script>
+<script src="/lib/three.min.js"></script>
+
+<script src="/COOLRenderer.js"></script>
+
+<!-- import the webpage's client-side javascript files -->
+<script src="/main.js" type="module"></script>
+<script src="/DeviceOrientationController.js"></script>
+<script src="/world.js"></script>
+<script src="/gyro.js"></script>

@@ -288,7 +288,7 @@ else {
 
 // Hook with gyro.js:
 // Function sends orientation data to room admin
-let sendGyroData = (data) => {
+let sendDataPacket = (data) => {
 
   // If connected to admin
   if (peerConn) {
@@ -300,7 +300,7 @@ let sendGyroData = (data) => {
 
 }
 
-window.sendGyroData = sendGyroData;
+window.sendDataPacket = sendDataPacket;
 
 // Hook with world.js:
 // Function sends marker data to room participant

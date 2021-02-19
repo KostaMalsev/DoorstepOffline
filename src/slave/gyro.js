@@ -39,7 +39,7 @@ window.addEventListener("deviceorientation", function (event) {
     var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
 
     // Hook with main.js to pass gyro data to peer
-    sendGyroData(data);
+    sendDataPacket(data);
   }
 });
 /*
@@ -55,7 +55,7 @@ window.addEventListener("orientationchange", function (event) { // deviceorienta
     var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
 
     // Hook with main.js to pass gyro data to peer
-    sendGyroData(data);
+    sendDataPacket(data);
   }
 });
 
@@ -71,7 +71,7 @@ window.addEventListener("deviceorientation", function (event) { // deviceorienta
     var data = {alpha: event.alpha.toFixed(2), beta: event.beta.toFixed(2), gamma: event.gamma.toFixed(2)};
 
     // Hook with main.js to pass gyro data to peer
-    sendGyroData(data);
+    sendDataPacket(data);
   }
 });
 */
