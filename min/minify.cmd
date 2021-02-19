@@ -8,7 +8,7 @@ copy /b peerjs.min.js+three.min.js+CSS2DRenderer.js C:\Users\limor\Downloads\doo
 
 echo Appending scripts
 cd C:\Users\limor\Downloads\doorstepnetlify\src\slave\
-copy /b main.js+DeviceOrientationController.js+world.js+gyro.js C:\Users\limor\Downloads\doorstepnetlify\min\doorstep.js
+copy /b DeviceOrientationController.js+world.js+gyro.js C:\Users\limor\Downloads\doorstepnetlify\min\doorstep.js
 
 echo Appending libraries to scripts
 cd C:\Users\limor\Downloads\doorstepnetlify\min\

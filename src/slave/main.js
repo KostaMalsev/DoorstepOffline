@@ -30,6 +30,8 @@ let logMessage = (message) => {
   messagesEl.innerHTML = '<div>' + message + '</div>';
 };
 
+window.logMessage = logMessage;
+
 // Utility function - Remove connectivity message
 let removeConnectionMessage = () => {
   /*messagesEl.querySelectorAll('div').forEach(div => {
@@ -63,8 +65,8 @@ let peer = new Peer({
   //initiator,
   //stream: this.stream,
   trickle: true,
-  config: {
-    iceServers: [{
+  config: { 
+    iceServers: [{ 
       urlstun:stun2.l.google.com:19302
       urls: 'turn:18.193.254.239:3478?transport=tcp', username: 'user', credential: 'limor1' }] }
   //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
@@ -122,7 +124,7 @@ peer.on('open', (id) => {
       //logMessage('Established connection with room admin');
       removeConnectionMessage();
     });
-
+    
     conn.on('data', (data) => {
         // Hook with world.js:
         // Rotate the participant's virtual camera
@@ -147,7 +149,7 @@ var retryCount = 0;
 
 peer.on('error', (error) => {
   logMessage(loaderSVG + 'Connecting');
-
+  
   if (retryCount < 3) {
     retryCount++;
     peer.reconnect();
@@ -160,7 +162,7 @@ peer.on('error', (error) => {
 
 peer.on('disconnected', function() {
   logMessage(loaderSVG + 'Connecting');
-
+  
   if (retryCount < 3) {
     retryCount++;
     peer.reconnect();
@@ -187,10 +189,10 @@ peer.on('connection', (conn) => {
 
   // When reciving data from participant
   conn.on('data', (data) => {
-
+    
     // If reciving marker
     if (data.x != null) {
-
+      
       // Add point to 3d world
       let pt = {
         x: data.x,
@@ -198,19 +200,19 @@ peer.on('connection', (conn) => {
         z: data.z
       };
       createPoint(pt);
-
+      
     }
-
+    
     else {
-
+      
       // Show navigation
       navigation[data].classList.add('visible');
       window.setTimeout(() => {
         navigation[data].classList.remove('visible');
       }, 2000);
-
+      
     }
-
+    
   });
 
 });
@@ -221,7 +223,7 @@ peer.on('call', (call) => {
 
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
-  call.on('stream', (s) => {
+  call.on('stream', (s) => {  
     renderMyVideo(s);
     removeConnectionMessage();
   });
@@ -249,7 +251,7 @@ var peerId = url.searchParams.get('room');
 // If joining meeting
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
-
+  
   myVideoEl.classList.add('big');
 
   document.title =  'Doorstep - Join Meeting'; // Set window title
@@ -266,11 +268,11 @@ if (peerId != null) {
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
         removeConnectionMessage();
-
+        
         // Render video
         renderMyVideo(stream);
         renderVideo(s);
-
+        
         myVideoEl.muted = "muted";
         myVideoEl.classList.remove('big');
 
@@ -278,7 +280,7 @@ if (peerId != null) {
 
       call.on('error', (error) => {
         myVideoEl.classList.add('big');
-
+        
         logMessage(loaderSVG + 'Connecting');
 
         if (retryCount < 3) {
@@ -302,9 +304,9 @@ if (peerId != null) {
 else {
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
-
+  
   document.title =  'Doorstep - Create Meeting'; // Set window title
-
+  
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
       video: {
@@ -318,7 +320,7 @@ else {
       myVideoStream = stream;
       renderVideo(myVideoStream);
       videoEl.muted = "muted";
-
+    
       removeConnectionMessage();
     })
 
@@ -342,6 +344,8 @@ let sendGyroData = (data) => {
 
 }
 
+window.sendGyroData = sendGyroData;
+
 // Hook with world.js:
 // Function sends marker data to room admin
 let sendMarker = (data) => {
@@ -356,15 +360,17 @@ let sendMarker = (data) => {
 
 }
 
+window.sendMarker = sendMarker;
+
 // Function sends navigation signal to room admin
 let sendNav = (index) => {
-
+  
   // Show navigation
   navigation[index].classList.add('visible');
   window.setTimeout(() => {
     navigation[index].classList.remove('visible');
   }, 2000);
-
+  
   // If connected to admin
   if (peerConn) {
 
@@ -372,5 +378,7 @@ let sendNav = (index) => {
     peerConn.send(index);
 
   }
-
+  
 }
+
+window.sendNav = sendNav;
