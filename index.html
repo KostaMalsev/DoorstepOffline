@@ -26,26 +26,24 @@
   <div class="navigation right"></div>
   <div class="messages"></div>
   <div class="button-wrapper">
-    <div class="button" onclick="copyLink()" style="display:none">Copy link</div>
+    <div class="button" style="display:none">Copy link</div>
   </div>
   <div class="prompt-wrapper">
     <div class="prompt">
       <h1>Allow rotation access to place markers</h1>
       <div class="buttons">
-        <div onclick="promptEl.classList.remove('visible')">Cancel</div>
+        <div>Cancel</div>
         <hr>
-        <div onclick="promptEl.classList.remove('visible');requestPermission()">Allow</div>
+        <div>Allow</div>
       </div>
     </div>
   </div>
 
-<!-- import libraries -->
 <script src="/lib/peerjs.min.js"></script>
 <script src="/lib/three.min.js"></script>
 <script src="/lib/CSS2DRenderer.js"></script>
 
-<!-- import the webpage's client-side javascript files -->
-<script src="/slave/main.js" type="module"></script>
+<script src="/slave/main.js"></script>
 <script src="/slave/DeviceOrientationController.js"></script>
 <script src="/slave/world.js"></script>
 <script src="/slave/gyro.js"></script>
