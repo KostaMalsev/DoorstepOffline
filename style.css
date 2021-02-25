@@ -267,6 +267,10 @@ body {
   color: #1d1d1f;
 }
 
+.onboard.hidden {
+  display: none;
+}
+
 .stages {
   position: relative;
   display: flex;
