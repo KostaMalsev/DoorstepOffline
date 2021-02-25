@@ -260,15 +260,15 @@ body {
   width: 100vw;
   height: 100%;
   background: #fbfbfd;
-  display: grid;
+  display: none;
   place-content: center;
   text-align: center;
   z-index: 4;
   color: #1d1d1f;
 }
 
-.onboard.hidden {
-  display: none;
+.onboard.visible {
+  display: grid;
 }
 
 .stages {
