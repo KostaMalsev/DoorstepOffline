@@ -22,7 +22,8 @@ apps[0].addEventListener('click', e => {
   var link = window.location.href + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
-  window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
+  //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
+  window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
 })
 
 apps[1].addEventListener('click', e => {
