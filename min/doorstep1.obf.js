@@ -18,18 +18,18 @@ submit.addEventListener('click', e => {
 
 apps[0].addEventListener('click', e => {
   onboard.classList.remove('visible');
-  
+
   var link = window.location.href + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-  
-  window.location.href = 'sms:'+ phone.value +'&amp;body='+ text;
+
+  window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
 })
 
 apps[1].addEventListener('click', e => {
   onboard.classList.remove('visible');
-  
+
   var link = window.location.href + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-  
-  window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
+
+  window.location.href = encodeURI('whatsapp://send?phone='+ phone.value +'&amp;text='+ text);
 })
