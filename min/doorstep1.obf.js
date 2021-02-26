@@ -14,26 +14,40 @@ if (join == null) {
 
 submit.addEventListener('click', e => {
   stages.classList = 'stages two';
+
 })
 
+
+//SMS:
 apps[0].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
   var link = window.location.href + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
+  phone.value.replace('-','');//remove seperators
+  phone.value.replace('+972','');//remove Israel id number
+
   //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
   window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
 })
 
+
+//Whatsapp:
 apps[1].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
   var link = window.location.href + '?room=' + document.querySelector('.button').id,
-      text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
+  text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
   //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
-  let phonen = phone.value[0]=='0'?phone.value.substring(1,9):phone.value;//remove zero in from phone number
+
+  //Clean phone number:
+  phone.value.replace('-','');//remove seperators
+  phone.value.replace('+972','');//remove Israel id number
+  //Remove zero in from phone number
+  let phonen = phone.value[0]=='0'?phone.value.substring(1,9):phone.value;
+
   window.location.href = 'whatsapp://send?phone='+'+972'+phone.value+'&text='+encodeURI(text);
   //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ encodeURI(text);
   //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
