@@ -354,6 +354,7 @@ body {
   position: relative;
   margin: auto;
   margin-top: .82em;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   width: calc(100% - 30px);
