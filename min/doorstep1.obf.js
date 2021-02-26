@@ -33,7 +33,7 @@ apps[1].addEventListener('click', e => {
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
   //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
-  window.location.href = 'whatsapp://send?phone='+phone.value+'&text='+encodeURI(text);
+  window.location.href = 'whatsapp://send?phone='+'+972'+phone.value+'&text='+encodeURI(text);
   //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ encodeURI(text);
   //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
   //var win = window.open(`https://wa.me/${phone.value}?text=I%27m%20api%20msg%20hello%20friend%20${encodeURI(text)}`, '_blank');
