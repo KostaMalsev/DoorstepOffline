@@ -33,5 +33,5 @@ apps[1].addEventListener('click', e => {
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
   //window.location.href = encodeURI('whatsapp://send?phone='+ phone.value +'&amp;text='+ text);
-  window.location.href = 'whatsapp://send?phone='+ phone.value&text='+encodeURI(text);
+  window.location.href = 'whatsapp://send?phone='+phone.value+'&'+'text='+encodeURI(text);
 })
