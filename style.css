@@ -403,6 +403,7 @@ body {
   pointer-events: none;
   transition: .2s ease;
   color: #0071e3;
+  cursor: pointer;
 }
 
 #phone-input:valid ~ .phone-submit {
