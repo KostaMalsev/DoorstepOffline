@@ -22,7 +22,7 @@ submit.addEventListener('click', e => {
 apps[0].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
-  let href_ = window.location.href.replace('https','googlechromes');
+  let href_ = window.location.href;//window.location.href.replace('https','googlechromes');
 
   var link = href_ + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
@@ -39,7 +39,7 @@ apps[0].addEventListener('click', e => {
 apps[1].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
-  let href_ = window.location.href.replace('https','googlechromes');
+  let href_ = window.location.href;//.replace('https','googlechromes');
   var link = href_ + '?room=' + document.querySelector('.button').id,
   text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
