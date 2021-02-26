@@ -22,7 +22,9 @@ submit.addEventListener('click', e => {
 apps[0].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
-  var link = window.location.href + '?room=' + document.querySelector('.button').id,
+  let href_ = window.location.href.replace('https','googlechromes');
+
+  var link = href_ + '?room=' + document.querySelector('.button').id,
       text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
   phone.value.replace('-','');//remove seperators
@@ -37,7 +39,8 @@ apps[0].addEventListener('click', e => {
 apps[1].addEventListener('click', e => {
   onboard.classList.remove('visible');
 
-  var link = window.location.href + '?room=' + document.querySelector('.button').id,
+  let href_ = window.location.href.replace('https','googlechromes');
+  var link = href_ + '?room=' + document.querySelector('.button').id,
   text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
 
   //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
