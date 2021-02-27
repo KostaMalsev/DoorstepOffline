@@ -94,6 +94,7 @@ body {
   cursor: pointer;
   border: 2px solid white;
   color: white;
+  opacity: 0; /*updated 27/2*/
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
