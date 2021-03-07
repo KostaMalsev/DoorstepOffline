@@ -358,21 +358,5 @@ let sendMarker = (data) => {
 
 window.sendMarker = sendMarker;
 
-// Utility function - Copy text
-let copy = (text) => {
-  var textArea = document.createElement("textarea");
-  textArea.value = text;
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
-}
-
-//Utility function for copy link
-let copyLink = () => {
-  copy(window.location.href + '?room=' + button.id);
-  button.innerHTML = 'Copied';
-}
 
 window.copyLink = copyLink;

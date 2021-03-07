@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+COOLObject	.\min\doorstep1.min.js	/^var COOLObject = function ( element ) {$/;"	c
+COOLRenderer.cache.objects	.\min\doorstep1.min.js	/^        objects: new WeakMap()$/;"	p
+COOLRenderer.getSize	.\min\doorstep1.min.js	/^    this.getSize = function () {$/;"	m
+COOLRenderer	.\min\doorstep1.min.js	/^var COOLRenderer = function () {$/;"	c
+setSize	.\min\doorstep1.min.js	/^    this.setSize = function ( width, height ) {$/;"	f
+var.objectData.distanceToCameraSquared	.\min\doorstep1.min.js	/^                distanceToCameraSquared: getDistanceToSquared( camera, object )$/;"	p
+renderObject	.\min\doorstep1.min.js	/^    var renderObject = function ( object, scene, camera ) {$/;"	f
+getDistanceToSquared	.\min\doorstep1.min.js	/^    var getDistanceToSquared = function () {$/;"	f
+filterAndFlatten	.\min\doorstep1.min.js	/^    var filterAndFlatten = function ( scene ) {$/;"	f
+zOrder	.\min\doorstep1.min.js	/^    var zOrder = function ( scene ) {$/;"	f
+render	.\min\doorstep1.min.js	/^    this.render = function ( scene, camera ) {$/;"	f
+peerId	.\min\doorstep1.min.js	/^var peerId = url.searchParams.get('room');$/;"	v
+DeviceOrientationController.CONTROLLER_STATE.AUTO	.\min\doorstep1.min.js	/^    AUTO: 0,$/;"	p
+DeviceOrientationController.CONTROLLER_STATE.MANUAL_ROTATE	.\min\doorstep1.min.js	/^    MANUAL_ROTATE: 1,$/;"	p
+DeviceOrientationController.CONTROLLER_STATE.MANUAL_ZOOM	.\min\doorstep1.min.js	/^    MANUAL_ZOOM: 2$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.CALIBRATE_COMPASS	.\min\doorstep1.min.js	/^    CALIBRATE_COMPASS: 'compassneedscalibration',$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.SCREEN_ORIENTATION	.\min\doorstep1.min.js	/^    SCREEN_ORIENTATION: 'orientationchange',$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.MANUAL_CONTROL	.\min\doorstep1.min.js	/^    MANUAL_CONTROL: 'userinteraction', \/\/ userinteractionstart, userinteractionend$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.ZOOM_CONTROL	.\min\doorstep1.min.js	/^    ZOOM_CONTROL: 'zoom', \/\/ zoomstart, zoomend$/;"	p
+DeviceOrientationController.CONTROLLER_EVENT.ROTATE_CONTROL	.\min\doorstep1.min.js	/^    ROTATE_CONTROL: 'rotate', \/\/ rotatestart, rotateend$/;"	p
+DeviceOrientationController.fireEvent	.\min\doorstep1.min.js	/^  var fireEvent = function() {$/;"	m
+DeviceOrientationController	.\min\doorstep1.min.js	/^var DeviceOrientationController = function(object, domElement) {$/;"	c
+constrainObjectFOV	.\min\doorstep1.min.js	/^  this.constrainObjectFOV = function() {$/;"	c
+onDeviceOrientationChange	.\min\doorstep1.min.js	/^  this.onDeviceOrientationChange = function(event) {$/;"	c
+onScreenOrientationChange	.\min\doorstep1.min.js	/^  this.onScreenOrientationChange = function() {$/;"	c
+onCompassNeedsCalibration	.\min\doorstep1.min.js	/^  this.onCompassNeedsCalibration = function(event) {$/;"	f
+onDocumentMouseDown	.\min\doorstep1.min.js	/^  this.onDocumentMouseDown = function(event) {$/;"	c
+onDocumentMouseMove	.\min\doorstep1.min.js	/^  this.onDocumentMouseMove = function(event) {$/;"	f
+onDocumentMouseUp	.\min\doorstep1.min.js	/^  this.onDocumentMouseUp = function(event) {$/;"	c
+onDocumentTouchStart	.\min\doorstep1.min.js	/^  this.onDocumentTouchStart = function(event) {$/;"	f
+onDocumentTouchMove	.\min\doorstep1.min.js	/^  this.onDocumentTouchMove = function(event) {$/;"	f
+onDocumentTouchEnd	.\min\doorstep1.min.js	/^  this.onDocumentTouchEnd = function(event) {$/;"	c
+createQuaternion	.\min\doorstep1.min.js	/^  var createQuaternion = function() {$/;"	f
+createRotationMatrix	.\min\doorstep1.min.js	/^  var createRotationMatrix = function() {$/;"	f
+updateManualMove	.\min\doorstep1.min.js	/^  this.updateManualMove = function() {$/;"	f
+UpdateRotFromNet	.\min\doorstep1.min.js	/^  this.UpdateRotFromNet = function(e) {$/;"	c
+updateDeviceMov
