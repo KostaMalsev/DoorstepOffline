@@ -20,73 +20,8 @@ let messagesEl = document.querySelector('.messages');
 let videoEl = document.querySelector('.remote-video');
 let myVideoEl = document.querySelector('.my-video');
 let button = document.querySelector('.button');
+let navigation = document.querySelectorAll('.navigation');
 let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 100"><rect fill="white" height="6" opacity="0" rx="3" ry="3" transform="rotate(-90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.08333333333333333" rx="3" ry="3" transform="rotate(-60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.16666666666666666" rx="3" ry="3" transform="rotate(-30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.25" rx="3" ry="3" transform="rotate(0 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.3333333333333333" rx="3" ry="3" transform="rotate(30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.4166666666666667" rx="3" ry="3" transform="rotate(60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5" rx="3" ry="3" transform="rotate(90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5833333333333334" rx="3" ry="3" transform="rotate(120 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.6666666666666666" rx="3" ry="3" transform="rotate(150 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.75" rx="3" ry="3" transform="rotate(180 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.8333333333333334" rx="3" ry="3" transform="rotate(210 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.9166666666666666" rx="3" ry="3" transform="rotate(240 50 50)" width="25" x="72" y="47"></rect></svg>';
-
-
-
-//Onboarding:
-var url = new URL(window.location.href),
-    join = url.searchParams.get('room'),
-    onboard = document.querySelector('.onboard'),
-    stages = document.querySelector('.stages'),
-    phone = document.querySelector('#phone-input'),
-    submit = document.querySelector('.phone-submit'),
-    apps = document.querySelector('.apps').children;
-
-if (join == null) {
-  onboard.classList.add('visible');
-}
-
-submit.addEventListener('click', e => {
-  stages.classList = 'stages two';
-
-})
-
-
-//SMS:
-apps[0].addEventListener('click', e => {
-  onboard.classList.remove('visible');
-
-  let href_ = window.location.href;//window.location.href.replace('https','googlechromes');
-
-  var link = href_ + '?room=' + document.querySelector('.button').id,
-      text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-
-  phone.value.replace('-','');//remove seperators
-  phone.value.replace('+972','');//remove Israel id number
-
-  //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
-  window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
-})
-
-
-//Whatsapp:
-apps[1].addEventListener('click', e => {
-  onboard.classList.remove('visible');
-
-  let href_ = window.location.href;//.replace('https','googlechromes');
-  var link = href_ + '?room=' + document.querySelector('.button').id,
-  text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-
-  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
-
-  //Clean phone number:
-  phone.value.replace('-','');//remove seperators
-  phone.value.replace('+972','');//remove Israel id number
-  //Remove zero in from phone number
-  let phonen = phone.value[0]=='0'?phone.value.substring(1,9):phone.value;
-
-  window.location.href = 'whatsapp://send?phone='+'+972'+phone.value+'&text='+encodeURI(text);
-  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ encodeURI(text);
-  //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
-  //var win = window.open(`https://wa.me/${phone.value}?text=I%27m%20api%20msg%20hello%20friend%20${encodeURI(text)}`, '_blank');
-
-})
-
-
-
-
-
 
 
 
@@ -292,11 +227,21 @@ peer.on('call', (call) => {
 
   call.on('stream', (s) => {
     renderVideo(s);
+    removeConnectionMessage();
   });
 
   call.on('error', (error) => {
     myVideoEl.classList.add('big');
     logMessage('Meeting ended: '+error);
+    //Perform retry:
+    if (retryCount < 3) {
+      retryCount++;
+      peer.reconnect();
+    }
+    else {
+      peer.destroy();
+      logMessage('Meeting ended: ' + error);
+    }
   });
 });
 
@@ -306,7 +251,7 @@ var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
-// If joining meeting (customer slave)
+// If joining meeting (customer is slave)
 if (peerId != null) {
 
   logMessage(loaderSVG + 'Connecting');
@@ -332,9 +277,20 @@ if (peerId != null) {
     });
     //If error:
     call.on('error', (error) => {
-      //myVideoEl.classList.add('big');
-      peer.destroy();
-      logMessage('Meeting ended: '+error);
+      myVideoEl.classList.add('big');
+      //peer.destroy();
+      //logMessage('Meeting ended: '+error);
+      //Try to reconnect:
+      logMessage(loaderSVG + 'Connecting');
+
+      if (retryCount < 3) {
+        retryCount++;
+        peer.reconnect();
+      }
+      else {
+        peer.destroy();
+        logMessage('Meeting ended: ' + error);
+      }
     });
 
   })
@@ -360,7 +316,7 @@ if (peerId != null) {
     })
 
     .then((stream) => {
-      // Render video
+      // Render self video
       myVideoStream = stream;
       renderMyVideo(myVideoStream);
 

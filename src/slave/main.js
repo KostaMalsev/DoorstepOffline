@@ -248,7 +248,7 @@ var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
-// If joining meeting
+// If joining meeting (customer is master)
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
 
@@ -264,14 +264,14 @@ if (peerId != null) {
 
     }).then(stream => { // When permissions granted
 
-      // Call admin
+      // Call admin: push self video stream
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
         removeConnectionMessage();
 
         // Render video
-        renderMyVideo(stream);
-        renderVideo(s);
+        renderMyVideo(stream);//self video
+        renderVideo(s);//remote video
 
         myVideoEl.muted = "muted";
         myVideoEl.classList.remove('big');
