@@ -83,7 +83,8 @@ var peerId = url.searchParams.get('room');
 
 // If orientation not granted and not creating room
 let promptEl = document.querySelector('.prompt-wrapper');
-if (orientationGranted == false && peerId == null) {
+//If it's an initiator he is the master and no rotation needed:
+if (orientationGranted == false || peerId != null) {
   // Show prompt
   promptEl.classList.add('visible');
 }
