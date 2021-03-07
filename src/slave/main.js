@@ -25,79 +25,6 @@ let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 10
 
 
 
-
-//Onboarding:
-var url = new URL(window.location.href),
-    join = url.searchParams.get('room'),
-    onboard = document.querySelector('.onboard'),
-    stages = document.querySelector('.stages'),
-    phone = document.querySelector('#phone-input'),
-    submit = document.querySelector('.phone-submit'),
-    apps = document.querySelector('.apps').children;
-
-if (join == null) {
-  onboard.classList.add('visible');
-}
-
-submit.addEventListener('click', e => {
-  stages.classList = 'stages two';
-
-})
-
-
-//SMS:
-apps[0].addEventListener('click', e => {
-  onboard.classList.remove('visible');
-
-  let href_ = window.location.href;//window.location.href.replace('https','googlechromes');
-
-  var link = href_ + '?room=' + document.querySelector('.button').id,
-      text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-
-  phone.value.replace('-','');//remove seperators
-  phone.value.replace('+972','');//remove Israel id number
-
-  //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
-  window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
-})
-
-
-//Whatsapp:
-apps[1].addEventListener('click', e => {
-  onboard.classList.remove('visible');
-
-  let href_ = window.location.href;//.replace('https','googlechromes');
-  var link = href_ + '?room=' + document.querySelector('.button').id,
-  text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
-
-  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
-
-  //Clean phone number:
-  phone.value.replace('-','');//remove seperators
-  phone.value.replace('+972','');//remove Israel id number
-  //Remove zero in from phone number
-  let phonen = phone.value[0]=='0'?phone.value.substring(1,9):phone.value;
-
-  window.location.href = 'whatsapp://send?phone='+'+972'+phone.value+'&text='+encodeURI(text);
-  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ encodeURI(text);
-  //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
-  //var win = window.open(`https://wa.me/${phone.value}?text=I%27m%20api%20msg%20hello%20friend%20${encodeURI(text)}`, '_blank');
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Utility function - Log message
 let logMessage = (message) => {
   messagesEl.innerHTML = '<div>' + message + '</div>';
@@ -183,9 +110,10 @@ peer.on('open', (id) => {
     button.style.display = 'block';
     button.id = id;
     removeConnectionMessage();
+
   }
 
-  // If joining meeting (guiding customer)
+  // If joining meeting
   else {
 
     // Connect with room admin
@@ -218,7 +146,7 @@ peer.on('open', (id) => {
 });
 
 var retryCount = 0;
-//Try to reconnect:
+
 peer.on('error', (error) => {
   logMessage(loaderSVG + 'Connecting');
 
@@ -226,7 +154,7 @@ peer.on('error', (error) => {
     retryCount++;
     peer.reconnect();
   }
-  else{
+  else {
     peer.destroy();
     logMessage('Meeting ended: ' + error);
   }
@@ -272,14 +200,21 @@ peer.on('connection', (conn) => {
         z: data.z
       };
       createPoint(pt);
-    }else {
+
+    }
+
+    else {
+
       // Show navigation
       navigation[data].classList.add('visible');
       window.setTimeout(() => {
         navigation[data].classList.remove('visible');
       }, 2000);
+
     }
+
   });
+
 });
 
 // Handle incoming voice/video connection
@@ -363,7 +298,10 @@ if (peerId != null) {
       removeConnectionMessage();
       logMessage('Allow camera access for video chat.');
     });
-}else {// If creating meeting
+}
+
+// If creating meeting
+else {
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
 
@@ -395,11 +333,15 @@ if (peerId != null) {
 // Hook with gyro.js:
 // Function sends orientation data to room participant
 let sendDataPacket = (data) => {
+
   // If connected to participant
   if (theadminConn) {
+
     // Send gyro participant
     theadminConn.send(data);
+
   }
+
 }
 
 window.sendDataPacket = sendDataPacket;
@@ -413,7 +355,9 @@ let sendMarker = (data) => {
 
     // Send marker data
     peerConn.send(data);
+
   }
+
 }
 
 window.sendMarker = sendMarker;
@@ -432,7 +376,9 @@ let sendNav = (index) => {
 
     // Send navigation signal
     peerConn.send(index);
+
   }
+
 }
 
 window.sendNav = sendNav;
