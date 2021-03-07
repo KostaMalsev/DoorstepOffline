@@ -24,6 +24,75 @@ let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 10
 
 
 
+//Onboarding:
+var url = new URL(window.location.href),
+    join = url.searchParams.get('room'),
+    onboard = document.querySelector('.onboard'),
+    stages = document.querySelector('.stages'),
+    phone = document.querySelector('#phone-input'),
+    submit = document.querySelector('.phone-submit'),
+    apps = document.querySelector('.apps').children;
+
+if (join == null) {
+  onboard.classList.add('visible');
+}
+
+submit.addEventListener('click', e => {
+  stages.classList = 'stages two';
+
+})
+
+
+//SMS:
+apps[0].addEventListener('click', e => {
+  onboard.classList.remove('visible');
+
+  let href_ = window.location.href;//window.location.href.replace('https','googlechromes');
+
+  var link = href_ + '?room=' + document.querySelector('.button').id,
+      text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
+
+  phone.value.replace('-','');//remove seperators
+  phone.value.replace('+972','');//remove Israel id number
+
+  //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
+  window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
+})
+
+
+//Whatsapp:
+apps[1].addEventListener('click', e => {
+  onboard.classList.remove('visible');
+
+  let href_ = window.location.href;//.replace('https','googlechromes');
+  var link = href_ + '?room=' + document.querySelector('.button').id,
+  text = 'Your package has arrived. Please direct it to your doorstep:\n' + link;
+
+  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ text;
+
+  //Clean phone number:
+  phone.value.replace('-','');//remove seperators
+  phone.value.replace('+972','');//remove Israel id number
+  //Remove zero in from phone number
+  let phonen = phone.value[0]=='0'?phone.value.substring(1,9):phone.value;
+
+  window.location.href = 'whatsapp://send?phone='+'+972'+phone.value+'&text='+encodeURI(text);
+  //window.location.href = 'whatsapp://send?phone='+ phone.value +'&amp;text='+ encodeURI(text);
+  //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
+  //var win = window.open(`https://wa.me/${phone.value}?text=I%27m%20api%20msg%20hello%20friend%20${encodeURI(text)}`, '_blank');
+
+})
+
+
+
+
+
+
+
+
+
+
+
 // Utility function - Log message
 let logMessage = (message) => {
   messagesEl.innerHTML = '<div>' + message + '</div>';
@@ -33,11 +102,12 @@ window.logMessage = logMessage;
 
 // Utility function - Remove connectivity message
 let removeConnectionMessage = () => {
-  messagesEl.querySelectorAll('div').forEach(div => {
+  /*messagesEl.querySelectorAll('div').forEach(div => {
     if (div.innerHTML == (loaderSVG + 'Connecting')) {
       div.remove()
     };
-  })
+  })*/
+  messagesEl.innerHTML = '';
 };
 
 
@@ -70,8 +140,8 @@ let peer = new Peer({
   //initiator,
   //stream: this.stream,
   trickle: true,
-  config: { 
-    iceServers: [{ 
+  config: {
+    iceServers: [{
       urlstun:stun2.l.google.com:19302
       urls: 'turn:18.193.254.239:3478?transport=tcp', username: 'user', credential: 'limor1' }] }
   //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
@@ -117,35 +187,54 @@ peer.on('open', (id) => {
     button.id = id;
     removeConnectionMessage();
 
-  }
-
-  // If joining meeting
-  else {
-
+  }else{ // If joining meeting (guided customer)
     // Connect with room admin
     let conn = peer.connect(peerId);
     peerConn = conn;
 
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
-      conn.send({ width: window.innerWidth, height: window.innerHeight });
+      //conn.send({ width: window.innerWidth, height: window.innerHeight });
+      removeConnectionMessage();
     });
 
     // When receiving data from admin
     conn.on('data', (data) => {
       // Add point to 3d world
-      let pt = {
-        x: data.x,
-        y: data.y,
-        z: data.z
-      };
-      createPoint(pt);
-
+      if(data.x != null){
+        let pt = {
+          x: data.x,
+          y: data.y,
+          z: data.z
+        };
+        createPoint(pt);
+      }else{//if its a direction guide
+        // Show navigation
+        navigation[data].classList.add('visible');
+        window.setTimeout(() => {
+          navigation[data].classList.remove('visible');
+        }, 2000);
+      }
     });
   }
 });
+
+
+//peer.on('error', (error) => {
+//  logMessage(error);
+var retryCount = 0;
+
 peer.on('error', (error) => {
-  logMessage(error);
+  logMessage(loaderSVG + 'Connecting');
+
+  if (retryCount < 3) {
+    retryCount++;
+    peer.reconnect();
+  }
+  else{
+    peer.destroy();
+    logMessage('Meeting ended: ' + error);
+  }
 });
 
 
@@ -165,33 +254,33 @@ peer.on('connection', (conn) => {
     logMessage('Established connection with room participant');
     //cssRenderer.domElement.addEventListener('click', clickedOnScreen); // cssRenderer.domElement
     //cssRenderer.domElement.style.cursor = 'pointer';
+    removeConnectionMessage();
   });
 
   // When reciving data from participant
   conn.on('data', (data) => {
 
-    if (data.width == undefined) {
-      // Hook with world.js:
-      // Rotate the admin's virtual camera
-      // Based on participant's device rotation
-      //logMessage(JSON.stringify(data));
+    //if (data.width == undefined) {
+    // Hook with world.js:
+    // Rotate the admin's virtual camera
+    // Based on participant's device rotation
+    //logMessage(JSON.stringify(data));
 
-      //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
-      if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2))<15){
-        rotateCamera(data);
-      }else{
-        rotateCamera(last_rot_data);
-        //console.log(JSON.stringify(data));
-      }
-      last_rot_data.alpha = data.alpha;
-      last_rot_data.beta = data.beta;
-      last_rot_data.gamma = data.gamma;
+    //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
+    if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2))<15){
+      rotateCamera(data);
+    }else{
+      rotateCamera(last_rot_data);
+      //console.log(JSON.stringify(data));
     }
-    else {
-      resizeTHREETo(data.width, data.height);
-    }
+    last_rot_data.alpha = data.alpha;
+    last_rot_data.beta = data.beta;
+    last_rot_data.gamma = data.gamma;
+    //}
+    //else {
+    //resizeTHREETo(data.width, data.height);
+    //}
   });
-
 });
 
 // Handle incoming voice/video connection
@@ -217,50 +306,46 @@ var myVideoStream;
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
-// If joining meeting
+// If joining meeting (customer slave)
 if (peerId != null) {
+
   logMessage(loaderSVG + 'Connecting');
-  
+
   document.title =  'Doorstep - Join Meeting'; // Set window title
 
   // Get voice/video permissions
   navigator.mediaDevices.getUserMedia({
+    video: {
+      facingMode: "environment"
+    },
+    audio: true
+  }).then(stream => { // When permissions granted
 
-      video: {
-        facingMode: "environment"
-      },
-      audio: true
+    // Call admin
+    let call = peer.call(peerId, stream);
+    call.on('stream', (s) => {
 
-    }).then(stream => { // When permissions granted
-
-      // Call admin
-      let call = peer.call(peerId, stream);
-      call.on('stream', (s) => {
-
-        // Render video
-        renderMyVideo(s);
-        renderVideo(stream);
-        videoEl.muted = "muted";
-
-      });
-
-      call.on('error', (error) => {
-        myVideoEl.classList.add('big');
-        logMessage('Meeting ended: '+error);
-      });
-
-    })
-    .catch((err) => {
-      removeConnectionMessage();
-      logMessage('Allow camera access for video chat.');
+      // Render video of self and admin video
+      renderMyVideo(s);
+      renderVideo(stream);
+      videoEl.muted = "muted";
     });
-}
+    //If error:
+    call.on('error', (error) => {
+      //myVideoEl.classList.add('big');
+      peer.destroy();
+      logMessage('Meeting ended: '+error);
+    });
 
-// If creating meeting
-else {
+  })
+  .catch((err) => {
+    removeConnectionMessage();
+    logMessage('Allow camera access for video chat.');
+  });
+}else{ // If creating meeting
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
-  
+
   document.title =  'Doorstep - Create Meeting'; // Set window title
 
   // Show big video
@@ -278,6 +363,8 @@ else {
       // Render video
       myVideoStream = stream;
       renderMyVideo(myVideoStream);
+
+      removeConnectionMessage();
     })
 
     .catch((err) => {
@@ -292,12 +379,9 @@ let sendDataPacket = (data) => {
 
   // If connected to admin
   if (peerConn) {
-
     // Send gyro data
     peerConn.send(data);
-
   }
-
 }
 
 window.sendDataPacket = sendDataPacket;
@@ -329,6 +413,7 @@ let copy = (text) => {
   document.body.removeChild(textArea);
 }
 
+//Utility function for copy link
 let copyLink = () => {
   copy(window.location.href + '?room=' + button.id);
   button.innerHTML = 'Copied';
