@@ -358,5 +358,15 @@ let sendMarker = (data) => {
 
 window.sendMarker = sendMarker;
 
+function copyLink() {
+  var link = window.location.href + '?room=' + document.querySelector('.button').id;
+  copy('Your package has arrived. Please direct it to your doorstep:\n' + link);
+  document.querySelector('.button').innerHTML = 'Copied';
+}
+
+document.querySelector('.button').addEventListener('click', e => {
+  copyLink();
+})
+
 
 window.copyLink = copyLink;
