@@ -57,7 +57,7 @@ apps[0].addEventListener('click', e => {
 
   //window.location.href = encodeURI('sms:'+ phone.value +'&amp;body='+ text);
   window.location.href = 'sms:'+ phone.value +'&body='+encodeURI(text);
-})
+});
 
 
 //Whatsapp:
@@ -81,7 +81,7 @@ apps[1].addEventListener('click', e => {
   //window.location.href ='https://wa.me/whatsapp'+'+972'+phone.value+'?text='+encodeURI(text);
   //var win = window.open(`https://wa.me/${phone.value}?text=I%27m%20api%20msg%20hello%20friend%20${encodeURI(text)}`, '_blank');
 
-})
+});
 
 
 
