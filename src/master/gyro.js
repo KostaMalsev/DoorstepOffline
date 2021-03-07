@@ -84,11 +84,39 @@ var peerId = url.searchParams.get('room');
 // If orientation not granted and not creating room
 let promptEl = document.querySelector('.prompt-wrapper');
 //If it's an initiator he is the master and no rotation needed:
-if (orientationGranted == false && peerId == null) {
+if (orientationGranted == false && peerId != null) {
   // Show prompt
   promptEl.classList.add('visible');
 }
 
+function copy(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+}
+
+function copyLink() {
+  var link = window.location.href + '?room=' + document.querySelector('.button').id;
+  copy('Your package has arrived. Please direct it to your doorstep:\n' + link);
+  document.querySelector('.button').innerHTML = 'Copied';
+}
+
+document.querySelector('.button').addEventListener('click', e => {
+  copyLink();
+})
+
+document.querySelectorAll('.buttons div')[0].addEventListener('click', e => {
+  promptEl.classList.remove('visible');
+})
+
+document.querySelectorAll('.buttons div')[1].addEventListener('click', e => {
+  promptEl.classList.remove('visible');
+  requestPermission();
+})
 
 //Onboarding:
 var url = new URL(window.location.href),
