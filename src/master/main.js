@@ -119,6 +119,7 @@ peer.on('open', (id) => {
 var retryCount = 0;
 
 peer.on('error', (error) => {
+  peer.destroy();
   logMessage(loaderSVG + 'Connecting');
 
   if (retryCount < 3) {
