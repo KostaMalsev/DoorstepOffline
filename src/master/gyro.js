@@ -78,8 +78,14 @@ window.addEventListener("deviceorientation", function (event) { // deviceorienta
 
 
 // Retrieve parameter "?room=" from url
-var url = new URL(window.location.href);
-var peerId = url.searchParams.get('room');
+//Onboarding:
+var url = new URL(window.location.href),
+    join = url.searchParams.get('room'),
+    onboard = document.querySelector('.onboard'),
+    stages = document.querySelector('.stages'),
+    phone = document.querySelector('#phone-input'),
+    submit = document.querySelector('.phone-submit'),
+    apps = document.querySelector('.apps').children;
 
 // If orientation not granted and not creating room
 let promptEl = document.querySelector('.prompt-wrapper');
@@ -99,15 +105,6 @@ function copy(text) {
   document.body.removeChild(textArea);
 }
 
-function copyLink() {
-  var link = window.location.href + '?room=' + document.querySelector('.button').id;
-  copy('Your package has arrived. Please direct it to your doorstep:\n' + link);
-  document.querySelector('.button').innerHTML = 'Copied';
-}
-
-document.querySelector('.button').addEventListener('click', e => {
-  copyLink();
-})
 
 document.querySelectorAll('.buttons div')[0].addEventListener('click', e => {
   promptEl.classList.remove('visible');
@@ -118,14 +115,7 @@ document.querySelectorAll('.buttons div')[1].addEventListener('click', e => {
   requestPermission();
 })
 
-//Onboarding:
-var url = new URL(window.location.href),
-    join = url.searchParams.get('room'),
-    onboard = document.querySelector('.onboard'),
-    stages = document.querySelector('.stages'),
-    phone = document.querySelector('#phone-input'),
-    submit = document.querySelector('.phone-submit'),
-    apps = document.querySelector('.apps').children;
+
 
 if (join == null) {
   onboard.classList.add('visible');
