@@ -127,7 +127,7 @@ document.querySelectorAll('.buttons div')[1].addEventListener('click', e => {
      submit = document.querySelector('.phone-submit'),
      apps = document.querySelector('.apps').children;
 
- if (join != null) {
+ if (join == null) {
    onboard.classList.add('visible');
  }
 
