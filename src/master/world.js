@@ -43,7 +43,7 @@ cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.left = 0;
 cssRenderer.domElement.style.cursor = 'pointer';
 cssRenderer.domElement.style.zIndex = 3;
-cssRenderer.domElement.onclick = clickedOnScreen;
+//cssRenderer.domElement.onclick = clickedOnScreen;
 document.body.appendChild(cssRenderer.domElement);
 
 // Create plane at z position of "-5" in front of the camera
@@ -107,8 +107,8 @@ var tempRadius = new THREE.Vector3();
 function setMouse(event) {
   //mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   //mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  mouse.x = (event.clientX / gwidth) * 2 - 1;
-  mouse.y = -(event.clientY / gheight) * 2 + 1;
+  mouse.x = (event.mouseX / gwidth) * 2 - 1;
+  mouse.y = -(event.mouseY / gheight) * 2 + 1;
 }
 
 //Set raycaster from camera:
@@ -154,6 +154,109 @@ function createPoint(pt) {
   setTimeout(() => {
     scene2.remove(vricon);
   }, 15000);
+}
+
+// Drag (hook with main.js)
+
+var currentX;//last mouse/finger down reading
+var initialX; //first mouse down reading in drag mode
+var xOffset = 0;
+
+var active = false;
+var click = false;
+var swiped = false;
+
+var direction = 0;
+
+cssRenderer.domElement.addEventListener("touchstart", dragStart, false);
+cssRenderer.domElement.addEventListener("touchend", dragEnd, false);
+cssRenderer.domElement.addEventListener("touchmove", drag, false);
+
+cssRenderer.domElement.addEventListener("mousedown", dragStart, false);
+cssRenderer.domElement.addEventListener("mouseup", dragEnd, false);
+cssRenderer.domElement.addEventListener("mousemove", drag, false);
+
+//Function gets mouse/finger down event
+function dragStart(e) {
+  if (e.type === "touchstart") {
+    initialX = e.touches[0].clientX - xOffset;
+  } else {
+    initialX = e.clientX - xOffset;
+  }
+
+  active = true;
+  click = true;
+  swiped = false;
+}
+
+//Function gets mouse/finger up event
+function dragEnd(e) {
+
+  xOffset = 0;
+  //initialX = currentX;
+
+  var mouseEvent = {};
+  if (e.type === "touchend") {
+    mouseEvent.mouseX = e.touches[0].clientX;
+    mouseEvent.mouseY = e.touches[0].clientY;
+  } else {
+    mouseEvent.mouseX = e.clientX;
+    mouseEvent.mouseY = e.clientY;
+  }
+
+  //If it's a simple click, send marker to slave
+  if (click == true) {
+    clickedOnScreen(mouseEvent);
+  }
+  //Currently dragging state is false (finished dragging)
+  active = false;
+}
+
+//Function called upon drag event
+function drag(e) {
+  if (active) {
+    //prevent default dragging behavior (like dragging screen)
+    e.preventDefault();
+
+    //If the device is mobile:
+    if (e.type === "touchmove") {
+      currentX = e.touches[0].clientX - initialX;
+    } else {
+      currentX = e.clientX - initialX;
+    }
+
+    //XOffset is delta in pixels from start drag event
+    xOffset = currentX;
+
+    //If Direction is 'right'
+    if (xOffset < 0) {
+      direction = -1;
+    }
+    else { //if direction is left
+      direction = 1;
+    }
+
+    //If mouse/finger drags less than threshold don't direction //TBD - consider removing
+    if (Math.abs(xOffset) < 30) {
+      direction = 0;
+    }
+
+    if (direction == 1 && swiped == false) {
+      //Draw right blue bar on master and send message to slave
+      sendNav(0);
+      swiped = true;
+    } else if (direction == -1 && swiped == false) {
+      //Draw left blue bar on master and send to slave
+      sendNav(1);
+      swiped = true;
+    }
+
+    /*if (swiped == false) {
+      message.innerHTML = 'Started swiping';
+    }*/
+
+    click = false;
+  }
 }
 
 function resize() {
