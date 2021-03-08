@@ -469,7 +469,7 @@ var DeviceOrientationController = function(object, domElement) {
     window.addEventListener('resize', this.constrainObjectFOV, false);
 
     //If is mobile device and creating room, bind orientation bindings:
-    if (isMobile && peerId == null) {
+    if (isMobile && peerId != null) {
       window.addEventListener('orientationchange', this.onScreenOrientationChange, false);
       window.addEventListener('deviceorientation', this.onDeviceOrientationChange, false);
     }
