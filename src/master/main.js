@@ -372,10 +372,10 @@ let sendNav = (index) => {
   }, 2000);
 
   // If connected to admin
-  if (peerConn) {
+  if (theadminConn) {
 
     // Send navigation signal
-    peerConn.send(index);
+    theadminConn.send(index);
 
   }
 
