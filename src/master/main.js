@@ -224,7 +224,7 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
-    renderMyVideo(s);
+    renderVideo(s);
     removeConnectionMessage();
   });
 
@@ -318,8 +318,8 @@ else {
     .then((stream) => {
       // Render video
       myVideoStream = stream;
-      renderVideo(myVideoStream);
-      videoEl.muted = "muted";
+      renderMyVideo(myVideoStream);
+      myVideoEl.muted = "muted";
 
       removeConnectionMessage();
     })
