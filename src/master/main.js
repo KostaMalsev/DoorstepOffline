@@ -318,8 +318,8 @@ else {
     .then((stream) => {
       // Render video
       myVideoStream = stream;
-      renderMyVideo(myVideoStream);
-      myVideoEl.muted = "muted";
+      renderVideo(myVideoStream);
+      videoEl.muted = "muted";
 
       removeConnectionMessage();
     })
