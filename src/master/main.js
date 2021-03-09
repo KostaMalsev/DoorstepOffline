@@ -120,16 +120,16 @@ peer.on('open', (id) => {
 var retryCount = 0;
 //If an error:
 peer.on('error', (error) => {
-  logMessage(loaderSVG + 'Connecting');
-  //Try retry ettempts:
-  if (retryCount < 3) {
-    retryCount++;
-    peer.reconnect();
-  }
-  else {
-    peer.destroy();
-    logMessage('Meeting ended: ' + error);
-  }
+  logMessage('Error: '+error);
+
+  //if (retryCount < 3) {
+  //  retryCount++;
+  //  peer.reconnect();
+  //}
+  //else {
+  //  peer.destroy();
+  //  logMessage('Meeting ended: ' + error);
+  //}
 });
 
 peer.on('disconnected', function() {
@@ -189,7 +189,7 @@ peer.on('call', (call) => {
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
   call.on('stream', (s) => {
-    renderMyVideo(s);
+    renderVideo(s);
     removeConnectionMessage();
   });
 
@@ -337,10 +337,10 @@ let sendNav = (index) => {
   }, 2000);
 
   // If connected to admin
-  if (peerConn) {
+  if (theadminConn) {
 
     // Send navigation signal
-    peerConn.send(index);
+    theadminConn.send(index);
 
   }
 
@@ -348,6 +348,7 @@ let sendNav = (index) => {
 
 window.sendNav = sendNav;
 
+<<<<<<< HEAD
 
 
   //Australia Pasific:
@@ -361,3 +362,5 @@ window.sendNav = sendNav;
   //      {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
   //      ]
   //  }
+=======
+>>>>>>> 1a2bae4f0b7b1b74372b20ca69bf9a42aee444a7
