@@ -382,3 +382,4 @@ let sendNav = (index) => {
 }
 
 window.sendNav = sendNav;
+
