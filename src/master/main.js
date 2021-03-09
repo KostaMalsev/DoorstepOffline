@@ -9,8 +9,8 @@
  * Script terms:
  * These terms are used in the script
  * to differentiate between peers.
- * "Master": Room Creator (Typically: Mobile Device)
- * "Slave": Room Joiner (Typically: Mobile Device / Computer)
+ * "Master": Room Creator (Typically: Mobile Device / Computer)
+ * "Slave": Room Joiner (Typically: Mobile Device )
  *
  */
 
@@ -24,7 +24,7 @@ let navigation = document.querySelectorAll('.navigation');
 let loaderSVG = '<svg class="loader2" width="32" height="32" viewBox="0 0 100 100"><rect fill="white" height="6" opacity="0" rx="3" ry="3" transform="rotate(-90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.08333333333333333" rx="3" ry="3" transform="rotate(-60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.16666666666666666" rx="3" ry="3" transform="rotate(-30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.25" rx="3" ry="3" transform="rotate(0 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.3333333333333333" rx="3" ry="3" transform="rotate(30 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.4166666666666667" rx="3" ry="3" transform="rotate(60 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5" rx="3" ry="3" transform="rotate(90 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.5833333333333334" rx="3" ry="3" transform="rotate(120 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.6666666666666666" rx="3" ry="3" transform="rotate(150 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.75" rx="3" ry="3" transform="rotate(180 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.8333333333333334" rx="3" ry="3" transform="rotate(210 50 50)" width="25" x="72" y="47"></rect><rect fill="white" height="6" opacity="0.9166666666666666" rx="3" ry="3" transform="rotate(240 50 50)" width="25" x="72" y="47"></rect></svg>';
 
 
-
+//--Definition of utility functions
 // Utility function - Log message
 let logMessage = (message) => {
   messagesEl.innerHTML = '<div>' + message + '</div>';
@@ -34,11 +34,6 @@ window.logMessage = logMessage;
 
 // Utility function - Remove connectivity message
 let removeConnectionMessage = () => {
-  /*messagesEl.querySelectorAll('div').forEach(div => {
-    if (div.innerHTML == (loaderSVG + 'Connecting')) {
-      div.remove()
-    };
-  })*/
   messagesEl.innerHTML = '';
 };
 
@@ -60,39 +55,20 @@ let renderMyVideo = (stream) => {
     myVideoEl.play();
   }
 }
-/*
-let peer = new Peer({
-  //initiator,
-  //stream: this.stream,
-  trickle: true,
-  config: {
-    iceServers: [{
-      urlstun:stun2.l.google.com:19302
-      urls: 'turn:18.193.254.239:3478?transport=tcp', username: 'user', credential: 'limor1' }] }
-  //config: {‘iceServers’: [{ url: ‘stun:[your stun id]:[port]’ },{ url: ‘turn:[your turn id]:[port]’,username:’[turn username]’, credential: ‘[turn password]’ }
-});
-*/
 
+
+
+//Communication initiation:
+
+//Create new peer with configuration:
 let peer = new Peer({
   //initiator,
   //stream: this.stream,
   //trickle: true,
   //EU server:
   config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:54.93.214.159:3478?transport=tcp', credential: 'limor1', username: 'user'}]
-          }
-
-  //Australia Pasific:
-  /*
-  config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:54.206.15.107:3478?transport=tcp', credential: 'limor1', username: 'user'}]
-          }
-  */
-  //config: {iceServers: [
-  //      {url: 'stun2.l.google.com:19302'},
-  //      {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
-  //      ]
-  //  }
+  {urls: 'turn:54.93.214.159:3478?transport=tcp', credential: 'limor1', username: 'user'}]
+}
 });
 
 
@@ -100,31 +76,24 @@ let peer = new Peer({
 // Show "Connecting" message
 logMessage(loaderSVG + 'Connecting');
 
-// On connection to server
+// On connection to server and get a room id
 let peerConn;
 peer.on('open', (id) => {
   // If creating meeting
   if (peerId == null) {
-
     // Show "Copy link" button
     button.style.display = 'block';
     button.id = id;
     removeConnectionMessage();
-
-  }
-
-  // If joining meeting
-  else {
-
+  } else {// If joining meeting
     // Connect with room admin
     let conn = peer.connect(peerId);
     peerConn = conn;
-
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
       removeConnectionMessage();
     });
-
+    //Handle incoming data:
     conn.on('data', (data) => {
       // If reciving marker
       if (data.x != null) {
@@ -136,27 +105,23 @@ peer.on('open', (id) => {
           z: data.z
         };
         createPoint(pt);
-
-      }
-
-      else {
-
-        // Show navigation
+      }else {
+        // Show navigation (left right):
         navigation[data].classList.add('visible');
         window.setTimeout(() => {
           navigation[data].classList.remove('visible');
         }, 2000);
-
       }
     });
   }
 });
 
-var retryCount = 0;
 
+var retryCount = 0;
+//If an error:
 peer.on('error', (error) => {
   logMessage(loaderSVG + 'Connecting');
-
+  //Try retry ettempts:
   if (retryCount < 3) {
     retryCount++;
     peer.reconnect();
@@ -382,3 +347,17 @@ let sendNav = (index) => {
 }
 
 window.sendNav = sendNav;
+
+
+
+  //Australia Pasific:
+  /*
+  config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
+                    {urls: 'turn:54.206.15.107:3478?transport=tcp', credential: 'limor1', username: 'user'}]
+          }
+  */
+  //config: {iceServers: [
+  //      {url: 'stun2.l.google.com:19302'},
+  //      {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
+  //      ]
+  //  }
