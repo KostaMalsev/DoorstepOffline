@@ -155,6 +155,7 @@ peer.on('open', (id) => {
 var retryCount = 0;
 
 peer.on('error', (error) => {
+  console.log(error);
   logMessage(loaderSVG + 'Connecting');
 
   if (retryCount < 3) {
