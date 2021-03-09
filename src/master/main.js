@@ -76,28 +76,27 @@ let peer = new Peer({
 // Show "Connecting" message
 logMessage(loaderSVG + 'Connecting');
 
-// On connection to server and get a room id
-let peerConn;
+// Open connection to server and get a room id
+let peerConn;// connection of admin to peer
 peer.on('open', (id) => {
-  // If creating meeting
+  // If creating meeting (we are master)
   if (peerId == null) {
-    // Show "Copy link" button
+    // Show "Copy link" button, button contains the link
     button.style.display = 'block';
     button.id = id;
     removeConnectionMessage();
   } else {// If joining meeting
-    // Connect with room admin
+    // Connect with room admin (we are slave - guided)
     let conn = peer.connect(peerId);
     peerConn = conn;
     conn.on('open', () => {
       //logMessage('Established connection with room admin');
       removeConnectionMessage();
     });
-    //Handle incoming data:
+    //Handle incoming marker or navigation data:
     conn.on('data', (data) => {
       // If reciving marker
       if (data.x != null) {
-
         // Add point to 3d world
         let pt = {
           x: data.x,
@@ -106,7 +105,7 @@ peer.on('open', (id) => {
         };
         createPoint(pt);
       }else {
-        // Show navigation (left right):
+        // If the data Show navigation (left right):
         navigation[data].classList.add('visible');
         window.setTimeout(() => {
           navigation[data].classList.remove('visible');
@@ -116,7 +115,7 @@ peer.on('open', (id) => {
   }
 });
 
-
+//If error happens,abort
 var retryCount = 0;
 //If an error:
 peer.on('error', (error) => {
@@ -132,9 +131,10 @@ peer.on('error', (error) => {
   //}
 });
 
+//If got disconnected try again for 3 times:
 peer.on('disconnected', function() {
   logMessage(loaderSVG + 'Connecting');
-
+  //Try retry for three times:
   if (retryCount < 3) {
     retryCount++;
     peer.reconnect();
@@ -146,14 +146,18 @@ peer.on('disconnected', function() {
 });
 
 //Admin side functions:
-// Handle incoming data connection
+//Handle incoming data connection
 let last_rot_data={alpha: 0,beta: 0, gamma: 0};
 
-let theadminConn;
-peer.on('connection', (conn) => {
-  // Save connection for later use
-  theadminConn = conn;
 
+
+//Admin side of the app:
+//'connection' is running only on admin
+let theadminConn;//conncetion from peer to adming
+peer.on('connection', (conn) => { //runs only on admin side, when peer connects
+  // Save peer conncetion to admin for later use
+  theadminConn = conn;
+  //Open connection:
   conn.on('open', () => {
     logMessage('Established connection with room participant');
     removeConnectionMessage();
@@ -161,41 +165,39 @@ peer.on('connection', (conn) => {
 
   // When reciving data from participant
   conn.on('data', (data) => {
-
     // Hook with world.js:
-    // Rotate the participant's virtual camera
-    // Based on admin's device rotation
-    //logMessage(JSON.stringify(data));
-
+    // Rotate the admin's (master) virtual camera
+    // Based on participant's (slave) device rotation
     //"alpha":"19.18","beta":"41.08","gamma":"-18.16"
     if(Math.sqrt(Math.pow(last_rot_data.alpha,2) - Math.pow(data.alpha,2))<15){
       rotateCamera(data);
     }else{
       rotateCamera(last_rot_data);
-      //console.log(JSON.stringify(data));
     }
     last_rot_data.alpha = data.alpha;
     last_rot_data.beta = data.beta;
     last_rot_data.gamma = data.gamma;
-
   });
-
 });
 
-// Handle incoming voice/video connection
+
+//Handle incoming voice/video connection in admin (master)
 peer.on('call', (call) => {
   logMessage(loaderSVG + 'Connecting');
 
+  //'myVideoStream' - is self video of admin (master)
   call.answer(myVideoStream); // Answer the call with an A/V stream.
 
+  //Get the video stream from peer:
   call.on('stream', (s) => {
     renderVideo(s);
     removeConnectionMessage();
   });
 
+  //If an error try 3 times to reconnect
   call.on('error', (error) => {
-    logMessage(loaderSVG + 'Connecting');
-
+    logMessage('Error: ' + error);
+    /*
     if (retryCount < 3) {
       retryCount++;
       peer.reconnect();
@@ -204,47 +206,44 @@ peer.on('call', (call) => {
       peer.destroy();
       logMessage('Meeting ended: ' + error);
     }
+    */
   });
 });
 
+//self stream:
 var myVideoStream;
 
 // Retrieve parameter "?room=" from url
 var url = new URL(window.location.href);
 var peerId = url.searchParams.get('room');
 
-// If joining meeting (customer is master)
+// If joining meeting (customer is slave (peer))
 if (peerId != null) {
   logMessage(loaderSVG + 'Connecting');
-
+  //Set the self video to be big:
   myVideoEl.classList.add('big');
-
   document.title =  'Doorstep - Join Meeting'; // Set window title
 
   // Get voice/video permissions
   navigator.mediaDevices.getUserMedia({
-
-      video: {
-        facingMode: "environment"
-      },
-      audio: true
-
-    }).then(stream => { // When permissions granted
-
-      // Call admin: push self video stream
+    video: {
+      facingMode: "environment"
+    },
+    audio: true
+  }).then(stream => { // When permissions granted
+      // Call admin: push self video stream to admin
       let call = peer.call(peerId, stream);
       call.on('stream', (s) => {
         removeConnectionMessage();
 
-        // Render video
-        renderVideo(stream);//self video
-        renderMyVideo(s);//remote video
+        // Render video:
+        renderVideo(stream);//self video (of peer)
+        renderMyVideo(s);//remote video (of admin)
 
-        myVideoEl.muted = "muted";
-        myVideoEl.classList.remove('big');
-
+        videoEl.muted = "muted";//self video is muted (peer)
+        //myVideoEl.classList.remove('big');
       });
-
+      //in case of error in peer:
       call.on('error', (error) => {
         myVideoEl.classList.add('big');
 
@@ -265,25 +264,19 @@ if (peerId != null) {
       removeConnectionMessage();
       logMessage('Allow camera access for video chat.');
     });
-}
-
-// If creating meeting
-else {
+}else{ // If creating meeting (admin/master)
   // Show "Connecting" message
   logMessage(loaderSVG + 'Connecting');
 
   document.title =  'Doorstep - Create Meeting'; // Set window title
-
   // Request voice/video permission
   navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true
-    })
-
-    .then((stream) => {
+    }).then((stream) => {
       // Render video
       myVideoStream = stream;
-      renderMyVideo(myVideoStream);
+      renderMyVideo(myVideoStream); //render self video (master/admin)
       myVideoEl.muted = "muted";
 
       removeConnectionMessage();
@@ -295,18 +288,14 @@ else {
     });
 }
 
-// Hook with gyro.js:
-// Function sends orientation data to room participant
+// Hook with gyro.js (data is filled at gyro.js)
+// Function sends orientation data to master (admin)
 let sendDataPacket = (data) => {
-
   // If connected to participant
-  if (peerConn) {
-
+  if (peerConn){
     // Send gyro participant
     peerConn.send(data);
-
   }
-
 }
 
 window.sendDataPacket = sendDataPacket;
@@ -314,15 +303,11 @@ window.sendDataPacket = sendDataPacket;
 // Hook with world.js:
 // Function sends marker data to room admin
 let sendMarker = (data) => {
-
   // If connected to admin
   if (theadminConn) {
-
     // Send marker data
     theadminConn.send(data);
-
   }
-
 }
 
 window.sendMarker = sendMarker;
@@ -336,14 +321,11 @@ let sendNav = (index) => {
     navigation[index].classList.remove('visible');
   }, 2000);
 
-  // If connected to admin
+  // If peer is connected to admin
   if (theadminConn) {
-
-    // Send navigation signal
+    // Send navigation signal (left-right pointer)
     theadminConn.send(index);
-
   }
-
 }
 
 window.sendNav = sendNav;
