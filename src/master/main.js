@@ -348,7 +348,6 @@ let sendNav = (index) => {
 
 window.sendNav = sendNav;
 
-<<<<<<< HEAD
 
 
   //Australia Pasific:
