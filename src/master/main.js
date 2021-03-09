@@ -155,17 +155,16 @@ peer.on('open', (id) => {
 var retryCount = 0;
 
 peer.on('error', (error) => {
-  console.log(error);
-  logMessage(loaderSVG + 'Connecting');
+  logMessage('Error: '+error);
 
-  if (retryCount < 3) {
-    retryCount++;
-    peer.reconnect();
-  }
-  else {
-    peer.destroy();
-    logMessage('Meeting ended: ' + error);
-  }
+  //if (retryCount < 3) {
+  //  retryCount++;
+  //  peer.reconnect();
+  //}
+  //else {
+  //  peer.destroy();
+  //  logMessage('Meeting ended: ' + error);
+  //}
 });
 
 peer.on('disconnected', function() {
