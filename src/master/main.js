@@ -361,5 +361,3 @@ window.sendNav = sendNav;
   //      {url: 'turn:18.193.254.239:3478?transport=tcp', credential: 'limor1', username: 'user'}
   //      ]
   //  }
-=======
->>>>>>> 1a2bae4f0b7b1b74372b20ca69bf9a42aee444a7
